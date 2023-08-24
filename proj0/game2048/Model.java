@@ -106,6 +106,20 @@ public class Model extends Observable {
      *    value, then the leading two tiles in the direction of motion merge,
      *    and the trailing tile does not.
      * */
+
+    // permute the board in every column to eliminate existing null tile
+    private void permutation() {
+        for (int co = 0; co < board.size(); co++) {
+            for (int ro = 1; ro < board.size(); ro++) {
+                if (board.tile(co, ro) == null && board.tile(co, ro - 1) != null) {
+                    Tile t = board.tile(co, ro - 1);
+                    board.move(co, ro, t);
+                    ro = 0;
+                }
+            }
+        }
+    }
+
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
@@ -113,6 +127,63 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        board.setViewingPerspective(side);
+
+        for (int co = 0; co < board.size(); co++) {
+            for (int ro = 1; ro < board.size(); ro++) {
+                if (board.tile(co, ro) == null && board.tile(co, ro - 1) != null) {
+                    changed = true;
+                }
+            }
+        }
+
+        permutation();
+
+        for (int c = 0; c < board.size(); c++) {
+
+            // if row 4 == row 3 != null
+            if (board.tile(c, 3) != null && board.tile(c, 2) != null
+                    && board.tile(c, 3).value() == board.tile(c, 2).value()) {
+                Tile t = board.tile(c, 2);
+                board.move(c, 3, t);
+                score += board.tile(c, 3).value();
+                changed = true;
+                permutation();
+            }
+
+            // if row 3 == row 2 != null
+            if (board.tile(c, 2) != null && board.tile(c, 1) != null
+                    && board.tile(c, 2).value() == board.tile(c, 1).value()) {
+                Tile t = board.tile(c, 1);
+                board.move(c, 2, t);
+                score += board.tile(c, 2).value();
+                changed = true;
+                permutation();
+            }
+
+            // if row 4 == row 2 && row 3 == null
+            if (board.tile(c, 3) != null && board.tile(c, 1) != null
+                    && board.tile(c, 3).value() == board.tile(c, 1).value()
+                    && board.tile(c, 2) == null) {
+                Tile t = board.tile(c, 1);
+                board.move(c, 3, t);
+                score += board.tile(c, 3).value();
+                changed = true;
+                permutation();
+            }
+
+            // if row 2 == row 1 != null
+            if (board.tile(c, 1) != null && board.tile(c, 0) != null
+                    && board.tile(c, 1).value() == board.tile(c, 0).value()) {
+                Tile t = board.tile(c, 0);
+                board.move(c, 1, t);
+                score += board.tile(c, 1).value();
+                changed = true;
+                permutation();
+            }
+        }
+
+        board.setViewingPerspective(Side.NORTH);
 
         checkGameOver();
         if (changed) {
