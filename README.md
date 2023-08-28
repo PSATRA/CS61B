@@ -1,1 +1,1 @@
-# CS61B
+# Labs and projects.
