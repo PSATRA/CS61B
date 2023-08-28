@@ -136,6 +136,7 @@ public class Model extends Observable {
                 }
             }
         }
+
         permutation();
 
         for (int c = 0; c < board.size(); c++) {
