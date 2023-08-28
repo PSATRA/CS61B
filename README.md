@@ -1,1 +1,1 @@
-# CS61B
+# Notes and practice code
