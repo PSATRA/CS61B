@@ -1,1 +1,1 @@
-# Labs and projects.
+# Labs and projects
