@@ -1,1 +1,1 @@
-# Notes and practicing codes.
+# Notes and practicing code.
