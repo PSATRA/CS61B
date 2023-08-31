@@ -1,7 +1,6 @@
 public class Sort {
     /**
-     * @NOTICE: Create the input and output sample and test before writing a single method. Use java visualizer to test.
-     * Selection sort algorithm:
+     * @NOTICE: Selection sort algorithm:
      * 1. find the smallest item
      * 2. move it to the front
      * 3. selection sort the rest (using recursion?)
