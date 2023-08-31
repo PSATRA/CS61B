@@ -9,7 +9,7 @@ public class TestSort {
      * The result is on the left sidebar, green check or red X.
      */
     public void testFindSmallest() {
-        String[] input = {"i", "have", "an", "egg"};
+        String[] input = {"i", "have", "an", "egg"}; // Can also be put above as: private static final String[] input ;
         int expected = 2;
 
         int actual = Sort.findSmallest(input, 0);
