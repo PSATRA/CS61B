@@ -1,5 +1,4 @@
 # Testing Philosophy
-***
 [Course source](https://joshhug.gitbooks.io/hug61b/content/chap3/chap31.html)   
 We should definitely write tests but only when they might be useful! Taking inspiration from TDD, writing your tests before writing code can also be very helpful in some cases.
 ## 1. ADD (Autograder driven development)
@@ -26,9 +25,8 @@ Shortcomings:
 
 
 
-
-# Debugging Guide
 ***
+# Debugging Guide
 [Course source](https://sp21.datastructur.es/materials/guides/debugging-guide.html)    
 [Debugging Your First Application](https://www.jetbrains.com/help/idea/debugging-your-first-java-application.html)    
 [Setting Breakpoints](https://www.jetbrains.com/help/idea/using-breakpoints.html)   
@@ -53,8 +51,8 @@ missed the part of a function you were trying to see by essentially letting you 
 Continues the program until it hits the next breakpoint.
 
 
-# JUnit and Unit Testing
 ***
+# JUnit and Unit Testing
 [Lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2#recap-debugging)    
 
 
