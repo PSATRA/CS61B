@@ -1,8 +1,8 @@
 public class intLists {
     /**
-     * can also start backwards, build a helper method with args: first, rest;
+     * Can also start backwards, build a helper method with args: first, rest;
      * start backwards, like: l = fun(2, null); l = fun(1, l); ...
-     * this is a better and more concise way, but far from perfect
+     * This is a better and more concise way, but far from perfect
      */
 
     public int first;
@@ -12,7 +12,7 @@ public class intLists {
      * This will cause the linked list to create a circular reference to itself.
      * You should properly create a new node.？
      * Also, directly modifying this within an instance method is not allowed in Java.
-     * like: this = ...; (x)
+     * Like: this = ...; (x)
      * public void addFirst(int num) {
      *    intLists p = this;
      *    this.first = num; // you simultaneously changed p.first !
