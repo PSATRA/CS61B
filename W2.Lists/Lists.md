@@ -1,0 +1,1 @@
+![Improvement of linked list](list-1.png)

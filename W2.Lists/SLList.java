@@ -1,11 +1,12 @@
 public class SLList {
     /**
      * Advantage of setting an individual node class:
-     * 1. Not a naked recursive class, easy to manipulate, like avoid using this, but "first".
-     * @NOTICE: 2. Support epic customized members for ***caching*** - private int size.
-     *    You can also store the maximum, the minimum ...
-     *    Basically, recursion and iteration are avoided, saving a BUNCH of time.
-     * 3. remember to add s to the first word if it's a verb.
+     * Not a naked recursive class, easy to manipulate, like avoid using this, but "first".
+     *
+     * @NOTICE: Support epic customized members for ***caching*** - private int size. You can also store the maximum,
+     * the minimum ... Basically, recursion and iteration are avoided, saving a BUNCH of time.
+     * @NOTICE: Anywhere or anything that you want to manipulate, just add a cash there. E.g. do addLast()
+     * without iteration cache the last reference(node).
      */
 
 
