@@ -4,7 +4,7 @@ public class SLList {
      * 1. Not a naked recursive class, easy to manipulate, like avoid using this, but "first"
      * @NOTICE: 2. Support epic customized members for ***caching*** - private int size
      *    You can also store the maximum, the minimum ...
-     *    basically, recursion and iteration are avoided, saving a BUNCH of time
+     *    Basically, recursion and iteration are avoided, saving a BUNCH of time
      * 3. remember to add s to the first word if it's a verb
      */
 
@@ -100,8 +100,7 @@ public class SLList {
         return 1 + size(p.next);
     }
     // Returns the number of items in the list using recursion.
-    public int size() {
-        return size(sentinel) - 1;
+    public int size() { return size(sentinel) - 1; }
 
          // This also can be done by iteration, without a helper method:
          * int out = 0;

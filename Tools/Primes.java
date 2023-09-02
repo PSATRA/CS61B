@@ -13,7 +13,7 @@ public class Primes {
      * workings of a function and debug it as a black-box with the "Step Over" feature.
      *
      * @source: https://www.geeksforgeeks.org/primality-test-set-2-fermet-method/
-     * @param n an arbitary integrer
+     * @param n an arbitrary integer
      * @return True iff. the integer is prime
      */
     public static boolean isPrime(int n) {

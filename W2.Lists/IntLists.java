@@ -1,4 +1,4 @@
-public class intLists {
+public class IntLists {
     /**
      * Can also start backwards, build a helper method with args: first, rest;
      * start backwards, like: l = fun(2, null); l = fun(1, l); ...
@@ -6,7 +6,7 @@ public class intLists {
      */
 
     public int first;
-    public intLists rest;
+    public IntLists rest;
 
     /**
      * This will cause the linked list to create a circular reference to itself.
@@ -31,7 +31,7 @@ public class intLists {
     /* no recursion version */
     public void iterativeSize() {
         // 'this' cannot be reassigned, but we need 'this = this.rest'?
-        intLists p = this;
+        IntLists p = this;
         int out = 0;
         while (p != null) {
             p = p.rest;
@@ -50,7 +50,7 @@ public class intLists {
 
     /* no recursion version */
     public int iterativeGet(int pos) {
-        intLists p = this;
+        IntLists p = this;
         for (int i = 0; i < pos; i++) {
             p = p.rest;
         }
@@ -58,13 +58,13 @@ public class intLists {
     }
 
     public static void main(String[] args) {
-        intLists l = new intLists();
+        IntLists l = new IntLists();
         l.first = 0;
 
-        l.rest = new intLists();
+        l.rest = new IntLists();
         l.rest.first = 1;
 
-        l.rest.rest = new intLists();
+        l.rest.rest = new IntLists();
         l.rest.rest.first = 2;
 
         System.out.println(l.first + " " + "5");
