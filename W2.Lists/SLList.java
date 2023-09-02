@@ -1,19 +1,19 @@
 public class SLList {
     /**
      * Advantage of setting an individual node class:
-     * 1. Not a naked recursive class, easy to manipulate, like avoid using this, but "first"
-     * @NOTICE: 2. Support epic customized members for ***caching*** - private int size
+     * 1. Not a naked recursive class, easy to manipulate, like avoid using this, but "first".
+     * @NOTICE: 2. Support epic customized members for ***caching*** - private int size.
      *    You can also store the maximum, the minimum ...
-     *    Basically, recursion and iteration are avoided, saving a BUNCH of time
-     * 3. remember to add s to the first word if it's a verb
+     *    Basically, recursion and iteration are avoided, saving a BUNCH of time.
+     * 3. remember to add s to the first word if it's a verb.
      */
 
 
     /**
-     * Nested class or subordinate class
-     * doesn't matter the order where you put it in a class
-     * can be private
-     * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory   --discuss later
+     * Nested class or subordinate class.
+     * Doesn't matter the order where you put it in a class.
+     * Can be private.
+     * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory. --discuss later
      */
     private static class intNode {
         public int item;
@@ -27,19 +27,19 @@ public class SLList {
     private int size; // create a ******CACHE******
 
     // private intNode first; // this
-    // variable first is powerful, it prevents us from assigning this manually
+    // variable first is powerful, it prevents us from assigning this manually.
     /**
      * @NOTICE: Set to ***private***: prevent other troublemaker class modify first, like:
-     *  first.next.next = first.next; since it doesn't copy the value, but copies the reference
-     * Also, other users don't need to manipulate first
-     * A nice analogy: a car with public and private
+     *  first.next.next = first.next; since it doesn't copy the value, but copies the reference.
+     * Also, other users don't need to manipulate variable first.
+     * A nice analogy: a car with public and private.
      */
     private final intNode sentinel;
     /**
      * In order that the object is empty, bun much better than discussing in every method,
      *  notably the data structure is huge.
      * We can only manipulate/modify sentinel.next, rather than sentinel itself,
-     * @NOTICE: that's why we add ***final*** !!!, but we can still modify sentinel.next
+     * @NOTICE: that's why we add ***final*** !!!, but we can still modify sentinel.next .
      */
 
     public SLList() {
@@ -52,29 +52,29 @@ public class SLList {
         size = 1;
     }
 
-    /* Adds an item to the front of the list. */
+    /** Adds an item to the front of the list. */
     public void addFirst(int x) {
         sentinel.next = new intNode(x, sentinel.next);
         size++;
     }
 
-    /* Adds an item to the end of the list. */
+    /** Adds an item to the end of the list. */
     public void addLast(int x) {
         /**
-         * @NOTICE: a very common way to ***TRAVERSE*** the nodes
+         * @NOTICE: a very common way to ***TRAVERSE*** the nodes.
          */
         intNode p = sentinel; // this.first manage the same memory block!!!
         while (p.next != null) {
-            p = p.next; // does not change first,
+            p = p.next; // Does not change first.
         }
         p.next = new intNode(x, null);
         /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
         size++;
     }
 
-    /* Retrieves the ith item from the list. */
+    /** Retrieves the ith item from the list. */
     public int get(int i) {
-        if  (i >= size) {    // if out of range
+        if  (i >= size) {    // If is out of range.
             return 42;
         }
         intNode p = sentinel;
@@ -119,8 +119,7 @@ public class SLList {
 
         System.out.println(l.epicSize());
 
-        // print the whole elements
-        for (int i = 0; i < l.epicSize(); i++) {
+        for (int i = 0; i < l.epicSize(); i++) {  // Print the whole elements.
             System.out.print(l.get(i) + " ");
         }
     }
