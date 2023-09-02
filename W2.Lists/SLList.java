@@ -1,4 +1,9 @@
-public class SLList {
+public class SLList<ArbiType> {
+    /**
+     * @NOTICE: Generic class: When instantiating: SLList<String> s = new SLList<>("bone");
+     * However, can't replace primitive type. You need conversion.
+     */
+
     /**
      * Advantage of setting an individual node class:
      * Not a naked recursive class, easy to manipulate, like avoid using this, but "first".
@@ -16,10 +21,10 @@ public class SLList {
      * Can be private.
      * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory. --discuss later
      */
-    private static class intNode {
-        public int item;
-        public intNode next;
-        public intNode(int i, intNode n) {
+    private class StuffNode {
+        public ArbiType item;
+        public StuffNode next;
+        public StuffNode(ArbiType i, StuffNode n) {
             item = i;
             next = n;
         }
@@ -35,7 +40,7 @@ public class SLList {
      * Also, other users don't need to manipulate variable first.
      * A nice analogy: a car with public and private.
      */
-    private final intNode sentinel;
+    private final StuffNode sentinel;
     /**
      * In order that the object is empty, bun much better than discussing in every method,
      *  notably the data structure is huge.
@@ -44,41 +49,41 @@ public class SLList {
      */
 
     public SLList() {
-        sentinel = new intNode(19999, null);
+        sentinel = new StuffNode(null, null);
         size = 0;
     }
-    public SLList(int x) {
-        sentinel = new intNode(19999, null);
-        sentinel.next = new intNode(x, null);
+    public SLList(ArbiType x) {
+        sentinel = new StuffNode(null, null);
+        sentinel.next = new StuffNode(x, null);
         size = 1;
     }
 
     /** Adds an item to the front of the list. */
-    public void addFirst(int x) {
-        sentinel.next = new intNode(x, sentinel.next);
+    public void addFirst(ArbiType x) {
+        sentinel.next = new StuffNode(x, sentinel.next);
         size++;
     }
 
     /** Adds an item to the end of the list. */
-    public void addLast(int x) {
+    public void addLast(ArbiType x) {
         /**
          * @NOTICE: a very common way to ***TRAVERSE*** the nodes.
          */
-        intNode p = sentinel; // this.first manage the same memory block!!!
+        StuffNode p = sentinel; // this.first manage the same memory block!!!
         while (p.next != null) {
             p = p.next; // Does not change first.
         }
-        p.next = new intNode(x, null);
+        p.next = new StuffNode(x, null);
         /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
         size++;
     }
 
     /** Retrieves the ith item from the list. */
-    public int get(int i) {
+    public ArbiType get(int i) {
         if  (i >= size) {    // If is out of range.
-            return 42;
+            return null;
         }
-        intNode p = sentinel;
+        StuffNode p = sentinel;
         for (int j = 0; j < i; j++) {
             p = p.next;
         }
@@ -114,7 +119,7 @@ public class SLList {
 
 
     public static void main (String[] args) {
-        SLList l = new SLList();
+        SLList<Integer> l = new SLList<>();
         l.addFirst(1);
         l.addLast(2);
 
