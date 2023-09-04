@@ -34,7 +34,7 @@ Shortcomings:
 [Setting Breakpoints](https://www.jetbrains.com/help/idea/using-breakpoints.html)   
 [Stepping Through a Program](https://www.jetbrains.com/help/idea/stepping-through-the-program.html)
 
-## 1. Setting Breakpoints  
+## 1. Setting Line Breakpoints  
 You can set customize the condition. Your condition can be any 
 True/False statement that would compile at this point in the code.
 
@@ -54,16 +54,38 @@ function was called.
 ### Drop Frame
 This allows you to reset the current frame by returning to the previous frame where it was called. This is useful if you
 missed the part of a function you were trying to see by essentially letting you rewind time.
-### Resume Program
-Continues the program until it hits the next breakpoint.
+### Resume (F9)
+Continues the program until(before) it hits the next breakpoint.
+
+If it meets the condition in the breakpoint, it will automatically stop.
 
 
 ***
 # JUnit and Unit Testing
 [Lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2#recap-debugging)    
+1. In this lab, we’ve seen how to:  
+2. Empirically measure the time it takes to construct a data structure.
+3. Empirically measure the runtime of a data structure’s methods as a function of the size of the data structure.
+4. Perform a comparison test between two implementations of a class.
+5. Randomly call methods inside a class.
+6. Perform random comparison tests between two implementations of a class.
+7. Use the resume button in IntelliJ.
+8. Add a condition to a breakpoint.
+9. Create an execution breakpoint.
+
 JUnit tests are short-circuiting – as soon as one of the asserts in a method fails, it will output the failure and move on to the next test.     
 
 Try clicking on the `ArithmeticTest.java:27` in the window at the bottom of the screen and IntelliJ will take you straight to the line which caused the test to fail. This can come in handy when running your own tests on later projects.
 
+***
+# Randomized Testing
+See random testing for methods in [lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3). 
+
+Note: Randomized tests should not be used 
+as a replacement for well-designed unit tests! 
+I personally generally lean towards non-random 
+tests where possible, and think of randomized tests as 
+a supplemental testing approach. See [this thread](https://news.ycombinator.com/item?id=24349522) for 
+a debate on this issue.
 
 
