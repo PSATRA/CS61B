@@ -23,6 +23,9 @@ public class TimerAList {
 
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
+
+        /** @NOTICE: Time the construction process by addLast() method. */
+
         AList<Integer> Ns = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> tested = new AList<>();

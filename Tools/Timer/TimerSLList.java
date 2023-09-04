@@ -22,6 +22,9 @@ public class TimerSLList {
 
     public static void timeGetLast() {
         // TODO: YOUR CODE HERE
+
+        /** @NOTICE: Time the getLast() method after construction. */
+
         AList<Integer> Ns = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> opCounts = new AList<>();
