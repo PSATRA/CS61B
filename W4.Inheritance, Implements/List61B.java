@@ -62,7 +62,7 @@ public interface List61B<Item> {
      * is a single method or data structure. Here we have get(), but get() in SLList is
      * much slower than that in AList (small ineffectiveness), so do some tweak and optimization.
      *
-     * Just **really** @Override the print() in SLList.
+     * Optimization: Just **Really** @Override the print() in SLList.
      */
 
 
