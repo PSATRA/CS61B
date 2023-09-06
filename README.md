@@ -52,9 +52,11 @@ School: UC Berkeley
 [Lecture 11 QA](https://www.youtube.com/watch?v=7bKEipkOj_4)    
 [Lecture 14 QA](https://www.youtube.com/watch?v=Vkz2BDbcAKM)   
 [Lecture 15 QA](https://www.youtube.com/watch?v=Wsb9kP59VS4)   
-[Lecture 16 QA](https://www.youtube.com/watch?v=wTAFtYZ4wdY)  
+[Lecture 16 QA](https://www.youtube.com/watch?v=wTAFtYZ4wdY) 
+
 [Live Lecture 12](https://www.youtube.com/watch?v=fvhqn5PeU_Q)  
 [Live Lecture 17](https://www.youtube.com/watch?v=0uiVyTt8A1E)  
 [Live Lecture 33](https://www.youtube.com/watch?v=KvgSAIhGn8A)   
-[Live Lecture 40](https://www.youtube.com/watch?v=5VH8k7n1520) 
+[Live Lecture 40](https://www.youtube.com/watch?v=5VH8k7n1520)   
 
+[sp-17 mt](https://hkn.eecs.berkeley.edu/examfiles/cs61b_sp17_mt1.pdf#page=5)
