@@ -62,16 +62,7 @@ If it meets the condition in the breakpoint, it will automatically stop.
 
 ***
 # JUnit and Unit Testing
-[Lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2#recap-debugging)    
-1. In this lab, we’ve seen how to:  
-2. Empirically measure the time it takes to construct a data structure.
-3. Empirically measure the runtime of a data structure’s methods as a function of the size of the data structure.
-4. Perform a comparison test between two implementations of a class.
-5. Randomly call methods inside a class.
-6. Perform random comparison tests between two implementations of a class.
-7. Use the resume button in IntelliJ.
-8. Add a condition to a breakpoint.
-9. Create an execution breakpoint.
+[Lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2#recap-debugging)
 
 JUnit tests are short-circuiting – as soon as one of the asserts in a method fails, it will output the failure and move on to the next test.     
 
@@ -79,7 +70,15 @@ Try clicking on the `ArithmeticTest.java:27` in the window at the bottom of the 
 
 ***
 # Randomized Testing
-See random testing for methods in [lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3). 
+See random testing for methods in [lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3). In this lab, we are going to see how to:
+1. Empirically measure the time it takes to construct a data structure.
+2. Empirically measure the runtime of a data structure’s methods as a function of the size of the data structure.
+3. Perform a comparison test between two implementations of a class.
+4. Randomly call methods inside a class.
+5. Perform random comparison tests between two implementations of a class.
+6. Use the resume button in IntelliJ.
+7. Add a condition to a breakpoint.
+8. Create an execution breakpoint.
 
 Note: Randomized tests should not be used 
 as a replacement for well-designed unit tests! 

@@ -22,6 +22,14 @@ public class AList<Item> {
         size = 0;
     }
 
+    /** Prints out the entire list. */
+    public void print() {
+        for (int i = 0; i < size(); i += 1) {
+            System.out.print(get(i) + " ");
+        }
+        System.out.println();
+    }
+
     /** Resize the underlying array to a larger target capacity. */
     public void resize(int capacity) {
         Item[] a = (Item[]) new Object[capacity];

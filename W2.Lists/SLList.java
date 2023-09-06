@@ -58,6 +58,13 @@ public class SLList<ArbiType> {
         size = 1;
     }
 
+    /** Prints out the entire list. */
+    public void print() {
+        for (StuffNode p = sentinel.next; p != null; p = p.next) {
+            System.out.print(p.item + " ");
+        }
+    }
+
     /** Adds an item to the front of the list. */
     public void addFirst(ArbiType x) {
         sentinel.next = new StuffNode(x, sentinel.next);
@@ -125,8 +132,6 @@ public class SLList<ArbiType> {
 
         System.out.println(l.epicSize());
 
-        for (int i = 0; i < l.epicSize(); i++) {  // Print the whole elements.
-            System.out.print(l.get(i) + " ");
-        }
+        l.print();
     }
 }

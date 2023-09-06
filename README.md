@@ -8,11 +8,12 @@
 for users, regardless of what's 
 happening under the hook.
 That's why we design `sentinel`, 
-AList with 100 boxes, 
+AListCopy with 100 boxes, 
 fake indices, etc.
 
 
-2. Learn to **actively analyze** and **optimize** your own data structure.
+2. Learn to **actively _analyze_** and **optimize** your own code: no matter it is a 
+single method or data structure. --Try the best to find **_small ineffectiveness_**.
 
 ## Exercises
 [lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1): Introduction and set up  
@@ -37,3 +38,23 @@ School: UC Berkeley
 
 ## Reading
 [Algorithms](https://algs4.cs.princeton.edu/home/)
+
+## Q&A
+[Lecture 2 QA](https://www.youtube.com/watch?v=M5LUOLo4k3Y)   
+[Lecture 3 QA](https://www.youtube.com/watch?v=51YjFL6nBFo)   
+[Lecture 4 QA](https://www.youtube.com/watch?v=20ZhW106838)   
+[Lecture 5 QA](https://www.youtube.com/watch?v=46DJBZC5Yvc)   
+[Lecture 6 QA](https://www.youtube.com/watch?v=IIZitaB3AVE)   
+[Lecture 7 QA](https://www.youtube.com/watch?v=bN_nbaZIPfU)   
+[Lecture 8 QA](https://www.youtube.com/watch?v=GGzoibmx9uY)   
+[Lecture 9 QA](https://www.youtube.com/watch?v=GzrokKOAxjw)   
+[Lecture 10 QA](https://www.youtube.com/watch?v=7T8eEzmPGT8)   
+[Lecture 11 QA](https://www.youtube.com/watch?v=7bKEipkOj_4)    
+[Lecture 14 QA](https://www.youtube.com/watch?v=Vkz2BDbcAKM)   
+[Lecture 15 QA](https://www.youtube.com/watch?v=Wsb9kP59VS4)   
+[Lecture 16 QA](https://www.youtube.com/watch?v=wTAFtYZ4wdY)  
+[Live Lecture 12](https://www.youtube.com/watch?v=fvhqn5PeU_Q)  
+[Live Lecture 17](https://www.youtube.com/watch?v=0uiVyTt8A1E)  
+[Live Lecture 33](https://www.youtube.com/watch?v=KvgSAIhGn8A)   
+[Live Lecture 40](https://www.youtube.com/watch?v=5VH8k7n1520) 
+
