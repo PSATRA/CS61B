@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
+      <change afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/RotatingSLList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/VengefulSLList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W2.Lists/Lists.md" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/Lists.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W2.Lists/SLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/SLList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/AListCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/AListCopy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/List61B.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/List61B.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/SLListCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/SLListCopy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/AListCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/AListCopy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/List61B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/List61B.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLListCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLListCopy.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +64,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -70,31 +80,6 @@
       <recent name="" />
       <recent name="Timer" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="AListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AListTest" />
-      <module name="61B practice" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AListTest.testEmptySize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="61B practice" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AListTest" />
-      <option name="METHOD_NAME" value="testEmptySize" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.AListTest" />
-        <item itemvalue="JUnit.AListTest.testEmptySize" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

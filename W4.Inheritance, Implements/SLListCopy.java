@@ -78,4 +78,20 @@ public class SLListCopy<Item> implements List61B<Item> {
         return size;
     }
 
+    @Override
+    public Item removeLast() {
+        size--;
+        StuffNode p = sentinel;
+        while (p.next != null) {
+            p = p.next;
+        }
+        // p = null;
+        /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
+        StuffNode q = sentinel;
+        while (q.next != p) {
+            q = q.next;
+        }
+        q.next = null;
+        return q.item;
+    }
 }

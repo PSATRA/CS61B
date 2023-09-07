@@ -85,6 +85,23 @@ public class SLList<ArbiType> {
         size++;
     }
 
+    /** Return and delete the last item. */
+    public ArbiType removeLast() {
+        size--; // !!!
+        StuffNode p = sentinel;
+        while (p.next != null) {
+            p = p.next;
+        }
+        // p = null;
+        /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
+        StuffNode q = sentinel;
+        while (q.next != p) {
+            q = q.next;
+        }
+        q.next = null;
+        return q.item;
+    }
+
     /** Retrieves the ith item from the list. */
     public ArbiType get(int i) {
         if  (i >= size) {    // If is out of range.
@@ -101,7 +118,7 @@ public class SLList<ArbiType> {
      * Returns the size rapidly no matter how long the object is!
      * It's so much better than size()!
      */
-    public int epicSize() {
+    public int size() {
         return size;
     }
 
@@ -130,7 +147,7 @@ public class SLList<ArbiType> {
         l.addFirst(1);
         l.addLast(2);
 
-        System.out.println(l.epicSize());
+        System.out.println(l.size());
 
         l.print();
     }

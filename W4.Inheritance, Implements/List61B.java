@@ -4,11 +4,10 @@ public interface List61B<Item> {
      * 1. Interface: replace class
      * 2. Implement: implements List61B<Item>
      * @NOTICE: "Implement" means making something(superclass) abstract come true, so we have subclass implements superclass.
-     * 3. Override: @Override: Only @Override those methods in the
-     * interface! It's not the "overload" of a bunch of method.
+     * 3. @Override: Only @Override those methods in the interface! It's not the "overload" of a bunch of method.
      *
-     * Usage: Somewhere a method should take both SLList and AList as parameters,
-     * will you write two methods and overload? No, you pass the interface.
+     * Usage: Somewhere a method can take in both SLList and AList as parameters,
+     * will you write two methods and overload? No, you just pass the interface.
      *
      * Declare: List61B<String> list = new SLList<String>();
      * (NOT:     List61B<String> list = new List<String>();
@@ -31,7 +30,7 @@ public interface List61B<Item> {
     /**
      * @Terminology: Dynamic method selection:
      * If the run-time type overrides the method, the run-time type's own method is used instead.
-     * This explains why the `list` variable use print() of its own.
+     * This explains why the `list` variable use its own print().
      *
      * IMPORTANT: This does not work for overloaded methods, only for override. E.g.
      * Say there are two methods in the same class:
@@ -66,7 +65,7 @@ public interface List61B<Item> {
 
     public void addLast(Item y);
     /**
-    * This is just a signature, like a declaration in C, not implementation.
+    * This is just a signature(declaration), not implementation.
     * So this is interface inheritance.
     */
 
@@ -96,5 +95,7 @@ public interface List61B<Item> {
     public Item get(int i);
 
     public int size();
+
+    public Item removeLast();
 
 }

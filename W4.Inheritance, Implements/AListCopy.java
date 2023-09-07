@@ -43,6 +43,7 @@ public class AListCopy<Item> implements List61B<Item> {
         return size;
     }
 
+    @Override
     public Item removeLast() {
         Item x = getLast();
         items[size - 1] = null;
