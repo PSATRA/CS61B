@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
-      <change afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/RotatingSLList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/VengefulSLList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W2.Lists/Lists.md" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/Lists.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W2.Lists/SLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/SLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/AListCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/AListCopy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/List61B.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/List61B.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/SLListCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/SLListCopy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/AListCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/AListCopy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/List61B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/List61B.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLListCopy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLListCopy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/RotatingSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/RotatingSLList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/VengefulSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/VengefulSLList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -9,6 +9,7 @@ public class RotatingSLList<Item> extends SLListCopy<Item> {
      * enabling us to make `modifications` and `add` additional functionality.
      *
      * @NOTICE: Counter-examples: private members and constructors cannot be inherited.
+     * So there's a `super();` in the constructor.
      */
 
     public void rotateRight() {
