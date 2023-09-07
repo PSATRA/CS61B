@@ -1,5 +1,4 @@
 public class Primes {
-
     /**
      * This (complicated) algorithm returns True if its argument is prime,
      * otherwise False. When you're debugging, stepping into this function may

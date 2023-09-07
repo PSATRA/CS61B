@@ -1,4 +1,5 @@
 public class RotatingSLList<Item> extends SLListCopy<Item> {
+    /** This is different from an interface. */
     /**
      * Suppose we want to build a RotatingSLList that has the same functionality as the SLList like addFirst, size, etc.,
      * but with an additional rotateRight operation to bring the last item to the front of the list.

@@ -9,9 +9,9 @@ public interface List61B<Item> {
      * Usage: Somewhere a method can take in both SLList and AList as parameters,
      * will you write two methods and overload? No, you just pass the interface.
      *
-     * Declare: List61B<String> list = new SLList<String>();
-     * (NOT:     List61B<String> list = new List<String>();
-     * Run: list.addFirst(5);
+     *      List61B<String> list = new SLList<String>();
+     *      List61B<String> list = new List<String>();
+     *      list.addFirst(5);
      * @NOTICE: A SLList is created, and the address of the SLList is stored in
      * the list variable, so do list.addFirst(5) will modify SLList.
      */
@@ -34,31 +34,28 @@ public interface List61B<Item> {
      *
      * IMPORTANT: This does not work for overloaded methods, only for override. E.g.
      * Say there are two methods in the same class:
-     * public static void peek(List61B<String> list) {
-     *     System.out.println(list.getLast());
-     * }
-     * public static void peek(SLList<String> list) {
-     *     System.out.println(list.getFirst());
-     * }
+     *      public static void peek(List61B<String> list) {
+     *          System.out.println(list.getLast());
+     *      }
+     *      public static void peek(SLList<String> list) {
+     *          System.out.println(list.getFirst());
+     *      }
      * and you run this code:
-     * SLList<String> SP = new SLList<String>();
-     * List61B<String> LP = SP;
-     * SP.addLast("elk");
-     * SP.addLast("are");
-     * SP.addLast("cool");
-     * peek(SP);
-     * peek(LP); // The second call to peek() will use the first peek method which takes in a List61B.
-     *
-     * This is because the only distinction between two overloaded methods is the types of the parameters.
-     * When Java checks to see which method to call, it checks the static type and calls the method with
-     * the parameter of the same type.
-     *
+     *      SLList<String> SP = new SLList<String>();
+     *      List61B<String> LP = SP;
+     *      SP.addLast("elk");
+     *      SP.addLast("are");
+     *      SP.addLast("cool");
+     *      peek(SP);
+     *      peek(LP); // The second call to peek() will use the first peek method which takes in a List61B.
+     * This is because the only distinction between these two overloaded methods is the types of the parameters,
+     * not the body, so there is no override. When Java checks to see which method to call, it checks the
+     * static type and calls the method with the parameter of the same type.
      *
      * @Term: Compile-time type == static type == specified at declaration == never changes =? superclass
      * @Term: Run-time type == dynamic type == specified at instantiation(e.g. when using `new`) =? subclass
-     *
      * E.g.
-     * List<Integer> list = new SLList<>();
+     *      List<Integer> list = new SLList<>();
      * Compile-time type: List<Integer>.
      * Run-time type: SLList<Integer>.
      */
