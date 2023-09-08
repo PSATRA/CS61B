@@ -1,5 +1,6 @@
 # Notes for CS61B Spring 2021.
 [Course Website](https://sp21.datastructur.es/)  
+[CS61B Spring 2018](https://sp18.datastructur.es/)
 [Reading](https://joshhug.gitbooks.io/hug61b/content/)    
 [CS61C Summer 2023](https://inst.eecs.berkeley.edu/~cs61c/su23/)
 
