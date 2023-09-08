@@ -31,11 +31,22 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      * You can tell the compiler that a specific expression has a specific compile-time type, so that the compiler
      * will view an expression as a different compile-time type.
      * Looking back at the code that failed above, since we know that frank and frankJr are both Poodles, we can cast:
-     *      Poodle largerPoodle = (Poodle) maxDog(frank, frankJr); // a = (a)A
-     * However it's also dangerous:
+     *      Poodle largerPoodle = (Poodle) maxDog(frank, frankJr);
      *      Poodle frank = new Poodle("Frank", 5);
      *      Malamute frankSr = new Malamute("Frank Sr.", 100);
      *      Poodle largerPoodle = (Poodle) maxDog(frank, frankSr); // runtime exception - `ClassCastException`!
+     *
+     * You can always cast up (to a more generic version of a class) without fear of ruining anything because we know
+     * the more specific version is a version of the generic class. For example you can always cast a Poodle to a Dog
+     * because all Poodles are Dog’s.
+     *
+     * You can also cast down (to a more specific version of a class) with caution as you need to make sure that, during
+     * runtime, nothing is passed in that violates your cast. For example, sometimes Dogs are Poodles but not always.
+     *
+     * Finally, you cannot ever cast to a class that is neither above nor below the class being cast. For an example,
+     * you cannot cast a Dog to a Monkey because a Monkey is not in the direct lineage of a Dog - it is a child of
+     * Animal so a bit more distant. You can think of this as “side casting” and it will result in a compile time
+     * error since the compiler knows this cast cannot possibly work.
      */
 
     /**
