@@ -10,7 +10,8 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      *      sl.addLast(50); // compile
      *      sl.removeLast(); // compile: Since there is override, so follow the dynamic method selection.
      *      sl.printLostItems();
-     * Does not compile! The static type is SLList.
+     * Does not compile! The static type is SLList, you can consider that this doesn't have an explicit dynamic type.
+     * So don't follow the dynamic method selection.
      *      VengefulSLList<Integer> vsl2 = sl;
      * Does not compile! Since the compiler only sees that the static type of sl is SLList, it will not allow a
      * VengefulSLList "container" to hold it.
@@ -51,7 +52,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
 
     /**
      * @Terminology: **Higher Order Functions**
-     * Basically it's the implementation of f(f(x)), check:
+     * Basically it's the implementation of g(f(x)), a method takes in entities of function types as parameters. check:
      * https://www.youtube.com/watch?v=OcfTN1PZ7oA
      * https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html
      */
