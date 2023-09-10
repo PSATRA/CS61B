@@ -2,6 +2,27 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
     /** Can do everything SLList can do, but can also print all the items that have been banished by removeLast(). */
 
     /**
+     * @NOTICE: How Inheritance Breaks Encapsulation:
+     *      public void bark() {
+     *          barkMany(1);
+     *      }
+     *      public void barkMany(int N) {
+     *          for (int i = 0; i < N; i += 1) {
+     *              System.out.println("bark");
+     *          }
+     *      }
+     *
+     *      @Override
+     *      public void barkMany(int N) {
+     *          System.out.println("As a dog, I say: ");
+     *          for (int i = 0; i < N; i += 1) {
+     *              bark();
+     *          }
+     *      }
+     * The program above gets caught in an infinite loop.
+     */
+
+    /**
      * @NOTICE: The compiler determines whether or not something is valid based on the static type of the object, e.g.:
      *
      *      VengefulSLList<Integer> vsl = new VengefulSLList<Integer>(9);
@@ -10,8 +31,8 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      *      sl.addLast(50); // compile
      *      sl.removeLast(); // compile: Since there is override, so follow the dynamic method selection.
      *      sl.printLostItems();
-     * Does not compile! The static type is SLList, you can consider that this doesn't have an explicit dynamic type.
-     * So don't follow the dynamic method selection.
+     * Does not compile! The static type is SLList, and it doesn't have an explicit dynamic type, since it's specified at instantiation.
+     * @NOTICE: So don't follow the dynamic method selection.
      *      VengefulSLList<Integer> vsl2 = sl;
      * Does not compile! Since the compiler only sees that the static type of sl is SLList, it will not allow a
      * VengefulSLList "container" to hold it.
@@ -33,6 +54,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      * will view an expression as a different compile-time type.
      * Looking back at the code that failed above, since we know that frank and frankJr are both Poodles, we can cast:
      *      Poodle largerPoodle = (Poodle) maxDog(frank, frankJr);
+     * However, if we do this:
      *      Poodle frank = new Poodle("Frank", 5);
      *      Malamute frankSr = new Malamute("Frank Sr.", 100);
      *      Poodle largerPoodle = (Poodle) maxDog(frank, frankSr); // runtime exception - `ClassCastException`!
@@ -52,7 +74,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
 
     /**
      * @Terminology: **Higher Order Functions**
-     * Basically it's the implementation of g(f(x)), a method takes in entities of function types as parameters. check:
+     * Basically it's the implementation of g(f(x)), a method takes in entities of function types as parameters. Check:
      * https://www.youtube.com/watch?v=OcfTN1PZ7oA
      * https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html
      */
@@ -79,7 +101,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
 
     @Override
     public Item removeLast() {
-        Item x = super.removeLast();
+        Item x = super.removeLast(); // This can automatically do removeLast for this class.
         deletedItems.addLast(x);
         return x;
     }

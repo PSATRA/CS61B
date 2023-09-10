@@ -32,6 +32,10 @@ public interface List61B<Item> {
      * If the run-time type overrides the method, the run-time type's own method is used instead.
      * This explains why the `list` variable use its own print().
      *
+     * @NOTICE: Two preconditions:
+     * 1. Has a dynamic type(has instantiation).
+     * 2. The method invoked is override(instead of overload or whatever else).
+     *
      * IMPORTANT: This does not work for overloaded methods, only for override. E.g.
      * Say there are two methods in the same class:
      *      public static void peek(List61B<String> list) {
