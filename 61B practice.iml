@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/W3.Test driven development" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tools" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W4.Inheritance, Implements" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/W5.Generics and Autoboxing" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

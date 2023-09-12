@@ -22,11 +22,14 @@ public interface List61B<Item> {
      * @Terminology: two types of inheritance
      * 1. Interface Inheritance(WHAT): Subclasses inherit signatures, not implementation.
      * SLList and AList (subclasses/hyponyms)inherit the interface (i.e. all the methods/behaviors) of inheritance.List61B (superclasses/hypernyms).
-     * @NOTICE: Such relationship can be multi-generational.
+     * Such relationship can be multi-generational.
+     *
+     * @NOTICE:
+     * Class can implement multiple interfaces!
+     * Subclasses can only implement one abstract class.
      *
      * 2. Implementation Inheritance(HOW): Subclasses can inherit both signatures and implementation.
-     * Add the keyword: default.
-     *
+     * @Term: Add the keyword: `default`.
      */
 
     /**
@@ -64,6 +67,27 @@ public interface List61B<Item> {
      *      List<Integer> list = new SLList<>();
      * Compile-time type: List<Integer>.
      * Run-time type: SLList<Integer>.
+     */
+
+    /**
+     * @Terminology: Abstract class
+     *
+     * @NOTICE: Abstract class can do anything an interface can do, and more!
+     * But when in doubt, try to use interfaces in order to reduce complexity !!!!!
+     *
+     * For abstract class:
+     * 1. Cannot be instantiated.
+     * 2. Methods are by default concrete unless specified to be abstract.
+     * 3. Can only implement one per class.
+     * 4. Methods can be public or private.
+     * 5. Can have any types of variables.
+     *
+     * However, for interface:
+     * 1. All methods must be public.
+     * 2. All variables must be `public static final`.
+     * 3. Cannot be instantiated.
+     * 4. All methods are by default abstract unless specified to be default.
+     * 5. Can implement more than one interface per class.
      */
 
     public void addLast(Item y);
