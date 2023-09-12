@@ -1,16 +1,18 @@
+package inheritance;
+
 public interface List61B<Item> {
     /**
      * @Terminology:
      * 1. Interface: replace class
-     * 2. Implement: implements List61B<Item>
+     * 2. Implement: implements inheritance.List61B<Item>
      * @NOTICE: "Implement" means making something(superclass) abstract come true, so we have subclass implements superclass.
      * 3. @Override: Only @Override those methods in the interface! It's not the "overload" of a bunch of method.
      *
      * Usage: Somewhere a method can take in both SLList and AList as parameters,
      * will you write two methods and overload? No, you just pass the interface.
      *
-     *      List61B<String> list = new SLList<String>();
-     *      List61B<String> list = new List<String>();
+     *      inheritance.List61B<String> list = new SLList<String>();
+     *      inheritance.List61B<String> list = new List<String>();
      *      list.addFirst(5);
      * @NOTICE: A SLList is created, and the address of the SLList is stored in
      * the list variable, so do list.addFirst(5) will modify SLList.
@@ -19,7 +21,7 @@ public interface List61B<Item> {
     /**
      * @Terminology: two types of inheritance
      * 1. Interface Inheritance(WHAT): Subclasses inherit signatures, not implementation.
-     * SLList and AList (subclasses/hyponyms)inherit the interface (i.e. all the methods/behaviors) of List61B (superclasses/hypernyms).
+     * SLList and AList (subclasses/hyponyms)inherit the interface (i.e. all the methods/behaviors) of inheritance.List61B (superclasses/hypernyms).
      * @NOTICE: Such relationship can be multi-generational.
      *
      * 2. Implementation Inheritance(HOW): Subclasses can inherit both signatures and implementation.
@@ -38,7 +40,7 @@ public interface List61B<Item> {
      *
      * IMPORTANT: This does not work for overloaded methods, only for override. E.g.
      * Say there are two methods in the same class:
-     *      public static void peek(List61B<String> list) {
+     *      public static void peek(inheritance.List61B<String> list) {
      *          System.out.println(list.getLast());
      *      }
      *      public static void peek(SLList<String> list) {
@@ -46,12 +48,12 @@ public interface List61B<Item> {
      *      }
      * and you run this code:
      *      SLList<String> SP = new SLList<String>();
-     *      List61B<String> LP = SP;
+     *      inheritance.List61B<String> LP = SP;
      *      SP.addLast("elk");
      *      SP.addLast("are");
      *      SP.addLast("cool");
      *      peek(SP);
-     *      peek(LP); // The second call to peek() will use the first peek method which takes in a List61B.
+     *      peek(LP); // The second call to peek() will use the first peek method which takes in a inheritance.List61B.
      * This is because the only distinction between these two overloaded methods is the types of the parameters,
      * not the body, so there is no override. When Java checks to see which method to call, it checks the
      * static type and calls the method with the parameter of the same type.

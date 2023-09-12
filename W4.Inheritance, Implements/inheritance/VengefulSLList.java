@@ -1,3 +1,7 @@
+package inheritance;
+
+import inheritance.SLListCopy;
+
 public class VengefulSLList<Item> extends SLListCopy<Item> {
     /** Can do everything SLList can do, but can also print all the items that have been banished by removeLast(). */
 
@@ -25,7 +29,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
     /**
      * @NOTICE: The compiler determines whether or not something is valid based on the static type of the object, e.g.:
      *
-     *      VengefulSLList<Integer> vsl = new VengefulSLList<Integer>(9);
+     *      inheritance.VengefulSLList<Integer> vsl = new inheritance.VengefulSLList<Integer>(9);
      *      SLList<Integer> sl = vsl;
      *
      *      sl.addLast(50); // compile
@@ -33,21 +37,21 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      *      sl.printLostItems();
      * Does not compile! The static type is SLList, and it doesn't have an explicit dynamic type, since it's specified at instantiation.
      * @NOTICE: So don't follow the dynamic method selection.
-     *      VengefulSLList<Integer> vsl2 = sl;
+     *      inheritance.VengefulSLList<Integer> vsl2 = sl;
      * Does not compile! Since the compiler only sees that the static type of sl is SLList, it will not allow a
-     * VengefulSLList "container" to hold it.
+     * inheritance.VengefulSLList "container" to hold it.
      *
      * Further, method calls have compile-time types equal to their declared(return) type.
      * Suppose we have this method:
      *
-     *      public static Dog maxDog(Dog d1, Dog d2) { ... }
-     * Since the return type of maxDog is Dog, any call to maxDog will have compile-time type Dog.
+     *      public static DogCompare.Dog maxDog(DogCompare.Dog d1, DogCompare.Dog d2) { ... }
+     * Since the return type of maxDog is DogCompare.Dog, any call to maxDog will have compile-time type DogCompare.Dog.
      *
      *      Poodle frank = new Poodle("Frank", 5); // ok
      *      Poodle frankJr = new Poodle("Frank Jr.", 15); // ok
-     *      Dog largerDog = maxDog(frank, frankJr); // ok
+     *      DogCompare.Dog largerDog = maxDog(frank, frankJr); // ok
      *      Poodle(is-a dog) largerPoodle = maxDog(frank, frankJr);
-     * Does not compile! RHS has compile-time type Dog, but you can't say dog "is-a" poodle.
+     * Does not compile! RHS has compile-time type DogCompare.Dog, but you can't say dog "is-a" poodle.
      *
      * @Term: Casting
      * You can tell the compiler that a specific expression has a specific compile-time type, so that the compiler
@@ -60,14 +64,14 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      *      Poodle largerPoodle = (Poodle) maxDog(frank, frankSr); // runtime exception - `ClassCastException`!
      *
      * You can always cast up (to a more generic version of a class) without fear of ruining anything because we know
-     * the more specific version is a version of the generic class. For example you can always cast a Poodle to a Dog
-     * because all Poodles are Dog’s.
+     * the more specific version is a version of the generic class. For example you can always cast a Poodle to a DogCompare.Dog
+     * because all Poodles are DogCompare.Dog’s.
      *
      * You can also cast down (to a more specific version of a class) with caution as you need to make sure that, during
      * runtime, nothing is passed in that violates your cast. For example, sometimes Dogs are Poodles but not always.
      *
      * Finally, you cannot ever cast to a class that is neither above nor below the class being cast. For an example,
-     * you cannot cast a Dog to a Monkey because a Monkey is not in the direct lineage of a Dog - it is a child of
+     * you cannot cast a DogCompare.Dog to a Monkey because a Monkey is not in the direct lineage of a DogCompare.Dog - it is a child of
      * Animal so a bit more distant. You can think of this as “side casting” and it will result in a compile time
      * error since the compiler knows this cast cannot possibly work.
      */
@@ -79,7 +83,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      * https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html
      */
 
-    SLList<Item> deletedItems;
+    SLListCopy<Item> deletedItems;
 
     public VengefulSLList() {
         /** @NOTICE: If you have variables, definitely remember to add a constructor. */
@@ -91,11 +95,11 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
          * So just don't omit, call it explicitly!
          */
 
-        deletedItems = new SLList<>();
+        deletedItems = new SLListCopy<>();
     }
     public VengefulSLList(Item x) {  // Super(...) cannot be omitted!!!
         super(x);
-        deletedItems = new SLList<>();
+        deletedItems = new SLListCopy<>();
     }
 
 

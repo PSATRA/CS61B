@@ -1,3 +1,5 @@
+package inheritance;
+
 public class AListCopy<Item> implements List61B<Item> {
     private Item[] items;
     private int size;

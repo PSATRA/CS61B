@@ -1,6 +1,9 @@
+package DogCompare;
+
 import java.util.Comparator;
 
 public class Dog implements Comparable<Dog> {
+    // java offers Comparable<T>, with compareTo(T) inside.
     /**
      * https://joshhug.gitbooks.io/hug61b/content/chap4/chap43.html
      *
@@ -23,14 +26,18 @@ public class Dog implements Comparable<Dog> {
         System.out.println(name + " says: bark!");
     }
 
-    /** Return a negative number if this dog is less than the dog pointed by o, and so forth. */
-    public int compareTo(Dog uddaDog) {
-        return this.size - uddaDog.size;
+    /** Return a negative number if this dog is less than the dog pointed by 'obj', and so forth. */
+    public int compareTo(Dog obj) {
+        return this.size - obj.size;
     }
 
     private static class NameComparator implements Comparator<Dog> {
         public int compare(Dog a, Dog b) {
             return a.name.compareTo(b.name);
+            /**
+             * name.compareTo is not the compareTo method before, it belongs to Comparator.
+             * Comparator provides compareTo that can compare different types like a.name/b.name.
+             */
         }
     }
 

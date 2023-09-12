@@ -9,7 +9,7 @@
 for users, regardless of what's 
 happening under the hook.
 That's why we design `sentinel`, 
-AListCopy with 100 boxes, 
+inheritance.AListCopy with 100 boxes, 
 fake indices, etc.
 
 

@@ -1,3 +1,7 @@
+package inheritance;
+
+import inheritance.List61B;
+
 public class SLListCopy<Item> implements List61B<Item> {
     private class StuffNode {
         public Item item;
