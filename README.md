@@ -16,6 +16,9 @@ fake indices, etc.
 2. Learn to **actively _analyze_** and **optimize** your own code: no matter it is a 
 single method or data structure. --Try the best to find **_small ineffectiveness_**.
 
+
+3. Find the  most appropriate abstract data type (list / set / map) that for the requirement.
+
 ## Exercises
 [lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1): Introduction and set up  
 [project 0](https://sp21.datastructur.es/materials/proj/proj0/proj0): 2048  
