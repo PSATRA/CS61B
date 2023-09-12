@@ -73,7 +73,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      */
 
     /**
-     * @Terminology: **Higher Order Functions**
+     * @Terminology: **Higher Order Functions - HoF**
      * Basically it's the implementation of g(f(x)), a method takes in entities of function types as parameters. Check:
      * https://www.youtube.com/watch?v=OcfTN1PZ7oA
      * https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html
