@@ -1,8 +1,6 @@
-package inheritance;
+package Inheritance;
 
-import inheritance.SLListCopy;
-
-public class VengefulSLList<Item> extends SLListCopy<Item> {
+public class VengefulSLList<Item> extends SLList<Item> {
     /** Can do everything SLList can do, but can also print all the items that have been banished by removeLast(). */
 
     /**
@@ -83,7 +81,7 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
      * https://joshhug.gitbooks.io/hug61b/content/chap4/chap42.html
      */
 
-    SLListCopy<Item> deletedItems;
+    SLList<Item> deletedItems;
 
     public VengefulSLList() {
         /** @NOTICE: If you have variables, definitely remember to add a constructor. */
@@ -95,11 +93,11 @@ public class VengefulSLList<Item> extends SLListCopy<Item> {
          * So just don't omit, call it explicitly!
          */
 
-        deletedItems = new SLListCopy<>();
+        deletedItems = new SLList<>();
     }
     public VengefulSLList(Item x) {  // Super(...) cannot be omitted!!!
         super(x);
-        deletedItems = new SLListCopy<>();
+        deletedItems = new SLList<>();
     }
 
 

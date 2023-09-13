@@ -1,4 +1,4 @@
-package inheritance;
+package Inheritance;
 
 public interface List61B<Item> {
     /**
@@ -96,6 +96,7 @@ public interface List61B<Item> {
     * So this is interface inheritance.
     */
 
+    public void addFirst(Item x);
 
     /** Prints out the entire list. */
     default public void print() {
@@ -124,5 +125,11 @@ public interface List61B<Item> {
     public int size();
 
     public Item removeLast();
+
+    /**
+     * Inserts item into given position.
+     * Code from discussion #3
+     */
+    public void insert(Item x, int position);
 
 }

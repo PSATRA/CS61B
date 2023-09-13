@@ -1,8 +1,6 @@
-package inheritance;
+package Inheritance;
 
-import inheritance.SLListCopy;
-
-public class RotatingSLList<Item> extends SLListCopy<Item> {
+public class RotatingSLList<Item> extends SLList<Item> {
     /** This is different from an interface. */
     /**
      * Suppose we want to build an inheritance.RotatingSLList that has the same functionality as the SLList like addFirst, size, etc.,

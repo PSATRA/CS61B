@@ -21,10 +21,10 @@ public class SLList<ArbiType> {
      * Can be private.
      * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory. --discuss later
      */
-    private class StuffNode {
+    private class Node {
         public ArbiType item;
-        public StuffNode next;
-        public StuffNode(ArbiType i, StuffNode n) {
+        public Node next;
+        public Node(ArbiType i, Node n) {
             item = i;
             next = n;
         }
@@ -40,7 +40,7 @@ public class SLList<ArbiType> {
      * Also, other users don't need to manipulate variable first.
      * A nice analogy: a car with public and private.
      */
-    private final StuffNode sentinel;
+    private final Node sentinel;
     /**
      * In order that the object is empty, bun much better than discussing in every method,
      *  notably the data structure is huge.
@@ -49,25 +49,25 @@ public class SLList<ArbiType> {
      */
 
     public SLList() {
-        sentinel = new StuffNode(null, null);
+        sentinel = new Node(null, null);
         size = 0;
     }
     public SLList(ArbiType x) {
-        sentinel = new StuffNode(null, null);
-        sentinel.next = new StuffNode(x, null);
+        sentinel = new Node(null, null);
+        sentinel.next = new Node(x, null);
         size = 1;
     }
 
     /** Prints out the entire list. */
     public void print() {
-        for (StuffNode p = sentinel.next; p != null; p = p.next) {
+        for (Node p = sentinel.next; p != null; p = p.next) {
             System.out.print(p.item + " ");
         }
     }
 
     /** Adds an item to the front of the list. */
     public void addFirst(ArbiType x) {
-        sentinel.next = new StuffNode(x, sentinel.next);
+        sentinel.next = new Node(x, sentinel.next);
         size++;
     }
 
@@ -76,11 +76,11 @@ public class SLList<ArbiType> {
         /**
          * @NOTICE: a very common way to ***TRAVERSE*** the nodes.
          */
-        StuffNode p = sentinel; // this.first manage the same memory block!!!
+        Node p = sentinel; // this.first manage the same memory block!!!
         while (p.next != null) {
             p = p.next; // Does not change first.
         }
-        p.next = new StuffNode(x, null);
+        p.next = new Node(x, null);
         /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
         size++;
     }
@@ -88,13 +88,13 @@ public class SLList<ArbiType> {
     /** Return and delete the last item. */
     public ArbiType removeLast() {
         size--; // !!!
-        StuffNode p = sentinel;
+        Node p = sentinel;
         while (p.next != null) {
             p = p.next;
         }
         // p = null;
         /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
-        StuffNode q = sentinel;
+        Node q = sentinel;
         while (q.next != p) {
             q = q.next;
         }
@@ -107,7 +107,7 @@ public class SLList<ArbiType> {
         if  (i >= size) {    // If is out of range.
             return null;
         }
-        StuffNode p = sentinel;
+        Node p = sentinel;
         for (int j = 0; j < i; j++) {
             p = p.next;
         }

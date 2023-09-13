@@ -5,12 +5,9 @@
 [CS61C Summer 2023](https://inst.eecs.berkeley.edu/~cs61c/su23/)   
 
 ## Design Philosophy
-1. Our final purpose is to design 
-for users, regardless of what's 
-happening under the hook.
-That's why we design `sentinel`, 
-inheritance.AListCopy with 100 boxes, 
-fake indices, etc.
+1. Our final purpose is to design for users, regardless of what's 
+happening under the hook. That's why we design `sentinel`, 
+inheritance.AList with 100 boxes, fake indices, etc.
 
 
 2. Learn to **actively _analyze_** and **optimize** your own code: no matter it is a 
@@ -30,6 +27,9 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 
 [project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1):
 
+## Java Guide
+[Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
+[Memory 2](https://www.javamex.com/tutorials/memory/object_memory_usage.shtml)    
 ## Guide
 [Using Git](https://sp19.datastructur.es/materials/guides/using-git)    
 [Git WTFS](https://sp19.datastructur.es/materials/guides/git-wtfs)   
