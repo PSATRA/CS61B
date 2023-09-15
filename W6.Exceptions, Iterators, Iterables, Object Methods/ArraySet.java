@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-public class ArraySet<T> {
+public class ArraySet<T> implements Iterable<T> {  // make the class support: for(T item : set)
     private T[] items;
     private int size; // the next item to be added will be at position size
 
@@ -39,21 +41,132 @@ public class ArraySet<T> {
         return size;
     }
 
-    /* Also to do:
+    /** returns an iterator (a.k.a. seer) into ME */
+    public Iterator<T> iterator() {
+        return new ArraySetIterator();
+    }
+
+    public class ArraySetIterator implements Iterator<T> {
+        private int wizardPos;
+        public ArraySetIterator() {  // always remember the constructor !!!
+            wizardPos = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return wizardPos < size;
+        }
+
+        @Override
+        public T next() {
+            T returnItem = items[wizardPos];
+            wizardPos++;
+            return returnItem;
+        }
+    }
+
+    /*@Override - cumbersome version
+    public String toString() {
+        /**
+         * @NOTICE: Whenever you manipulate String or other immutable data type, reduce the modification times !!!
+         *
+        StringBuilder returnSB = new StringBuilder("{");
+        for (int i = 0; i < this.size - 1; i++) {
+            returnSB.append(items[i]); // returnSB += items[i] is slow
+            returnSB.append(", ");
+        }
+        returnSB.append(items[size - 1]);
+        returnSB.append("}");
+        return returnSB.toString();
+    }*/
+    @Override
+    public String toString() {
+        List<String> listOfItems = new ArrayList<>();
+        for (T item : this) {    // not (T item : items) !!!
+            listOfItems.add(item.toString());
+        }
+        return "{" + String.join(", ", listOfItems) + "}";
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {   // optimization, to avoid meaningless iteration and checking, like in c++
+            return true;
+        }
+        if (other == null) {
+            return false;
+        }
+        if (other.getClass() != this.getClass()) {    // also inherit the Object, returns the instance type
+            return false;
+        }
+        ArraySet<T> o = (ArraySet<T>) other;
+        if (o.size() != this.size()) {
+            return false;
+        }
+        for (T item : this) {
+            if (!o.contains(item)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static <Glerp> ArraySet<Glerp> of(Glerp... stuff) {
+        // static method doesn't know T, the generic type, so make the method generic and not the same as T.
+        ArraySet<Glerp> returnSet = new ArraySet<>();
+        for (Glerp x : stuff) {
+            returnSet.add(x);
+        }
+        return returnSet;
+    }
+
+    /** Also to do:
     1. Make ArraySet implement the Iterable<T> interface.
     2. Implement a toString method.
     3. Implement an equals() method.
     */
 
     public static void main(String[] args) {
-        ArraySet<String> s = new ArraySet<>();
-        s.add(null);
-        s.add("horse");
-        s.add("fish");
-        s.add("house");
-        s.add("fish");
-        System.out.println(s.contains("horse"));
-        System.out.println(s.size());
+        ArraySet<Integer> aset = new ArraySet<>();
+        aset.add(null);
+        aset.add(5);
+        aset.add(23);
+        aset.add(42);
+        //equals
+        ArraySet<Integer> aset2 = new ArraySet<>();
+        aset2.add(5);
+        aset2.add(23);
+        aset2.add(42);
+
+        /* Doesn't need to call the toString manually, since the println() with automatically call toString() if
+        its parameter is not a String type.
+         */
+        System.out.println(aset);
+
+        System.out.println(aset.equals(aset2));
+        System.out.println(aset.equals(null));
+        System.out.println(aset.equals("fish"));
+        System.out.println(aset.equals(aset));
+
+        ArraySet<String> asetOfString = ArraySet.of("mind", "the", "blind static method");
+        System.out.println(asetOfString);
+
+        /**
+         @NOTICE:
+        // Ugly iterator
+        Iterator<Integer> aseer = as.iterator();
+        // need an iterator type, so build a nested class !!!
+        // Let's start by thinking about what the compiler need to know in order to successfully compile.
+        while (aseer.hasNext()) {
+            System.out.println(aseer.next());
+        }
+
+         // The shorthand for the ugly iterator.
+         for (Integer item : aset) {
+         System.out.println(item);
+         @NOTICE: It's not (T i : items), it's (T i : this/instance) !!!
+         }
+        */
     }
 
 }

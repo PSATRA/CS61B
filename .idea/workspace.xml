@@ -1,38 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="61B practice:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
-      <change afterPath="$PROJECT_DIR$/IMG/java.util.List.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMG/java.util.Set.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/AList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/SLList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/ArrayMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/Generics.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/Map61B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/MapHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySetFinal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/61B_practice_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Guide/Efficiency.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Guide/Immutability.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMG/Access control.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMG/Exception.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/61B practice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/61B practice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W2.Lists/SLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/SLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/AListCopy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/List61B.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/List61B.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/RotatingSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/RotatingSLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/SLListCopy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/VengefulSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/VengefulSLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList$StuffNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/AListCopy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/List61B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/List61B.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/RotatingSLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/RotatingSLList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLListCopy$StuffNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLListCopy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/VengefulSLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/VengefulSLList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W3.Test driven development/Testing and Debugging Guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/Guide/Debug.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySet.java" beforeDir="false" afterPath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySetFinal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ArraySet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/ArraySet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ArraySetFinal$ArraySetIterator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ArraySetFinal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Testing and Debugging Guide.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,26 +62,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;zielu.gittoolbox.prj.config.selected.tab.id&quot;: &quot;zielu.gittoolbox.config.shared.autoFetch&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "zielu.gittoolbox.prj.config.selected.tab.id": "zielu.gittoolbox.config.shared.autoFetch"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Jav\61B practice\Guide" />
+      <recent name="C:\Jav\61B practice\W6.Exceptions, Iterators, Iterables, Object Methods" />
       <recent name="C:\Jav\61B practice\W5.Generics and Autoboxing\Map61B" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
