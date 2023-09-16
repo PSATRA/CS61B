@@ -1,4 +1,4 @@
-package Inheritance;
+package inheritance;
 
 public class RotatingSLList<Item> extends SLList<Item> {
     /** This is different from an interface. */
@@ -8,10 +8,10 @@ public class RotatingSLList<Item> extends SLList<Item> {
      */
 
     /**
-     * The extends keyword lets us `keep` the original functionality of SLList, while
+     * The `extends` keyword lets us `keep` the original functionality of SLList, while
      * enabling us to make `modifications` and `add` additional functionality.
      *
-     * @NOTICE: Counter-examples: private members and constructors cannot be inherited.
+     * Counter-examples: private members and constructors cannot be inherited.
      * So there's a `super();` in the constructor.
      */
 

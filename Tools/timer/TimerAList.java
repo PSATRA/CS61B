@@ -1,4 +1,4 @@
-package Timer;
+package timer;
 // import edu.princeton.cs.algs4.Timer.Stopwatch;
 
 /**

@@ -1,4 +1,4 @@
-package Timer;
+package timer;
 
 /** An SLList is a list of integers, which hides the terrible truth
  * of the nakedness within. */

@@ -65,7 +65,7 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
         }
     }
 
-    /*@Override - cumbersome version
+    /*@Override - Cumbersome version using StringBuilder and append rather than join.
     public String toString() {
         /**
          * @NOTICE: Whenever you manipulate String or other immutable data type, reduce the modification times !!!
@@ -90,13 +90,17 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
 
     @Override
     public boolean equals(Object other) {
-        if (this == other) {   // optimization, to avoid meaningless iteration and checking, like in c++
+        if (this == other) {
             return true;
         }
+        /**
+         * @NOTICE: When overriding `equal`, always remember the optimization, avoiding meaningless
+         * iteration and checking for itself, like c++.
+         */
         if (other == null) {
             return false;
         }
-        if (other.getClass() != this.getClass()) {    // also inherit the Object, returns the instance type
+        if (other.getClass() != this.getClass()) {    // also inherit the Object class, returning the type of the instance
             return false;
         }
         ArraySet<T> o = (ArraySet<T>) other;
@@ -155,7 +159,7 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
          @NOTICE:
         // Ugly iterator
         Iterator<Integer> aseer = as.iterator();
-        // need an iterator type, so build a nested class !!!
+        // need an iterator `type`, so build a nested class !!!
         // Let's start by thinking about what the compiler need to know in order to successfully compile.
         while (aseer.hasNext()) {
             System.out.println(aseer.next());

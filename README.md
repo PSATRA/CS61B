@@ -25,7 +25,7 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 [lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3): Timing Tests and Randomized Comparison Tests   
 [lab4](https://sp21.datastructur.es/materials/lab/lab4/lab4): Git and Debugging
 
-[project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1):
+[project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1): Data Structures
 
 ## Java Guide
 [Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     

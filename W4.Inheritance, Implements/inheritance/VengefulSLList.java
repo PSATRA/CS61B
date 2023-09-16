@@ -1,4 +1,4 @@
-package Inheritance;
+package inheritance;
 
 public class VengefulSLList<Item> extends SLList<Item> {
     /** Can do everything SLList can do, but can also print all the items that have been banished by removeLast(). */
@@ -34,7 +34,7 @@ public class VengefulSLList<Item> extends SLList<Item> {
      *      sl.removeLast(); // compile: Since there is override, so follow the dynamic method selection.
      *      sl.printLostItems();
      * Does not compile! The static type is SLList, and it doesn't have an explicit dynamic type, since it's specified at instantiation.
-     * @NOTICE: So don't follow the dynamic method selection.
+     * So don't follow the dynamic method selection.
      *      inheritance.VengefulSLList<Integer> vsl2 = sl;
      * Does not compile! Since the compiler only sees that the static type of sl is SLList, it will not allow a
      * inheritance.VengefulSLList "container" to hold it.
@@ -48,8 +48,8 @@ public class VengefulSLList<Item> extends SLList<Item> {
      *      Poodle frank = new Poodle("Frank", 5); // ok
      *      Poodle frankJr = new Poodle("Frank Jr.", 15); // ok
      *      DogCompare.Dog largerDog = maxDog(frank, frankJr); // ok
-     *      Poodle(is-a dog) largerPoodle = maxDog(frank, frankJr);
-     * Does not compile! RHS has compile-time type DogCompare.Dog, but you can't say dog "is-a" poodle.
+     *      Poodle largerPoodle = maxDog(frank, frankJr);
+     * @NOTICE: Does not compile! RHS has compile-time type DogCompare.Dog, but you can't say dog "is-a" poodle.
      *
      * @Term: Casting
      * You can tell the compiler that a specific expression has a specific compile-time type, so that the compiler
@@ -61,14 +61,14 @@ public class VengefulSLList<Item> extends SLList<Item> {
      *      Malamute frankSr = new Malamute("Frank Sr.", 100);
      *      Poodle largerPoodle = (Poodle) maxDog(frank, frankSr); // runtime exception - `ClassCastException`!
      *
-     * You can always cast up (to a more generic version of a class) without fear of ruining anything because we know
+     * 1. You can always cast up (to a more generic version of a class) without fear of ruining anything because we know
      * the more specific version is a version of the generic class. For example you can always cast a Poodle to a DogCompare.Dog
      * because all Poodles are DogCompare.Dog’s.
      *
-     * You can also cast down (to a more specific version of a class) with caution as you need to make sure that, during
+     * 2. You can also cast down (to a more specific version of a class) with caution as you need to make sure that, during
      * runtime, nothing is passed in that violates your cast. For example, sometimes Dogs are Poodles but not always.
      *
-     * Finally, you cannot ever cast to a class that is neither above nor below the class being cast. For an example,
+     * 3. Finally, you cannot ever cast to a class that is neither above nor below the class being cast. For an example,
      * you cannot cast a DogCompare.Dog to a Monkey because a Monkey is not in the direct lineage of a DogCompare.Dog - it is a child of
      * Animal so a bit more distant. You can think of this as “side casting” and it will result in a compile time
      * error since the compiler knows this cast cannot possibly work.
@@ -110,7 +110,6 @@ public class VengefulSLList<Item> extends SLList<Item> {
     /**
      * Overrides the removeLast() of the superclass. If you need the original implementation and
      * just want to do something on the basis of it, use `super.XXX()`.
-     * @Term: super
      *
      * If you just copy the original code from superclass without using `super`, it normally won't
      * work, since you didn't inherit the private members in the original implementation.

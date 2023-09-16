@@ -1,5 +1,4 @@
-package Inheritance;
-
+package timer;
 
 /** Array based list.
  *  @author Josh Hug
@@ -15,7 +14,7 @@ package Inheritance;
  size: The number of items in the list should be size.
 */
 
-public class AList<Item> implements List61B<Item> {
+public class AList<Item> {
     private Item[] items;
     private int size;
 
@@ -25,19 +24,6 @@ public class AList<Item> implements List61B<Item> {
         size = 0;
     }
 
-    /** Inserts item into given position.
-     * Code from discussion #3 */
-    @Override
-    public void insert(Item x, int position) {
-        Item[] newItems = (Item[]) new Object[items.length + 1];
-
-        System.arraycopy(items, 0, newItems, 0, position);
-        newItems[position] = x;
-
-        System.arraycopy(items, position, newItems, position + 1, items.length - position);
-        items = newItems;
-    }
-
     /** Resizes the underlying array to the target capacity. */
     private void resize(int capacity) {
         Item[] a = (Item[]) new Object[capacity];
@@ -45,14 +31,7 @@ public class AList<Item> implements List61B<Item> {
         items = a;
     }
 
-    /** Inserts an item at the front. */
-    @Override
-    public void addFirst(Item x) {
-        insert(x, 0);
-    }
-
     /** Inserts X into the back of the list. */
-    @Override
     public void addLast(Item x) {
         if (size == items.length) {
             resize(size + 1);
@@ -60,12 +39,6 @@ public class AList<Item> implements List61B<Item> {
 
         items[size] = x;
         size = size + 1;
-    }
-
-    /** Gets an item from the front. */
-    @Override
-    public Item getFirst() {
-        return get(0);
     }
 
     /** Returns the item from the back of the list. */

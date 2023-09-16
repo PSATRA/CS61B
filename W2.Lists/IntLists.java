@@ -10,7 +10,7 @@ public class IntLists {
 
     /**
      * This will cause the linked list to create a circular reference to itself.
-     * You should properly create a new node.？
+     * You should properly create a new node.
      * Also, directly modifying this within an instance method is not allowed in Java.
      * Like: this = ...; (x)
      * public void addFirst(int num) {

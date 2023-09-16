@@ -1,4 +1,4 @@
-package Inheritance;
+package inheritance;
 
 /* Represent a list of stuff, where all the "list" work is delegated
  * to a naked recursive data structure. */

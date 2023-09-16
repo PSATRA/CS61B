@@ -1,4 +1,4 @@
-package Timer;
+package timer;
 
 /**
  * Created by hug.

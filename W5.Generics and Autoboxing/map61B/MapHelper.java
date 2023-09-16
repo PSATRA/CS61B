@@ -1,7 +1,4 @@
-package Map61B;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
+package map61B;
 
 import java.util.List;
 

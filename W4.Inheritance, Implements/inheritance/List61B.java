@@ -1,4 +1,4 @@
-package Inheritance;
+package inheritance;
 
 public interface List61B<Item> {
     /**
@@ -78,7 +78,7 @@ public interface List61B<Item> {
      * For abstract class:
      * 1. Cannot be instantiated.
      * 2. Methods are by default concrete unless specified to be abstract.
-     * 3. Can only implement one per class.
+     * 3. Can only implement one per subclass.
      * 4. Methods can be public or private.
      * 5. Can have any types of variables.
      *
@@ -87,7 +87,7 @@ public interface List61B<Item> {
      * 2. All variables must be `public static final`.
      * 3. Cannot be instantiated.
      * 4. All methods are by default abstract unless specified to be default.
-     * 5. Can implement more than one interface per class.
+     * 5. Can implement more than one interface per subclass.
      */
 
     public void addLast(Item y);

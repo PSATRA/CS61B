@@ -1,4 +1,4 @@
-package Timer;
+package timer;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

@@ -1,4 +1,4 @@
-package Timer;// import edu.princeton.cs.algs4.Timer.Stopwatch;
+package timer;// import edu.princeton.cs.algs4.Timer.Stopwatch;
 
 /**
  * Created by hug.

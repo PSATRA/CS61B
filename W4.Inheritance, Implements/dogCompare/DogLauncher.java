@@ -1,4 +1,4 @@
-package DogCompare;
+package dogCompare;
 
 import java.util.Comparator;
 

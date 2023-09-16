@@ -1,6 +1,6 @@
 public class SLList<ArbiType> {
     /**
-     * @NOTICE: Generic class: When instantiating: SLList<String> s = new SLList<>("bone");
+     * Generic class: When instantiating: SLList<String> s = new SLList<>("bone");
      * However, can't replace primitive type. You need conversion.
      */
 
@@ -12,13 +12,15 @@ public class SLList<ArbiType> {
      * the minimum ... Basically, recursion and iteration are avoided, saving a BUNCH of time.
      * @NOTICE: Anywhere or anything that you want to manipulate, just add a cash there. E.g. do addLast()
      * without iteration cache the last reference(node).
+     *
+     * @NOTICE: Always remember to change the cache member when conducting update !!!
      */
 
 
     /**
      * Nested class or subordinate class.
      * Doesn't matter the order where you put it in a class.
-     * Can be private.
+     * Can be private, but the members inside are often public !!!
      * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory. --discuss later
      */
     private class Node {
@@ -42,8 +44,7 @@ public class SLList<ArbiType> {
      */
     private final Node sentinel;
     /**
-     * In order that the object is empty, bun much better than discussing in every method,
-     *  notably the data structure is huge.
+     * In order that the object is empty, bun much better than discussing in every method, notably the data structure is huge.
      * We can only manipulate/modify sentinel.next, rather than sentinel itself,
      * @NOTICE: that's why we add ***final*** !!!, but we can still modify sentinel.next .
      */

@@ -1,4 +1,4 @@
-package DogCompare;
+package dogCompare;
 
 public class Maximizer {
     public static Comparable max(Comparable[] items) {

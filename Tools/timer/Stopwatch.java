@@ -1,4 +1,4 @@
-package Timer;
+package timer;
 
 public class Stopwatch {
     private final long start = System.currentTimeMillis();

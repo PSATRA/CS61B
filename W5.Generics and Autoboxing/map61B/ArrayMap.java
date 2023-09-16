@@ -1,4 +1,4 @@
-package Map61B;
+package map61B;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

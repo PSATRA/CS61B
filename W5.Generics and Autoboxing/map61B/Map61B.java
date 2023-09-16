@@ -1,4 +1,4 @@
-package Map61B;
+package map61B;
 import java.util.List;
 
 public interface Map61B<K, V> {

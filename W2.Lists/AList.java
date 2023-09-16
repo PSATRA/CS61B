@@ -77,7 +77,7 @@ public class AList<Item> {
          * @NOTICE: Normally, we don't need to set the last element to zero, since the users cannot even reach there!!!
          *
          * @NOTICE: However, with generic objects, we do want to null out references to the objects that we're storing.
-         * This is to avoid "loitering". Recall that Java only destroys objects when the last reference has been
+         * This is to avoid "loitering". Recall that Java garbage collector only destroys objects when the last reference has been
          * lost. If we fail to null out the reference, then Java will not garbage collect the objects that have been
          * added to the list.
          * I.e. since it(<Item>) is a reference, it will never be deleted without the statement!
