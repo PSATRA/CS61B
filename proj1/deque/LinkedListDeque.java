@@ -16,7 +16,9 @@ public class LinkedListDeque<T> implements Iterable<T> {
 
         public T getHelper(int index) {
             if (index == 0) {
-                return _recurUse._next._item;
+                T ret =  _recurUse._next._item;
+                _recurUse = _sentinel;
+                return ret;
             }
             _recurUse = _recurUse._next;
             return _recurUse.getHelper(index - 1);
