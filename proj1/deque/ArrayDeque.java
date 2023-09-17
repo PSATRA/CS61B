@@ -97,7 +97,7 @@ public class ArrayDeque<T> implements Iterable<T> {
             return null;
         }
         T firstItem = get(0);
-        if (_nextFirst == _size - 1) {
+        if (_nextFirst == _items.length - 1) {
             _items[0] = null;
             _nextFirst = 0;
         } else {
@@ -118,8 +118,8 @@ public class ArrayDeque<T> implements Iterable<T> {
         }
         T lastItem = get(_size - 1);
         if (_nextLast == 0) {
-            _items[_size - 1] = null;
-            _nextLast = _size - 1;
+            _items[_items.length - 1] = null;
+            _nextLast = _items.length - 1;
         } else {
             _items[_nextLast - 1] = null;
             _nextLast--;
@@ -202,24 +202,32 @@ public class ArrayDeque<T> implements Iterable<T> {
         return true;
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         ArrayDeque<Integer> l = new ArrayDeque<>();
 
         l.addLast(3);
         l.addLast(4);
         l.addLast(5);
-        l.addLast(6);
-        l.addLast(7);
-        l.addLast(8);
+        //l.addLast(6);
+        //l.addLast(7);
+        //l.addLast(8);
         //l.addLast(9);
 
         //l.addFirst(5);
         l.addFirst(2);
         l.addFirst(1);
+        l.addFirst(8);
+        l.addFirst(7);
         //l.addFirst(7);
+
+        System.out.println(l.removeFirst());
+        System.out.println(l.removeFirst());
+
+        System.out.println(l.removeLast());
+        System.out.println(l.removeFirst());
 
         l.printDeque();
         System.out.println(l.get(7));
         // l.printDeque();
-    }*/
+    }
 }
