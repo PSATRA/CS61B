@@ -46,6 +46,9 @@ public class IntLists {
             return first;
         }
         return rest.get(pos - 1);
+        /**
+         * @NOTICE: Manipulate rest.rest!!!
+         */
     }
 
     /* no recursion version */
@@ -70,7 +73,7 @@ public class IntLists {
         System.out.println(l.first + " " + "5");
         System.out.println(l.rest.first);
         System.out.println(l.rest.rest.first);
-        System.out.println(l.rest.rest.rest);              // automatically assigned with null!!!
+        System.out.println(l.rest.rest.rest);         // automatically assigned with null!!!
         System.out.println();
 
         System.out.println(l.size());

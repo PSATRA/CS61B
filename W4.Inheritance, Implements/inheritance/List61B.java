@@ -19,13 +19,13 @@ public interface List61B<Item> {
      */
 
     /**
-     * @Terminology: two types of inheritance
+     * Two types of inheritance
      * 1. Interface Inheritance(WHAT): Subclasses inherit signatures, not implementation.
      * SLList and AList (subclasses/hyponyms)inherit the interface (i.e. all the methods/behaviors) of inheritance.List61B (superclasses/hypernyms).
      * Such relationship can be multi-generational.
      *
      * @NOTICE:
-     * Class can implement multiple interfaces!
+     * Class can implement multiple interfaces, but only need one `implements` word!
      * Subclasses can only implement one abstract class.
      *
      * 2. Implementation Inheritance(HOW): Subclasses can inherit both signatures and implementation.

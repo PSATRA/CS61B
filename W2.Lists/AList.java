@@ -71,7 +71,6 @@ public class AList<Item> {
     /** Deletes item from back of the list and
      * returns deleted item. */
     public void removeLast() {
-        size--;
         items[size - 1] = null;
         /**
          * @NOTICE: Normally, we don't need to set the last element to zero, since the users cannot even reach there!!!
@@ -82,5 +81,6 @@ public class AList<Item> {
          * added to the list.
          * I.e. since it(<Item>) is a reference, it will never be deleted without the statement!
          */
+        size--;
     }
 }

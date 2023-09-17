@@ -42,7 +42,14 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
     }
 
     /** returns an iterator (a.k.a. seer) into ME */
+    @Override
     public Iterator<T> iterator() {
+        /**
+         * @NOTICE: iterator() is declared in the interface: Iterable<T>, so you should declare implements. This
+         * interface also support for(i : this).
+         *
+         * However, hasNext() and next() are declared in the interface: Iterator<G> !!!
+         */
         return new ArraySetIterator();
     }
 

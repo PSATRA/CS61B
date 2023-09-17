@@ -10,55 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
-      <change afterPath="$PROJECT_DIR$/out/production/61B practice/Debug.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/61B practice/Efficiency.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/AList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/AList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/SLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/SLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/StdOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/StdOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/Stopwatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/StopwatchDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/StopwatchDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/TimerAList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/TimerAList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/Timer/TimerSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/TimerSLList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/W2.Lists/AList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/AList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W2.Lists/DLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/DLList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/W2.Lists/IntLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/IntLists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W2.Lists/SLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W2.Lists/SLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/DogCompare/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/dogCompare/Dog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/DogCompare/DogLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/dogCompare/DogLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/DogCompare/Maximizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/dogCompare/Maximizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/AList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/AList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/List61B.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/List61B.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/RotatingSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/RotatingSLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/SLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/SLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/Inheritance/VengefulSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/VengefulSLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/ArrayMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/map61B/ArrayMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/Generics.md" beforeDir="false" afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/map61B/Generics.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/Map61B.java" beforeDir="false" afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/map61B/Map61B.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W5.Generics and Autoboxing/Map61B/MapHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/map61B/MapHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/List61B.java" beforeDir="false" afterPath="$PROJECT_DIR$/W4.Inheritance, Implements/inheritance/List61B.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySet.java" beforeDir="false" afterPath="$PROJECT_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods/ArraySet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Dog$NameComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Dog$NameComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Dog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Dog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/DogLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/DogCompare/DogLauncher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Maximizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Maximizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/ArrayMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Map61B/ArrayMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/Map61B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Map61B/Map61B.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/MapHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Map61B/MapHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/SLList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/AList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/AList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/SLList$IntNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/SLList$IntNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/SLList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/StdOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/StdOut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/Stopwatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/StopwatchDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/StopwatchDemo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/TimerAList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/TimerAList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/TimerSLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Timer/TimerSLList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ArraySet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/ArraySet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/Generics.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Map61B/Generics.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/AList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/AList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/List61B.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/List61B.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/RotatingSLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/RotatingSLList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/VengefulSLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/VengefulSLList.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,9 +69,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;zielu.gittoolbox.prj.config.selected.tab.id&quot;: &quot;zielu.gittoolbox.config.shared.autoFetch&quot;
   }
