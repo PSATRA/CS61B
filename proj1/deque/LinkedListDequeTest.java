@@ -176,7 +176,7 @@ public class LinkedListDequeTest {
         lld2.addLast(0);
         ad1.addLast(0);
         assertEquals(lld1, lld2);
-        assertTrue(lld1.equals(ad1));
+        assertEquals(lld1, ad1);
 
         lld1.addLast(1);
         assertNotEquals(lld1, lld2);

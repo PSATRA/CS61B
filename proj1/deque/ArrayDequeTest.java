@@ -168,7 +168,7 @@ public class ArrayDequeTest {
         ad2.addLast(0);
         lld1.addLast(0);
         assertEquals(ad1, ad2);
-        assertTrue(ad1.equals(lld1));
+        assertEquals(ad1, lld1);
 
         ad1.addLast(1);
         assertNotEquals(ad1, ad2);
