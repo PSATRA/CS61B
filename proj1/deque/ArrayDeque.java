@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T> {
+public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T[] _items;
     private int _nextFirst;
     private int _nextLast;
@@ -16,7 +16,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     /** Resize the underlying array to a larger target capacity. */
-    public void resize(int capacity) {
+   private void resize(int capacity) {
         T[] newArr = (T[]) new Object[capacity];
         if (_nextFirst + 2 < _nextLast) {
             System.arraycopy(_items, 0, newArr, 4, _size);
@@ -29,6 +29,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         _items = newArr;
     }
 
+    @Override
     /**
      * Adds an item of type T to the front of the deque.
      * @param item: the item being added
@@ -50,6 +51,7 @@ public class ArrayDeque<T> implements Iterable<T> {
      * Adds an item of type T to the back of the deque.
      * @param item: the item being added
      */
+    @Override
     public void addLast(T item) {
         _items[_nextLast] = item;
         _size++;
@@ -64,15 +66,9 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     /**
-     * @return true if deque is empty, false otherwise
-     */
-    public boolean isEmpty() {
-        return _size == 0;
-    }
-
-    /**
      * @return the number of items in the deque
      */
+    @Override
     public int size() {
         return _size;
     }
@@ -81,6 +77,7 @@ public class ArrayDeque<T> implements Iterable<T> {
      * Prints the items in the deque from first to last, separated by a space.
      * Once all the items have been printed, print out a new line.
      */
+    @Override
     public void printDeque() {
         for (int i = 0; i < _size; i++) {
             System.out.print(get(i) + " ");
@@ -92,6 +89,7 @@ public class ArrayDeque<T> implements Iterable<T> {
      * Removes and returns the item at the front of the deque. If no such item exists, returns null.
      * @return the item at the front of the deque, null if no such item exists
      */
+    @Override
     public T removeFirst() {
         if (_size == 0) {
             return null;
@@ -112,6 +110,7 @@ public class ArrayDeque<T> implements Iterable<T> {
      * Removes and returns the item at the back of the deque. If no such item exists, returns null.
      * @return the item at the back of the deque, null if no such item exists
      */
+    @Override
     public T removeLast() {
         if (_size == 0) {
             return null;
@@ -134,6 +133,7 @@ public class ArrayDeque<T> implements Iterable<T> {
      * @param index: the index of the desired item
      * @return the desired item
      */
+    @Override
     public T get(int index) {
         if (index >= _size) {
             return null;

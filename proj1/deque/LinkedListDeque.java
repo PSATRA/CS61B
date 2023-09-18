@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Iterable<T> {
+public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
 
     private class Node {
         public Node _prev;
@@ -42,6 +42,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Adds an item of type T to the front of the deque.
      * @param item: the item being added
      */
+    @Override
     public void addFirst(T item) {
         _sentinel._next = new Node(_sentinel, item, _sentinel._next);
         _sentinel._next._next._prev = _sentinel._next;
@@ -52,6 +53,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Adds an item of type T to the back of the deque.
      * @param item: the item being added
      */
+    @Override
     public void addLast(T item) {
         _sentinel._prev = new Node(_sentinel._prev, item, _sentinel);
         _sentinel._prev._prev._next = _sentinel._prev;
@@ -59,15 +61,9 @@ public class LinkedListDeque<T> implements Iterable<T> {
     }
 
     /**
-     * @return true if deque is empty, false otherwise
-     */
-    public boolean isEmpty() {
-        return _size == 0;
-    }
-
-    /**
      * @return the number of items in the deque
      */
+    @Override
     public int size() {
         return _size;
     }
@@ -76,6 +72,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Prints the items in the deque from first to last, separated by a space.
      * Once all the items have been printed, print out a new line.
      */
+    @Override
     public void printDeque() {
         Node p = _sentinel;
         while (p._next != _sentinel) {
@@ -89,6 +86,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Removes and returns the item at the front of the deque. If no such item exists, returns null.
      * @return the item at the front of the deque, null if no such item exists
      */
+    @Override
     public T removeFirst() {
         if (_size == 0) {
             return null;
@@ -107,6 +105,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Removes and returns the item at the back of the deque. If no such item exists, returns null.
      * @return the item at the back of the deque, null if no such item exists
      */
+    @Override
     public T removeLast() {
         if (_size == 0) {
             return null;
@@ -131,6 +130,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * @param index: the index of the desired item
      * @return the desired item
      */
+    @Override
     public T get(int index) {
         if (index >= _size) {
             return null;

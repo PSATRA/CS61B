@@ -3,7 +3,11 @@ package deque;
 import java.util.Comparator;
 
 public class MaxArrayDeque<T> extends ArrayDeque<T>{
+
+    private Comparator<T> _c;
+
     public MaxArrayDeque(Comparator<T> c) {
+        _c = c;
     }
 
     /**
@@ -12,16 +16,25 @@ public class MaxArrayDeque<T> extends ArrayDeque<T>{
      * @return the maximum element, null if empty
      */
     public T max() {
-        return null;
+        return max(_c);
     }
 
     /**
-     * Returns the maximum element in the deque as governed by the parameter Comparator c.
+     * Returns the maximum element in the deque as governed by any Comparator c.
      * If the MaxArrayDeque is empty, simply return null.
-     * @param c the given Comparator
+     * @param c any given Comparator
      * @return the maximum element, null if empty
      */
     public T max(Comparator<T> c) {
-        return null;
+        if (isEmpty()) {
+            return null;
+        }
+        T maxItem = get(0);
+        for (int i = 1; i < size(); i++) {
+            if (c.compare(maxItem, get(i)) < 0) {
+                maxItem = get(i);
+            }
+        }
+        return maxItem;
     }
 }
