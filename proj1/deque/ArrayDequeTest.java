@@ -162,10 +162,13 @@ public class ArrayDequeTest {
     public void equalsTest() {
         ArrayDeque<Integer> ad1 = new ArrayDeque<>();
         ArrayDeque<Integer> ad2 = new ArrayDeque<>();
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
 
         ad1.addLast(0);
         ad2.addLast(0);
+        lld1.addLast(0);
         assertEquals(ad1, ad2);
+        assertTrue(ad1.equals(lld1));
 
         ad1.addLast(1);
         assertNotEquals(ad1, ad2);

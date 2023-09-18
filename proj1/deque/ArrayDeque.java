@@ -16,17 +16,33 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     /** Resize the underlying array to a larger target capacity. */
-   private void resize(int capacity) {
+    private void resize(int capacity) {
         T[] newArr = (T[]) new Object[capacity];
-        if (_nextFirst + 2 < _nextLast) {
-            System.arraycopy(_items, 0, newArr, 4, _size);
+        if (capacity > _items.length) {
+            if (_nextFirst + 2 < _nextLast) {
+                System.arraycopy(_items, 0, newArr, 4, _size);
+            } else {
+                System.arraycopy(_items, _nextLast, newArr, 4, _size - _nextLast);
+                System.arraycopy(_items, 0, newArr, 4 + _size - _nextLast, _nextLast);
+            }
+            _nextFirst = 3;
+            _nextLast = 4 + _size;
         } else {
-            System.arraycopy(_items, _nextLast, newArr, 4, _size - _nextLast);
-            System.arraycopy(_items, 0, newArr, 4 + _size - _nextLast, _nextLast);
+            for (int i = 0; i < _size; i++) {
+                newArr[i] = get(i);
+            }
+            _nextFirst = capacity - 1;
+            _nextLast = _size;
         }
-        _nextFirst = 3;
-        _nextLast = 4 + _size;
         _items = newArr;
+    }
+
+    private void shrinkSize() {
+        if (isEmpty()) {
+            resize(8);
+        } else if (_items.length / 4 > _size && _size >= 4) {
+            resize(_size * 2);
+        }
     }
 
     @Override
@@ -103,6 +119,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             _nextFirst++;
         }
         _size--;
+        shrinkSize();
         return firstItem;
     }
 
@@ -124,12 +141,13 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             _nextLast--;
         }
         _size--;
+        shrinkSize();
         return lastItem;
     }
 
     /**
-     * Gets the item at the given index using iteration, where 0 is the front. If no such item exists,
-     * returns null. Must not alter the deque!
+     * Gets the item at the given index using iteration, where 0 is the front. If
+     * no such item exists, returns null. Must not alter the deque!
      * @param index: the index of the desired item
      * @return the desired item
      */
@@ -143,7 +161,8 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     /**
-     * The Deque objects we’ll make are iterable (i.e. Iterable<T>) so we must provide this method to return an iterator.
+     * The Deque objects we’ll make are iterable (i.e. Iterable<T>) so we must
+     * provide this method to return an iterator.
      * @return an iterator of the deque
      */
     @Override
@@ -181,21 +200,21 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
         if (o == null) {
             return false;
         }
-        if (!(o instanceof ArrayDeque)) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Deque)) {
             return false;
         }
-        ArrayDeque<T> testObj = (ArrayDeque<T>) o;
-        if (testObj._size != this._size) {
+        Deque<T> testObj = (Deque<T>) o;
+        if (testObj.size() != size()) {
             return false;
         }
         for (int i = 0; i < _size; i++) {
-            if (testObj.get(i) != this.get(i)) {
+            if (testObj.get(i) != get(i)) {
                 return false;
             }
         }

@@ -5,10 +5,10 @@ import java.util.Iterator;
 public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
 
     private class Node {
-        public Node _prev;
-        public T _item;
-        public Node _next;
-        public Node(Node prev, T item, Node next) {
+        private Node _prev;
+        private final T _item;
+        private Node _next;
+        Node(Node prev, T item, Node next) {
             _prev = prev;
             _item = item;
             _next = next;
@@ -102,7 +102,8 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     /**
-     * Removes and returns the item at the back of the deque. If no such item exists, returns null.
+     * Removes and returns the item at the back of the deque. If no such item exists,
+     * returns null.
      * @return the item at the back of the deque, null if no such item exists
      */
     @Override
@@ -116,8 +117,10 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         newLastNode._next = _sentinel;
         _sentinel._prev = newLastNode;
         /**
-         * @NOTICE: Doesn't need to null out the node manually, with no reference, its automatically deleted !!! Remember
-         * that the Java garbage collector will “delete” things for us if and only if there are no pointers to that object.
+         * @NOTICE: Doesn't need to null out the node manually, with no reference,
+         * its automatically deleted !!! Remember that the Java garbage collector
+         * will “delete” things for us if and only if there are no pointers to
+         * that object.
          */
 
         _size--;
@@ -125,8 +128,8 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     /**
-     * Gets the item at the given index using iteration, where 0 is the front. If no such item exists,
-     * returns null. Must not alter the deque!
+     * Gets the item at the given index using iteration, where 0 is the front.
+     * If no such item exists, returns null. Must not alter the deque!
      * @param index: the index of the desired item
      * @return the desired item
      */
@@ -155,7 +158,8 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     /**
-     * The Deque objects we’ll make are iterable (i.e. Iterable<T>) so we must provide this method to return an iterator.
+     * The Deque objects we’ll make are iterable (i.e. Iterable<T>) so we must
+     * provide this method to return an iterator.
      * @return an iterator of the deque
      */
     @Override
@@ -196,17 +200,17 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
         if (o == null) {
             return false;
         }
-        if (!(o instanceof LinkedListDeque)) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Deque)) {
             return false;
         }
-        LinkedListDeque<T> testObj = (LinkedListDeque<T>) o;
-        if (testObj.size() != this.size()) {
+        Deque<T> testObj = (Deque<T>) o;
+        if (testObj.size() != size()) {
             return false;
         }
         for (int i = 0; i < _size; i++) {
