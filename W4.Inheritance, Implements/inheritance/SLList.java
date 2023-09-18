@@ -5,11 +5,11 @@ package inheritance;
 
 
 public class SLList<Item> implements List61B<Item> {
-    public class Node {
-        public Item item;     /* Equivalent of first */
-        public Node next; /* Equivalent of rest */
+    private class Node {
+        private final Item item;     /* Equivalent of first */
+        private Node next; /* Equivalent of rest */
 
-        public Node(Item i, Node h) {
+        Node(Item i, Node h) {
             item = i;
             next = h;
         }

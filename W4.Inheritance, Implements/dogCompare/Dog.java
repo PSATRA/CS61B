@@ -35,8 +35,11 @@ public class Dog implements Comparable<Dog> {
         public int compare(Dog a, Dog b) {
             return a.name.compareTo(b.name);
             /**
-             * name.compareTo is not the compareTo method before, it belongs to Comparator.
-             * Comparator provides compareTo that can compare different types like a.name/b.name.
+             * @NOTICE:
+             * A Comparator has a compare method that can compare different types like a.name/b.name.
+             * A Comparator class nested has an override compare method, which defines the compare behavior.
+             *
+             * See more in proj 1, maxArrayDeque and its test.
              */
         }
     }

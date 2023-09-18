@@ -80,6 +80,12 @@ See random testing for methods in [lab3](https://sp21.datastructur.es/materials/
 7. Add a condition to a breakpoint.
 8. Create an execution breakpoint.
 
+The basic philosophy is testing different functionalities when different number appears,
+can either assertEquals or merely do the operation and waiting for error message.
+
+Consider the beauty of randomized testing: it allows us to leave the creativity 
+of thinking of edge cases to randomness!
+
 Note: Randomized tests should not be used
 as a replacement for well-designed unit tests!
 I personally generally lean towards non-random

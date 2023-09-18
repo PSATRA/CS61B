@@ -26,6 +26,10 @@ public class IntLists {
             return 1;
         }
         return 1 + this.rest.size();
+        /**
+         * @NOTICE: `this` can change, since size belongs to the object, so can't cache.
+         * As for the non-naked recursive ones, cannot update itself, so recursion needs helper.
+         */
     }
 
     /* no recursion version */

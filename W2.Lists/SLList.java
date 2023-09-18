@@ -24,9 +24,9 @@ public class SLList<ArbiType> {
      * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory. --discuss later
      */
     private class Node {
-        public ArbiType item;
-        public Node next;
-        public Node(ArbiType i, Node n) {
+        private final ArbiType item;
+        private Node next;
+        Node(ArbiType i, Node n) {
             item = i;
             next = n;
         }

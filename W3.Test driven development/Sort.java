@@ -30,6 +30,10 @@ public class Sort {
      *  additional parameter (or parameters) that delineate which part of the array to consider.
      *  This approach is quite common when trying to use recursion on a data structure that is
      *  not inherently recursive, e.g. arrays.
+     *
+     *  This is especially for non-naked data structures, e.g. LinkedListDeque, getRecursive(i), we used helper method and
+     *  index - 1.
+     *
      * @param x: the data structure that is not inherently recursive.
      * @param start: delineate which part of the array to consider, here it is an index.
      */
