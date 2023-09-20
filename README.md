@@ -27,10 +27,14 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 
 [project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1): Data Structures
 
+[lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6): Disjoint Sets    
+[Lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6): Falling Bubbles
+
 ## Java Guide
 [Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
 [Memory 2](https://www.javamex.com/tutorials/memory/object_memory_usage.shtml)    
 ## Guide
+[Command Line Programming, Git, Project 2 Preview](https://www.youtube.com/watch?v=fvhqn5PeU_Q)     
 [Using Git](https://sp19.datastructur.es/materials/guides/using-git)    
 [Git WTFS](https://sp19.datastructur.es/materials/guides/git-wtfs)   
 [Git Intro - Part 1](https://www.youtube.com/watch?v=yWBzCAY_5UI)    

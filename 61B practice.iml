@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/W5.Generics and Autoboxing" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Guide" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/W9.Disjoint Sets, lab6-19" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -38,13 +38,13 @@ public class TimerSLList {
 
             if (i == 999) {
                 Ns.addLast(1000);
-                Stopwatch sw = new Stopwatch();
+                Stopwatch sw = new Stopwatch();      // start
 
                 for (int j = 0; j < 10000; j++) {
                     tested.getLast();
                 }
 
-                double timeInSeconds = sw.elapsedTime();
+                double timeInSeconds = sw.elapsedTime();    // stop
                 times.addLast(timeInSeconds);
             }
             if (i == 1999) {

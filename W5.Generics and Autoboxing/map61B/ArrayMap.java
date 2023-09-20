@@ -33,6 +33,9 @@ public class ArrayMap<KK, VV> implements Map61B<KK, VV> {   // <KK, VV> is gener
     /**
      * @NOTICE: "==" for reference type is for checking whether they are pointing the same address !!!!!!
      * But here we just want to check if the values are the same.
+     *
+     * `final` for reference type means the address is final,  not the value, and the reference cannot
+     * point to other address, e.g. `buffer` in proj1 guitar.
      */
 
     /** Checks if map contains the key. */

@@ -29,11 +29,11 @@ public class TimerAList {
         AList<Integer> Ns = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> tested = new AList<>();
-        Stopwatch sw = new Stopwatch();
+        Stopwatch sw = new Stopwatch();  // start
 
         for (int i = 0; i < 128000; i++) {
             tested.addLast(i);
-            double timeInSeconds = sw.elapsedTime();
+            double timeInSeconds = sw.elapsedTime();  // stop
 
             if (i == 999) {
                 Ns.addLast(1000);
