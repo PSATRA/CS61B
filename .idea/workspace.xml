@@ -10,24 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/DisjointSets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/QuickFindDS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/QuickUnionDS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/QuickUnionPathCompressionUF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/WeightedQuickUnionUF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/lab6_2019/BubbleGrid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/lab6_2019/BubbleGridTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/lab6_2019/WeightedQuickUnionDS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/61B practice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/61B practice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/timer/TimerAList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/TimerAList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools/timer/TimerSLList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/timer/TimerSLList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/W5.Generics and Autoboxing/map61B/ArrayMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/W5.Generics and Autoboxing/map61B/ArrayMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/ArrayMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/Map61B/ArrayMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
