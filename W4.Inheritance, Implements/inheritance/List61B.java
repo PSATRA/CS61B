@@ -90,6 +90,14 @@ public interface List61B<Item> {
      * 5. Can implement more than one interface per subclass.
      */
 
+    /**
+     * What if we want an instance say its type? Or compare the type priority?
+     * @NOTICE: Use overload.
+     * public String/int yell(Animal a) { return "Animal"; }
+     * public String/int yell(Dog d) { return "Dog"; }
+     * public String/int yell(Poodle p) { return "Poodle"; }
+     */
+
     public void addLast(Item y);
     /**
     * This is just a signature(declaration), not implementation.
