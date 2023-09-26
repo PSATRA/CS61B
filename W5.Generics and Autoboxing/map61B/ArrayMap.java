@@ -64,6 +64,7 @@ public class ArrayMap<KK, VV> implements Map61B<KK, VV> {   // <KK, VV> is gener
         return size;
     }
 
+    /** Return all the keys. */
     public List<KK> keys() {
         List<KK> keyList = new ArrayList<>();
         for (int i = 0; i < size; i++) {        // not i < keys.length, since it's 100!!!
