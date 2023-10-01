@@ -11,54 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/61B practice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/61B practice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/61B_practice_jar/61B practice.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/AList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ArraySet$ArraySetIterator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ArraySet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Debug.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DisjointSets.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Dog$NameComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Dog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/DogLauncher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/DogCompare/Maximizer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Efficiency.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Immutability.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Lists.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/ArrayMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/Generics.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/Map61B.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Map61B/MapHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Primes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/QuickFindDS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/QuickUnionDS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/QuickUnionPathCompressionUF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList$Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/SLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Sort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/TestSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/AList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/SLList$IntNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/SLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/StdOut.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/Stopwatch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/StopwatchDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/TimerAList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/Timer/TimerSLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/WeightedQuickUnionUF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/ifIsPower.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/AList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/List61B.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/RotatingSLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList$Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/SLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/inheritance/VengefulSLList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/intLists.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/lab6_2019/BubbleGrid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/lab6_2019/BubbleGridTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/lab6_2019/WeightedQuickUnionDS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/61B practice/list-1.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "deletionFromPopupRequiresConfirmation": "false",
-    "last_opened_file_path": "C:/CS61B/CS61B/proj1ec/pom.xml",
+    "last_opened_file_path": "C:/CS61B/CS61B/lab8/pom.xml",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
