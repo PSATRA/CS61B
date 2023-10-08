@@ -30,6 +30,9 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 [lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6): Disjoint Sets    
 [Lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6): Falling Bubbles
 
+[lab6](https://sp21.datastructur.es/materials/lab/lab7/lab7): BSTMap   
+[lab7](https://sp21.datastructur.es/materials/lab/lab8/lab8): HashMap   
+
 ## Java Guide
 [Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
 [Memory 2](https://www.javamex.com/tutorials/memory/object_memory_usage.shtml)    
