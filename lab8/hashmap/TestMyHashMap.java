@@ -78,10 +78,14 @@ public class TestMyHashMap {
         assertEquals(0, b.size());
         b.put("hi", 1);
         assertEquals(1, b.size());
-        for (int i = 0; i < 455; i++) {
+        for (int i = 0; i < 383; i++) {
             b.put("hi" + i, 1);
+            assertEquals(i + 2, b.size());
         }
-        assertEquals(456, b.size());
+        b.put("hi" + 383, 1);
+        assertEquals(385, b.size());
+        b.put("hi" + 384, 1);
+        assertEquals(386, b.size());
     }
 
     //assumes get/containskey work

@@ -32,7 +32,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     /* Instance Variables */
     private Collection<Node>[] buckets;
     private final double maxLoadFactor;
-    private final Set<K> keySet = new HashSet<>();
+    private Set<K> keySet = new HashSet<>();
     private int size = 0;
     private static final int DEFAULT_INITIAL_SIZE = 16;
     private static final double DEFAULT_MAX_LOAD_FACTOR = 0.75;
@@ -98,18 +98,28 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      *
      * @param tableSize the size of the table to create
      */
+    @SuppressWarnings("unchecked")
     private Collection<Node>[] createTable(int tableSize) {
-        return new Collection[tableSize];
+        Collection<Node>[] table = new Collection[tableSize];
+        for (int i = 0; i < tableSize; i++) {
+            table[i] = createBucket();
+        }
+        return table;
     }
 
     @Override
     public void clear() {
-        buckets = null;
+        buckets = createTable(DEFAULT_INITIAL_SIZE);
+        keySet = new HashSet<>();
+        size = 0;
     }
 
     @Override
     public boolean containsKey(K key) {
         int bucketIndex = Math.floorMod(key.hashCode(), buckets.length);
+        if (buckets[bucketIndex] == null) {
+            return false;
+        }
         for (Node n : buckets[bucketIndex]) {   // iterate through a bucket
             if (n.key.equals(key)) {
                 return true;
@@ -120,13 +130,16 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public V get(K key) {
+        if (!containsKey(key)) {
+            return null;
+        }
         int bucketIndex = Math.floorMod(key.hashCode(), buckets.length);
         for (Node n : buckets[bucketIndex]) {   // iterate through a bucket
             if (n.key.equals(key)) {
                 return n.value;
             }
         }
-        return null;    // if no such key
+        return null;
     }
 
     @Override
@@ -136,22 +149,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public void put(K key, V value) {
-        size++;
-        keySet.add(key);
-
-        if ((double) size / buckets.length > maxLoadFactor) {
-            Collection<Node>[] newBuckets = createTable(buckets.length * 2);
-            for (Collection<Node> c : buckets) {
-                if (c != null) {
-                    for (Node n : c) {
-                        int newBucketIndex = Math.floorMod(n.key.hashCode(), buckets.length * 2);
-                        newBuckets[newBucketIndex].add(n);
-                    }
-                }
-            }
-            buckets = newBuckets;
-        }
-
         int bucketIndex = Math.floorMod(key.hashCode(), buckets.length);
         if (containsKey(key)){
             for (Node n : buckets[bucketIndex]) {   // iterate through a bucket
@@ -160,7 +157,22 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
                 }
             }
         } else {
+            size++;
+            keySet.add(key);
             buckets[bucketIndex].add(createNode(key, value));
+        }
+
+        if ((double) size / buckets.length > maxLoadFactor) {
+            Collection<Node>[] newBuckets = createTable(buckets.length * 2);
+            for (Collection<Node> c : buckets) {
+                if (c != null) {
+                    for (Node n : c) {
+                        int newBucketIndex = Math.floorMod(n.key.hashCode(), buckets.length * 2);
+                        newBuckets[newBucketIndex].add(createNode(key, value));
+                    }
+                }
+            }
+            buckets = newBuckets;
         }
     }
 
