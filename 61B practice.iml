@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W9.Disjoint Sets, lab6-19" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/IMG/ADTs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/W15.Tries" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
