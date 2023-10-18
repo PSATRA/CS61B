@@ -4,7 +4,7 @@
 [CS61B Spring 2018](https://sp18.datastructur.es/)     
 [CS61C Summer 2023](https://inst.eecs.berkeley.edu/~cs61c/su23/)   
 
-## Design Philosophy
+## Optimization Philosophy
 1. Our final purpose is to design for users, regardless of what's 
 happening under the hook. That's why we design `sentinel`, 
 inheritance.AList with 100 boxes, fake indices, etc.
@@ -16,6 +16,13 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 
 3. Find the  most appropriate abstract data type (list / set / map) that for the requirement.
 
+## Design Philosophy
+1. Reduction   
+    1. Boil the case down to an appropriate **data structure**, like the three dog problem
+    can be boiled down to a BST. 
+    2. Boil the case down to an appropriate **algorithm**, like the process 
+    of distinguishing the dogs are actually a sort and permutation process.
+    And sort and permutation are inseparable.
 ## Exercises
 [lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1): Introduction and set up  
 
@@ -27,11 +34,10 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 
 [project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1): Data Structures
 
-[lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6): Disjoint Sets    
-[Lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6): Falling Bubbles
-
-[lab6](https://sp21.datastructur.es/materials/lab/lab7/lab7): BSTMap   
-[lab7](https://sp21.datastructur.es/materials/lab/lab8/lab8): HashMap   
+[lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6): Disjoint Sets     
+[Lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6): Falling Bubbles  
+[lab7](https://sp21.datastructur.es/materials/lab/lab7/lab7): BSTMap   
+[lab8](https://sp21.datastructur.es/materials/lab/lab8/lab8): HashMap   
 
 ## Java Guide
 [Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
