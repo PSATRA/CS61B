@@ -23,6 +23,9 @@ single method or data structure. --Try the best to find **_small ineffectiveness
     2. Boil the case down to an appropriate **algorithm**, like the process 
     of distinguishing the dogs are actually a sort and permutation process.
     And sort and permutation are inseparable.
+2. If you need optimize an algorithm or something elsa, don't think from
+a high level. Break it down, and **scrutinize** which part leads to high
+complexity, and can I make a tweak on this snag?
 ## Exercises
 [lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1): Introduction and set up  
 

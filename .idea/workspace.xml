@@ -11,6 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +127,10 @@
       <workItem from="1697545690907" duration="4000" />
       <workItem from="1697621426707" duration="1636000" />
       <workItem from="1697658548909" duration="10000" />
+      <workItem from="1697689839632" duration="404000" />
+      <workItem from="1697709638001" duration="295000" />
+      <workItem from="1697709950526" duration="17000" />
+      <workItem from="1697717031354" duration="219000" />
     </task>
     <task id="LOCAL-00001" summary="week2">
       <option name="closed" value="true" />
