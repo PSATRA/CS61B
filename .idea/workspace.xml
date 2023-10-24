@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;zielu.gittoolbox.prj.config.selected.tab.id&quot;: &quot;zielu.gittoolbox.config.shared.autoFetch&quot;
   }
@@ -130,7 +129,12 @@
       <workItem from="1697689839632" duration="404000" />
       <workItem from="1697709638001" duration="295000" />
       <workItem from="1697709950526" duration="17000" />
-      <workItem from="1697717031354" duration="219000" />
+      <workItem from="1697717031354" duration="347000" />
+      <workItem from="1697969451421" duration="618000" />
+      <workItem from="1698143693029" duration="50000" />
+      <workItem from="1698143753467" duration="35000" />
+      <workItem from="1698143937407" duration="3000" />
+      <workItem from="1698143969461" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="week2">
       <option name="closed" value="true" />
