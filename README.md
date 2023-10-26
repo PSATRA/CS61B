@@ -32,7 +32,7 @@ complexity, and can I make a tweak on this snag?
 [lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2) JUnit Test and Debugging  
 [lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3) Timing Tests and Randomized Comparison Tests   
 [lab4](https://sp21.datastructur.es/materials/lab/lab4/lab4) Git and Debugging  
-[lab5](https://sp21.datastructur.es/materials/lab/lab5/lab5) Project 1 Peer Code Review 
+[lab5](https://sp21.datastructur.es/materials/lab/lab5/lab5) Project 1 Peer Code Review  
 [lab6](https://sp21.datastructur.es/materials/lab/lab6/lab6) Getting Started on Project 2   
 [lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6) Disjoint Sets     
 [lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6) Falling Bubbles (TODO)   
