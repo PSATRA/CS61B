@@ -1,11 +1,12 @@
 package capers;
 
 import java.io.File;
+import java.util.Arrays;
 
 import static capers.Utils.*;
 
 /** Canine Capers: A Gitlet Prelude.
- * @author TODO
+ * @author Ge Li
 */
 public class Main {
     /**
@@ -40,6 +41,7 @@ public class Main {
         if (args.length == 0) {
             Utils.exitWithError("Must have at least one argument");
         }
+        System.out.println("args: " + Arrays.toString(args));
 
         CapersRepository.setupPersistence();
         String text;
