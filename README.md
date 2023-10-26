@@ -1,8 +1,9 @@
-# Notes for CS61B Spring 2021.
+# Notes of CS61B Spring 2021.
 [Course Website](https://sp21.datastructur.es/)    
 [Reading](https://joshhug.gitbooks.io/hug61b/content/)   
 [CS61B Spring 2018](https://sp18.datastructur.es/)     
 [CS61C Summer 2023](https://inst.eecs.berkeley.edu/~cs61c/su23/)   
+[2023 textbook](https://cs61b-2.gitbook.io/cs61b-textbook/)  
 
 ## Optimization Philosophy
 1. Our final purpose is to design for users, regardless of what's 
@@ -27,20 +28,24 @@ single method or data structure. --Try the best to find **_small ineffectiveness
 a high level. Break it down, and **scrutinize** which part leads to high
 complexity, and can I make a tweak on this snag?
 ## Exercises
-[lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1): Introduction and set up  
+[lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1) Introduction and set up  
+[lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2) JUnit Test and Debugging  
+[lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3) Timing Tests and Randomized Comparison Tests   
+[lab4](https://sp21.datastructur.es/materials/lab/lab4/lab4) Git and Debugging  
+[lab5](https://sp21.datastructur.es/materials/lab/lab5/lab5) Project 1 Peer Code Review 
+[lab6](https://sp21.datastructur.es/materials/lab/lab6/lab6) Getting Started on Project 2   
+[lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6) Disjoint Sets     
+[lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6) Falling Bubbles (TODO)   
+[lab7](https://sp21.datastructur.es/materials/lab/lab7/lab7) BSTMap   
+[lab8](https://sp21.datastructur.es/materials/lab/lab8/lab8) HashMap  
+[lab12](https://sp21.datastructur.es/materials/lab/lab12/lab12) Getting Started on Project 3  
+[lab13]() Getting Started on Project 3, Phase 2 
 
-[project 0](https://sp21.datastructur.es/materials/proj/proj0/proj0): 2048  
-
-[lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2): JUnit Test and Debugging  
-[lab3](https://sp21.datastructur.es/materials/lab/lab3/lab3): Timing Tests and Randomized Comparison Tests   
-[lab4](https://sp21.datastructur.es/materials/lab/lab4/lab4): Git and Debugging
-
-[project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1): Data Structures
-
-[lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6): Disjoint Sets     
-[Lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6): Falling Bubbles  
-[lab7](https://sp21.datastructur.es/materials/lab/lab7/lab7): BSTMap   
-[lab8](https://sp21.datastructur.es/materials/lab/lab8/lab8): HashMap   
+[project 0](https://sp21.datastructur.es/materials/proj/proj0/proj0) 2048   
+[project 1](https://sp21.datastructur.es/materials/proj/proj1/proj1) Data Structures   
+[project 2](https://sp21.datastructur.es/materials/proj/proj2/proj2) Gitlet  
+[project 3](https://sp21.datastructur.es/materials/proj/proj3/proj3) CS61BYoW  
+[project 3](https://sp21.datastructur.es/materials/proj/proj3/proj3GameSharing) Game Sharing  
 
 ## Java Guide
 [Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
