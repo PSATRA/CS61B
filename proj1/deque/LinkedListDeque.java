@@ -118,7 +118,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         _sentinel._prev = newLastNode;
         /**
          * @NOTICE: Doesn't need to null out the node manually, with no reference,
-         * its automatically deleted !!! Remember that the Java garbage collector
+         * its automatically deleted!!! Remember that the Java garbage collector
          * will “delete” things for us if and only if there are no pointers to
          * that object.
          */

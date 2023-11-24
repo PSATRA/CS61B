@@ -11,7 +11,7 @@ import java.util.HashSet;
  *  access to elements via get(), remove(), and put() in the best case.
  *
  *  Assumes null keys will never be inserted, and does not resize down upon remove().
- *  @author YOUR NAME HERE
+ *  @author Kingpin
  */
 public class MyHashMap<K, V> implements Map61B<K, V> {
 
@@ -162,6 +162,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
             buckets[bucketIndex].add(createNode(key, value));
         }
 
+        // better define a helper method resize()
         if ((double) size / buckets.length > maxLoadFactor) {
             Collection<Node>[] newBuckets = createTable(buckets.length * 2);
             for (Collection<Node> c : buckets) {
@@ -242,6 +243,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
                 return null;
             }
 
+            // since we can't derive the i-th element directly (by index)
             K returnKey = null;
             int posHelper = 0;
             for (K keyItem : keySet) {
