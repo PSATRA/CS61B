@@ -4,31 +4,35 @@ public interface List61B<Item> {
     /**
      * @Terminology:
      * 1. Interface: replace class
-     * 2. Implement: implements inheritance.List61B<Item>
-     * @NOTICE: "Implement" means making something(superclass) abstract come true, so we have subclass implements superclass.
-     * 3. @Override: Only @Override those methods in the interface! It's not the "overload" of a bunch of method.
+     * 2. Implement: implements List61B<Item>
+     * @NOTICE: "Implement" means instantiating something(superclass) abstract,
+     * thus we have subclass implements superclass.
+     * 3. @Override: Only @Override those methods in the interface! It's not
+     * the "overload" of a bunch of method.
      *
      * Usage: Somewhere a method can take in both SLList and AList as parameters,
      * will you write two methods and overload? No, you just pass the interface.
      *
-     *      inheritance.List61B<String> list = new SLList<String>();
-     *      inheritance.List61B<String> list = new List<String>();
+     *      List61B<String> list = new SLList<String>();
+     *      List61B<String> list = new List<String>();
      *      list.addFirst(5);
      * @NOTICE: A SLList is created, and the address of the SLList is stored in
-     * the list variable, so do list.addFirst(5) will modify SLList.
+     * the 'list' variable, so do list.addFirst(5) will modify SLList.
      */
 
     /**
      * Two types of inheritance
      * 1. Interface Inheritance(WHAT): Subclasses inherit signatures, not implementation.
-     * SLList and AList (subclasses/hyponyms)inherit the interface (i.e. all the methods/behaviors) of inheritance.List61B (superclasses/hypernyms).
+     * SLList and AList (subclasses/hyponyms)inherit the interface (i.e. all the
+     * methods/behaviors) of inheritance.List61B (superclasses/hypernyms).
      * Such relationship can be multi-generational.
      *
      * @NOTICE:
      * Class can implement multiple interfaces, but only need one `implements` word!
-     * Subclasses can only implement one abstract class.
+     * BUT it can only implement one abstract class.
      *
-     * 2. Implementation Inheritance(HOW): Subclasses can inherit both signatures and implementation.
+     * 2. Implementation Inheritance(HOW): Subclasses can inherit both signatures
+     * and implementation.
      * @Term: Add the keyword: `default`.
      */
 
@@ -39,11 +43,11 @@ public interface List61B<Item> {
      *
      * @NOTICE: Two preconditions:
      * 1. Has a dynamic type(has instantiation).
-     * 2. The method invoked is override(instead of overload or whatever else).
+     * 2. The method invoked is override(not overload).
      *
      * IMPORTANT: This does not work for overloaded methods, only for override. E.g.
      * Say there are two methods in the same class:
-     *      public static void peek(inheritance.List61B<String> list) {
+     *      public static void peek(List61B<String> list) {
      *          System.out.println(list.getLast());
      *      }
      *      public static void peek(SLList<String> list) {
@@ -51,15 +55,18 @@ public interface List61B<Item> {
      *      }
      * and you run this code:
      *      SLList<String> SP = new SLList<String>();
-     *      inheritance.List61B<String> LP = SP;
+     *      List61B<String> LP = SP;
      *      SP.addLast("elk");
      *      SP.addLast("are");
      *      SP.addLast("cool");
      *      peek(SP);
-     *      peek(LP); // The second call to peek() will use the first peek method which takes in a inheritance.List61B.
-     * This is because the only distinction between these two overloaded methods is the types of the parameters,
-     * not the body, so there is no override. When Java checks to see which method to call, it checks the
-     * static type and calls the method with the parameter of the same type.
+     *      peek(LP); // The second call to peek() will use the first peek method
+     *      which takes in a List61B.
+     *
+     * This is because the only distinction between these two overloaded methods
+     * is the types of the parameters, not the body, so there is no override. When
+     * Java checks to see {{which method to call}}, it checks the {{static type}}
+     * and calls the method with the parameter of the same type.
      *
      * @Term: Compile-time type == static type == specified at declaration == never changes =? superclass
      * @Term: Run-time type == dynamic type == specified at instantiation(e.g. when using `new`) =? subclass
@@ -73,14 +80,14 @@ public interface List61B<Item> {
      * @Terminology: Abstract class
      *
      * @NOTICE: Abstract class can do anything an interface can do, and more!
-     * But when in doubt, try to use interfaces in order to reduce complexity !!!!!
+     * But when in doubt, try to use interfaces in order to reduce complexity !!!
      *
      * For abstract class:
      * 1. Cannot be instantiated.
      * 2. Methods are by default concrete unless specified to be abstract.
      * 3. Can only implement one per subclass.
      * 4. Methods can be public or private.
-     * 5. Can have any types of variables.
+     * 5. Variables can have any modifier.
      *
      * However, for interface:
      * 1. All methods must be public.
@@ -93,9 +100,9 @@ public interface List61B<Item> {
     /**
      * What if we want an instance say its type? Or compare the type priority?
      * @NOTICE: Use overload.
-     * public String/int yell(Animal a) { return "Animal"; }
-     * public String/int yell(Dog d) { return "Dog"; }
-     * public String/int yell(Poodle p) { return "Poodle"; }
+     * public String yell(Animal a) { return "Animal"; }
+     * public String yell(Dog d) { return "Dog"; }
+     * public String yell(Poodle p) { return "Poodle"; }
      */
 
     public void addLast(Item y);
@@ -118,7 +125,7 @@ public interface List61B<Item> {
      * @NOTICE: Use get() since every subclass must have get().
      * @NOTICE: Always actively analyze and optimize your own code: no matter it is a single
      * method or data structure. Here we have get(), but get() in SLList is much slower
-     * than that in AList (small ineffectiveness), so do some tweak and optimization.
+     * than that in AList (small ineffectiveness), so do some tweaks and optimization.
      *
      * -> Optimization: Just **Really** @Override the print() in SLList.
      */

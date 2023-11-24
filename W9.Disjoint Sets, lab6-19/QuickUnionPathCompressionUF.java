@@ -1,5 +1,5 @@
 public class QuickUnionPathCompressionUF {
-    private int[] id;    // id[i] = parent of i
+    private final int[] id;    // id[i] = parent of i
     private int count;   // number of components
 
     /**

@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ArraySet<T> implements Iterable<T> {  // make the class support: for(T item : set)
-    private T[] items;
+public class ArraySet<T> implements Iterable<T> {
+    // 'implements Iterable<T>' makes the class supports 'for(T item : set(object, not list!))'
+
+    private final T[] items;
     private int size; // the next item to be added will be at position size
 
     public ArraySet() {
@@ -13,9 +15,9 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
 
     /* Returns true if this map contains a mapping for the specified key. */
     public boolean contains(T x) {
-        //if (x == null) {
-        //    throw new IllegalArgumentException("You can't add null to an ArraySet.");
-        //}
+        /*if (x == null) {
+            throw new IllegalArgumentException("You can't add null to an ArraySet.");
+        }*/
         for (int i = 0; i < size; i += 1) {
             if (items[i].equals(x)) {  // not ==, we only need value, not address
                 return true;
@@ -45,8 +47,8 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
     @Override
     public Iterator<T> iterator() {
         /**
-         * @NOTICE: iterator() is declared in the interface: Iterable<T>, so you should declare implements. This
-         * interface also support for(i : this).
+         * @NOTICE: iterator() is declared in the interface: Iterable<T>, so
+         * you should declare @Override. This interface also supports 'for(i : this)'.
          *
          * However, hasNext() and next() are declared in the interface: Iterator<G> !!!
          */
@@ -72,10 +74,12 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
         }
     }
 
-    /*@Override - Cumbersome version using StringBuilder and append rather than join.
+    /*
+    @Override - Cumbersome version using StringBuilder and append rather than join.
     public String toString() {
-        /**
-         * @NOTICE: Whenever you manipulate String or other immutable data type, reduce the modification times !!!
+         *
+         * @NOTICE: Whenever you manipulate String or other immutable data type,
+         * reduce the modification times !!!
          *
         StringBuilder returnSB = new StringBuilder("{");
         for (int i = 0; i < this.size - 1; i++) {
@@ -101,13 +105,14 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
             return true;
         }
         /**
-         * @NOTICE: When overriding `equal`, always remember the optimization, avoiding meaningless
-         * iteration and checking for itself, like c++.
+         * @NOTICE: When overriding `equal`, always remember the optimization,
+         * avoiding meaningless iteration and checking for itself, like c++.
          */
         if (other == null) {
             return false;
         }
-        if (other.getClass() != this.getClass()) {    // also inherit the Object class, returning the type of the instance
+        if (other.getClass() != this.getClass()) {
+            // also inherit the Object class, returning the type of the instance
             return false;
         }
         ArraySet<T> o = (ArraySet<T>) other;
@@ -123,19 +128,16 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
     }
 
     public static <Glerp> ArraySet<Glerp> of(Glerp... stuff) {
-        // static method doesn't know T, the generic type, so make the method generic and not the same as T.
+        /**
+         * @NOTICE: Static method doesn't know T, the generic type, so make the
+         * method generic and not the same as T.
+         */
         ArraySet<Glerp> returnSet = new ArraySet<>();
         for (Glerp x : stuff) {
             returnSet.add(x);
         }
         return returnSet;
     }
-
-    /** Also to do:
-    1. Make ArraySet implement the Iterable<T> interface.
-    2. Implement a toString method.
-    3. Implement an equals() method.
-    */
 
     public static void main(String[] args) {
         ArraySet<Integer> aset = new ArraySet<>();
@@ -149,8 +151,9 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
         aset2.add(23);
         aset2.add(42);
 
-        /* Doesn't need to call the toString manually, since the println() with automatically call toString() if
-        its parameter is not a String type.
+        /* Doesn't need to call the toString manually, since the println()
+        will automatically call toString() if its parameter is not a String
+        type.
          */
         System.out.println(aset);
 
@@ -164,10 +167,11 @@ public class ArraySet<T> implements Iterable<T> {  // make the class support: fo
 
         /**
          @NOTICE:
-        // Ugly iterator
+        / Ugly iterator
         Iterator<Integer> aseer = as.iterator();
-        // need an iterator `type`, so build a nested class !!!
-        // Let's start by thinking about what the compiler need to know in order to successfully compile.
+        / need an iterator `type`, so build a nested class !!!
+        / Let's start by thinking about what the compiler need to know in order
+         to successfully compile.
         while (aseer.hasNext()) {
             System.out.println(aseer.next());
         }

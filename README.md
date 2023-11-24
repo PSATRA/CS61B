@@ -7,26 +7,25 @@
 
 ## Optimization Philosophy
 1. Our final purpose is to design for users, regardless of what's 
-happening under the hook. That's why we design `sentinel`, 
-inheritance.AList with 100 boxes, fake indices, etc.
+happening under the hood. That's why we design `sentinel`, 
+AList with 100 boxes, fake indices, etc.
 
 
 2. Learn to **actively _analyze_** and **optimize** your own code: no matter it is a 
-single method or data structure. --Try the best to find **_small ineffectiveness_**.
+single method or data structure. --Try your best to find the **_small ineffectiveness_**.
 
 
 3. Find the  most appropriate abstract data type (list / set / map) that for the requirement.
 
 ## Design Philosophy
-1. Reduction   
+1. Reduction(Decomposition)  
     1. Boil the case down to an appropriate **data structure**, like the three dog problem
     can be boiled down to a BST. 
     2. Boil the case down to an appropriate **algorithm**, like the process 
     of distinguishing the dogs are actually a sort and permutation process.
-    And sort and permutation are inseparable.
-2. If you need optimize an algorithm or something elsa, don't think from
+2. If you need to optimize an algorithm or something elsa, don't think from
 a high level. Break it down, and **scrutinize** which part leads to high
-complexity, and can I make a tweak on this snag?
+complexity, and what tweak can I make upon this snag?
 ## Exercises
 [lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1) Introduction and set up  
 [lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2) JUnit Test and Debugging  
@@ -34,8 +33,8 @@ complexity, and can I make a tweak on this snag?
 [lab4](https://sp21.datastructur.es/materials/lab/lab4/lab4) Git and Debugging  
 [lab5](https://sp21.datastructur.es/materials/lab/lab5/lab5) Project 1 Peer Code Review  
 [lab6](https://sp21.datastructur.es/materials/lab/lab6/lab6) Getting Started on Project 2   
-[lab6 2019](https://sp19.datastructur.es/materials/lab/lab6/lab6) Disjoint Sets     
-[lab6 2019 Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6) Falling Bubbles (TODO)   
+[lab6_2019](https://sp19.datastructur.es/materials/lab/lab6/lab6) Disjoint Sets     
+[lab6_2019_Challenge](https://sp19.datastructur.es/materials/clab/clab6/clab6) Falling Bubbles (TODO)   
 [lab7](https://sp21.datastructur.es/materials/lab/lab7/lab7) BSTMap   
 [lab8](https://sp21.datastructur.es/materials/lab/lab8/lab8) HashMap  
 [lab12](https://sp21.datastructur.es/materials/lab/lab12/lab12) Getting Started on Project 3  
@@ -48,8 +47,8 @@ complexity, and can I make a tweak on this snag?
 [project 3](https://sp21.datastructur.es/materials/proj/proj3/proj3GameSharing) Game Sharing  
 
 ## Java Guide
-[Memory 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
-[Memory 2](https://www.javamex.com/tutorials/memory/object_memory_usage.shtml)    
+[Memory Usage Estimation 1](http://blog.kiyanpro.com/2016/10/07/system_design/memory-usage-estimation-in-java/)     
+[Memory Usage Estimation 2](https://www.javamex.com/tutorials/memory/object_memory_usage.shtml)    
 ## Guide
 [Command Line Programming, Git, Project 2 Preview](https://www.youtube.com/watch?v=fvhqn5PeU_Q)     
 [Using Git](https://sp19.datastructur.es/materials/guides/using-git)    

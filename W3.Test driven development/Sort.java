@@ -26,16 +26,15 @@ public class Sort {
     }
 
     /**
-     * @NOTICE: A typical solution is to create a private helper method that has an
-     *  additional parameter (or parameters) that delineate which part of the array to consider.
-     *  This approach is quite common when trying to use recursion on a data structure that is
-     *  not inherently recursive, e.g. arrays.
-     *
-     *  This is especially for non-naked data structures, e.g. LinkedListDeque, getRecursive(i), we used helper method and
-     *  index - 1.
+     * @NOTICE: A typical solution is to create a private helper method
+     * that has an additional parameter (or parameters) that delineate
+     * which part of the array to consider. This approach is quite common
+     * when trying to use recursion on a data structure that is not
+     * inherently recursive, e.g. arrays.
      *
      * @param x: the data structure that is not inherently recursive.
-     * @param start: delineate which part of the array to consider, here it is an index.
+     * @param start: delineate which part of the array to consider,
+     *             here it is an index.
      */
     public static void sort(String[] x, int start) {
         // Helper method: sorts strings destructively starting from item start.

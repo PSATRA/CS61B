@@ -5,14 +5,15 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/W2.Lists" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W3.Test driven development" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tools" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W4.Inheritance, Implements" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W5.Generics and Autoboxing" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Guide" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W6.Exceptions, Iterators, Iterables, Object Methods" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W9.Disjoint Sets, lab6-19" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/IMG/ADTs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/W15.Tries" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/guidance" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/img/ADTs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tools" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/solution" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

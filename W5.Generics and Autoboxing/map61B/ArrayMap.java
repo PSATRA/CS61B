@@ -9,14 +9,22 @@ import java.util.ArrayList;
 /***
  * An array-based implementation of Map61B.
  ***/
-public class ArrayMap<KK, VV> implements Map61B<KK, VV> {   // <KK, VV> is generic symbol for a map, KK and VV are arbitrary.
+public class ArrayMap<KK, VV> implements Map61B<KK, VV> {
+    // <KK, VV> is generic symbol for a map, KK and VV are arbitrary names.
 
-    private KK[] keys;
-    private VV[] values;
+    private final KK[] keys;
+    /**
+     * @NOTICE: 'final' limits the memory location here,
+     * since it's reference type.
+     */
+
+    private final VV[] values;
+
     int size;
 
     public ArrayMap() {
-        keys = (KK[]) new Object[100];   // Arrays can't be generic, and remember to set 100/...
+        keys = (KK[]) new Object[100];
+        // Arrays can't be generic, and remember to set 100/...
         values = (VV[]) new Object[100];
         size = 0;
     }
@@ -31,11 +39,12 @@ public class ArrayMap<KK, VV> implements Map61B<KK, VV> {   // <KK, VV> is gener
         return -1;
     }
     /**
-     * @NOTICE: "==" for reference type is for checking whether they are pointing the same address !!!!!!
-     * But here we just want to check if the values are the same.
+     * @NOTICE: "==" for reference type is for checking whether they are pointing
+     * the same address!!! But here we just want to check if they have the same
+     * value.
      *
-     * `final` for reference type means the address is final,  not the value, and the reference cannot
-     * point to other address, e.g. `buffer` in proj1 guitar.
+     * 'final' for reference type means the address is final, not the value, and
+     * the reference cannot point to other address, e.g. `buffer` in proj1 guitar.
      */
 
     /** Checks if map contains the key. */

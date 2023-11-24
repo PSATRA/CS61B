@@ -14,7 +14,7 @@ public class WeightedQuickUnionDS {
     public WeightedQuickUnionDS(int n) {
         _parent = new int[n];
         for (int i = 0; i < n; i++) {
-            _parent[i] = -1;
+            _parent[i] = -1;    // essential initialization!!!
         }
     }
 
@@ -28,6 +28,7 @@ public class WeightedQuickUnionDS {
     /* Returns the size of the set v1 belongs to. */
     public int sizeOf(int v1) {
         return _parent[parent(v1)];
+        // return -parent[find(v1)]; ???
     }
 
     /* Returns the parent of v1. If v1 is the root of a tree, returns

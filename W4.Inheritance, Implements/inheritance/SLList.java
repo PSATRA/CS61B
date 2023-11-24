@@ -6,8 +6,8 @@ package inheritance;
 
 public class SLList<Item> implements List61B<Item> {
     private class Node {
-        private final Item item;     /* Equivalent of first */
-        private Node next; /* Equivalent of rest */
+        private final Item item;
+        private Node next;
 
         Node(Item i, Node h) {
             item = i;
@@ -97,12 +97,13 @@ public class SLList<Item> implements List61B<Item> {
      *          while (p.next != null) {
      *               p = p.next;
      *          }
-     * @NOTICE: don't write p = ...(p = null), cuz the list isn't connected, see this in java visualizer.
+     * @NOTICE: don't write 'p = null;'
+     *
      *          StuffNode q = sentinel;
-     *          while(q.next !=p) {
+     *          while(q.next != p) {
      *              q = q.next;
      *          }
-     *          q.next =null;
+     *          q.next = null;
      *          return q.item;
      *      }
      */

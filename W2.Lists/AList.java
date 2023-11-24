@@ -18,7 +18,8 @@ public class AList<Item> {
 
     /** Creates an empty list. */
     public AList() {
-        items = (Item[]) new Object[100]; // Special syntax, java doesn't allow (direct) generic Array.
+        items = (Item[]) new Object[100]; // Special syntax,
+        // java doesn't allow (direct) generic Array.
         size = 0;
     }
 
@@ -42,6 +43,8 @@ public class AList<Item> {
      * However, it turns out to be time-wasting, with a parabola, if just do:
      * resize(size + 1);
      *
+     * Use amortized analysis to show this.
+     *
      * @NOTICE: Good, but this can cause low usage rate, tweaking?
      */
     public void addLast(Item x) {
@@ -58,6 +61,7 @@ public class AList<Item> {
     public Item getLast() {
         return items[size - 1];
     }
+
     /** Gets the ith item in the list (0 is the front). */
     public Item get(int i) {
         return items[i];
@@ -73,13 +77,19 @@ public class AList<Item> {
     public void removeLast() {
         items[size - 1] = null;
         /**
-         * @NOTICE: Normally, we don't need to set the last element to zero, since the users cannot even reach there!!!
+         * @NOTICE: Normally, we don't need to set the last element to zero,
+         * since the users cannot even reach there!!!
          *
-         * @NOTICE: However, with generic objects, we do want to null out references to the objects that we're storing.
-         * This is to avoid "loitering". Recall that Java garbage collector only destroys objects when the last reference has been
-         * lost. If we fail to null out the reference, then Java will not garbage collect the objects that have been
-         * added to the list.
-         * I.e. since it(<Item>) is a reference, it will never be deleted without the statement!
+         * @NOTICE: However, with generic objects, we do want to null out
+         * references to the objects that we're storing. This is to avoid
+         * "loitering". Recall that Java garbage collector only destroys
+         * objects when the last reference has been lost. If we fail to
+         * null out the reference, then Java will not garbage collect the
+         * objects that have been added to the list, for reference can never
+         * be accessed and deleted.
+         *
+         * I.e. since it(<Item>) is a reference, it will never be deleted
+         * without the statement!
          */
         size--;
     }

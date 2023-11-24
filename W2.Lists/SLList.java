@@ -6,12 +6,14 @@ public class SLList<ArbiType> {
 
     /**
      * Advantage of setting an individual node class:
-     * Not a naked recursive class, easy to manipulate, like avoid using this, but "first".
+     * Not a naked recursive class, easy to manipulate, like avoid
+     * using 'this', but 'first'.
      *
-     * @NOTICE: Support epic customized members for ***caching*** - private int size. You can also store the maximum,
-     * the minimum ... Basically, recursion and iteration are avoided, saving a BUNCH of time.
-     * @NOTICE: Anywhere or anything that you want to manipulate, just add a cash there. E.g. do addLast()
-     * without iteration cache the last reference(node).
+     * @NOTICE: Support epic customized members for ***caching*** - private int size.
+     * You can also store the maximum, the minimum... Anyway, recursion and iteration
+     * are avoided, saving a BUNCH of time.
+     * @NOTICE: For anything that you want to manipulate, just add a cash there.
+     * E.g. do addLast() without iteration cache the last reference(node).
      *
      * @NOTICE: Always remember to change the cache member when conducting update !!!
      */
@@ -21,7 +23,8 @@ public class SLList<ArbiType> {
      * Nested class or subordinate class.
      * Doesn't matter the order where you put it in a class.
      * Can be private, but the members inside are often public !!!
-     * @NOTICE: ***static*** class: cannot access to the outer class, and save a little memory. --discuss later
+     * @NOTICE: ***static*** class: cannot access to the outer class, and save a little
+     * memory. --discuss later
      */
     private class Node {
         private final ArbiType item;
@@ -34,19 +37,14 @@ public class SLList<ArbiType> {
 
     private int size; // create a ******CACHE******
 
-    // private intNode first; // this
+    // private intNode first;
     // variable first is powerful, it prevents us from assigning this manually.
-    /**
-     * @NOTICE: Set to ***private***: prevent other troublemaker class modify first, like:
-     *  first.next.next = first.next; since it doesn't copy the value, but copies the reference.
-     * Also, other users don't need to manipulate variable first.
-     * A nice analogy: a car with public and private.
-     */
     private final Node sentinel;
     /**
-     * In order that the object is empty, bun much better than discussing in every method, notably the data structure is huge.
-     * We can only manipulate/modify sentinel.next, rather than sentinel itself,
-     * @NOTICE: that's why we add ***final*** !!!, but we can still modify sentinel.next .
+     * Avoid that the object is empty.
+     * We can only modify sentinel.next, rather than sentinel itself,
+     * @NOTICE: that's why we add ***final*** !!!, but we can still
+     * modify sentinel.next .
      */
 
     public SLList() {
@@ -82,7 +80,10 @@ public class SLList<ArbiType> {
             p = p.next; // Does not change first.
         }
         p.next = new Node(x, null);
-        /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
+        /**
+         * @NOTICE: don't write p = ..., cuz the list isn't connected,
+         * we can see this in java visualizer.
+         */
         size++;
     }
 
@@ -94,7 +95,7 @@ public class SLList<ArbiType> {
             p = p.next;
         }
         // p = null;
-        /** @NOTICE: don't write p = ..., cuz the list isn't connected, see this in java visualizer. */
+        /** @NOTICE: don't write p = null. */
         Node q = sentinel;
         while (q.next != p) {
             q = q.next;
@@ -105,7 +106,7 @@ public class SLList<ArbiType> {
 
     /** Retrieves the ith item from the list. */
     public ArbiType get(int i) {
-        if  (i >= size) {    // If is out of range.
+        if  (i >= size) {
             return null;
         }
         Node p = sentinel;
@@ -117,14 +118,14 @@ public class SLList<ArbiType> {
 
     /**
      * Returns the size rapidly no matter how long the object is!
-     * It's so much better than size()!
      */
     public int size() {
         return size;
     }
 
     /**
-    private static int size(intNode p) {    // Helper method: Returns the size of the list starting at intNode p.
+    private static int size(intNode p) {
+     // Helper method: Returns the size of the list starting at intNode p.
         if (p.next == null) {
             return 1;
         }

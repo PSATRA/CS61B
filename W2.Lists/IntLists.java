@@ -9,14 +9,18 @@ public class IntLists {
     public IntLists rest;
 
     /**
-     * This will cause the linked list to create a circular reference to itself.
-     * You should properly create a new node.
-     * Also, directly modifying this within an instance method is not allowed in Java.
-     * Like: this = ...; (x)
      * public void addFirst(int num) {
-     *    intLists p = this;
-     *    this.first = num; // you simultaneously changed p.first !
-     *    this.rest = p; }
+     *  intLists p = this;
+     *  this.first = num; // you simultaneously changed p.first !
+     *  this.rest = p; }
+     *
+     * This will cause the linked list to create a circular reference to itself.
+     * You should properly create a new node: this.rest = this, since for
+     * reference type, '=' means copying the reference.
+     *
+     * Directly modifying this within an instance method is not allowed in Java.
+     * Like: this = ...; (x)
+     * @NOTICE: 'this' is readONLY!!!
      */
 
     /* recursion, this can change, but cannot be reassigned */
@@ -27,8 +31,9 @@ public class IntLists {
         }
         return 1 + this.rest.size();
         /**
-         * @NOTICE: `this` can change, since size belongs to the object, so can't cache.
-         * As for the non-naked recursive ones, cannot update itself, so recursion needs helper.
+         * @NOTICE: `this` can change, since size belongs to the object,
+         * it can't be cached. Conversely, as for the non-naked recursive
+         * ones, it cannot update itself, so the recursion needs helper.
          */
     }
 
@@ -77,7 +82,7 @@ public class IntLists {
         System.out.println(l.first + " " + "5");
         System.out.println(l.rest.first);
         System.out.println(l.rest.rest.first);
-        System.out.println(l.rest.rest.rest);         // automatically assigned with null!!!
+        System.out.println(l.rest.rest.rest);// automatically assigned with null
         System.out.println();
 
         System.out.println(l.size());

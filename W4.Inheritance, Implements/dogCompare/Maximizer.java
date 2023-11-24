@@ -2,13 +2,13 @@ package dogCompare;
 
 public class Maximizer {
     public static Comparable max(Comparable[] items) {
-        int maxDex = 0;
+        int maxInd = 0;
         for (int i = 0; i < items.length; i++) {
-            int cmp = items[i].compareTo(items[maxDex]);
+            int cmp = items[i].compareTo(items[maxInd]);
             if (cmp > 0) {
-                maxDex = i;
+                maxInd = i;
             }
         }
-        return items[maxDex];
+        return items[maxInd];
     }
 }

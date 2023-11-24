@@ -1,6 +1,9 @@
 public class ifIsPower {
     /* decide if a number is the power of another, let's say 2. */
-    public static boolean power(int num) {           // if a variable or method doesn't belong to an object, set static
+    public static boolean power(int num) {
+        /*
+        if a variable or method doesn't belong to the object, set 'static'
+        */
         if (num == 2) {
             return true;
         }
@@ -12,6 +15,6 @@ public class ifIsPower {
     }
 
     public static void main(String[] args) {
-        System.out.println(power(3072));
+        System.out.println(power(4096));
     }
 }
