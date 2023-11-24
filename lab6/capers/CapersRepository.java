@@ -42,6 +42,7 @@ public class CapersRepository {
         String newContent;
         if (!storyFile.exists()) {
             newContent = text;
+            // since writeContents will rewrite the whole file, we need to remember the previous stage
         } else {
             String oldContent = readContentsAsString(storyFile);
             newContent = oldContent + "\n" + text;
