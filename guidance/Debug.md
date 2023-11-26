@@ -18,7 +18,12 @@ Only write when they might be useful!
 Not JUnit's focus, but JUnit still can do this.
 
 Used for large module interaction or system, since Unit tests are great,
-but we should also make sure these units work properly together.
+but we should also make sure these units work properly together.  
+
+IntelliJ provides a feature called “remote JVM debugging” that will 
+allow you to add breakpoints that trigger during our integration tests.
+See this in lab6: "Mandatory Epilogue: Debugging".
+The test file is in testing/out.
 
 Shortcomings:
 1. Tedious to do manually.
