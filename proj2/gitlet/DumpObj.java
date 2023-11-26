@@ -12,11 +12,12 @@ import java.io.File;
  *
  *        import java.io.Serializable;
  *        import java.util.TreeMap;
- *        class MyClass implements Serializeable, Dumpable {
+ *        class MyClass implements Serializable, Dumpable {
  *            ...
  *            @Override
  *            public void dump() {
- *               System.out.printf("size: %d%nmapping: %s%n", _size, _mapping);
+ *               System.out.printf("size: %d%n" +
+ *                       "mapping: %s%n", _size, _mapping);
  *            }
  *            ...
  *            int _size;
