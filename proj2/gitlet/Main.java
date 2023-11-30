@@ -20,7 +20,7 @@ public class Main {
         switch(firstArg) {
 
             case "init":
-                validateNumArgs(args, 0);
+                validateNumArgs(args, 1);
                 Repository.initRepo();
                 break;
 
@@ -29,13 +29,13 @@ public class Main {
             // an initialized Gitlet directory."
             case "add":
                 Repository.checkWorkingDir();
-                validateNumArgs(args, 1);
+                validateNumArgs(args, 2);
                 Repository.addFile(args[1]);
                 break;
 
             case "commit":
                 Repository.checkWorkingDir();
-                validateNumArgs(args, 1);
+                validateNumArgs(args, 2);
                 break;
 
             /*

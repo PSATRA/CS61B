@@ -23,12 +23,12 @@ public class Commit implements Serializable {
      */
 
     /** The message of this Commit. */
-    private final String message;
+    final String message;
 
     /** The timestamp for this Commit. */
-    private final Date timestamp;
+    final Date timestamp;
 
-    final String commitFileName = Utils.sha1(this); // TODO: shorten the filename
+    final String commitFileName = Utils.sha1((Object) Utils.serialize(this)); // TODO: shorten the filename
 
     /** Constructor exclusively for the init command. */
     Commit() {
