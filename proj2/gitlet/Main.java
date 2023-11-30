@@ -24,9 +24,6 @@ public class Main {
                 Repository.initRepo();
                 break;
 
-            //TODO: If a user inputs a command that requires being in an initialized Gitlet
-            // working directory, but is not in such a directory, print the message "Not in
-            // an initialized Gitlet directory."
             case "add":
                 Repository.checkWorkingDir();
                 validateNumArgs(args, 2);
@@ -36,29 +33,8 @@ public class Main {
             case "commit":
                 Repository.checkWorkingDir();
                 validateNumArgs(args, 2);
+                Repository.commitFile(args[1]);
                 break;
-
-            /*
-            case "rm":
-                break;
-            case "log":
-                break;
-            case "global-log":
-                break;
-            case "find":
-                break;
-            case "status":
-                break;
-            case "checkout":
-                break;
-            case "branch":
-                break;
-            case "rm-branch":
-                break;
-            case "reset":
-                break;
-            case "merge":
-                break;*/
 
             default:
                 // If a user inputs a command that doesn’t exist

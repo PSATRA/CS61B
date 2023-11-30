@@ -5,18 +5,13 @@ import java.io.File;
 import static gitlet.MyUtils.exit;
 import static gitlet.Utils.*;
 
-// TODO: any imports you need here
 
 /** Represents a gitlet repository.
- *  TODO: It's a good idea to give a description here of what else this Class
- *  does at a high level.
  *
  *  @author Kingpin
  */
 public class Repository {
     /**
-     * TODO: add instance variables here.
-     *
      * List all instance variables of the Repository class here with a useful
      * comment above them describing what that variable represents and how that
      * variable is used. We've provided two examples for you.
@@ -26,16 +21,11 @@ public class Repository {
     public static final File CWD = new File(System.getProperty("user.dir"));
     /** The .gitlet directory. */
     public static final File GITLET_DIR = join(CWD, ".gitlet");
+    /** The commit directory. */
+    public static final File OBJECTS_DIR = join(GITLET_DIR, "objects");
+    /** The staging area file. */
+    public static final File INDEX = join(GITLET_DIR, "index");
 
-
-    /**
-     * Exit if no working directory exists.
-     */
-    public static void checkWorkingDir() {
-        if (!GITLET_DIR.exists() && !GITLET_DIR.isDirectory()) {
-            exit("Not in an initialized Gitlet directory.");
-        }
-    }
 
     /* init */
     public static void initRepo() {
@@ -43,24 +33,44 @@ public class Repository {
             exit("A Gitlet version-control system " +
                     "already exists in the current directory.");
         } else {
-            // create .gitlet dir
-            GITLET_DIR.mkdir();
-            // create initial Commit
-            // TODO: menage the data structure
-            Commit initCommit = new Commit();
-            File initCommitFile = join(GITLET_DIR,
-                    initCommit.commitFileName);
-            writeObject(initCommitFile, initCommit);
-            // TODO: initialize the branch master
+            GITLET_DIR.mkdir();  // creates .gitlet dir
+            OBJECTS_DIR.mkdir(); // creates objects dir
+            //TODO: create other dirs under /.gitlet
+
+            Commit initCommit = new Commit();   // create initial Commit
+            initCommit.writeCommitFile();
+
+            //TODO: initialize the branch master
         }
     }
 
     /* add */
     public static void addFile(String fileName) {
-        /*File f = new File(fileName);
-        byte[] fileContent = Utils.readContents(f);
-        // convert the content to SHA-1 hash
-        String sha = Utils.sha1(fileContent);
-        System.out.println(sha);*/
+        File fileToBeAdded = join(CWD, fileName); // target file in CWD
+        if (!fileToBeAdded.exists()) {
+            // If the file does not exist in the CWD.
+            exit("File does not exist.");
+        }
+        StagingArea index = new StagingArea();
+        index.add(fileToBeAdded);
+        writeObject(INDEX, index);
+    }
+
+    /* commit */
+    public static void commitFile(String fileName) {
+        //TODO: derive the parent commit ID.
+        //TODO: read from the staging area by calling
+        //      readObject(Repository.INDEX, StagingArea.class).
+        //TODO: create new commit according to the staging area.
+        //TODO: save the new commit using writeCommitFile().
+        //TODO: delete/clear the staging area.
+    }
+
+
+    /* Exit if no working directory exists. */
+    public static void checkWorkingDir() {
+        if (!GITLET_DIR.exists() && !GITLET_DIR.isDirectory()) {
+            exit("Not in an initialized Gitlet directory.");
+        }
     }
 }

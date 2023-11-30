@@ -1,42 +1,55 @@
 package gitlet;
 
 // TODO: any imports you need here
+import java.io.File;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-import java.util.Date; // TODO: You'll likely use this in this class
+import static gitlet.Repository.OBJECTS_DIR;
+import static gitlet.Utils.join;
+import static gitlet.Utils.writeObject;
 
 /** Represents a gitlet commit object.
- *  TODO: It's a good idea to give a description here of what else this Class
- *  does at a high level.
  *
  *  @author Kingpin
  */
 public class Commit implements Serializable {
-    /**
-     * TODO: add instance variables here.
-     *
-     * List all instance variables of the Commit class here with a useful
-     * comment above them describing what that variable represents and how that
-     * variable is used. We've provided one example for `message`.
-     */
-
     /** The message of this Commit. */
-    final String message;
+    private final String m_message;
 
     /** The timestamp for this Commit. */
-    final Date timestamp;
+    private final Date m_timestamp;
 
-    final String commitFileName = Utils.sha1((Object) Utils.serialize(this)); // TODO: shorten the filename
+    /** The SHA-1 hash of the parent commit. */
+    private final String m_parentID;
 
-    /** Constructor exclusively for the init command. */
+    /** The SHA-1 hash of the commit. */
+    private final String m_commitID;
+
+    /** Constructor exclusively init command. */
     Commit() {
-        message = "initial commit";
-        timestamp = new Date(0);
-            // Date(long millisecond),
-            // start from 00:00:00 UTC, Thursday, 1 January 1970
-            // TODO: verify this.(print in log)
+        m_message = "initial commit";
+        m_timestamp = new Date(0); //TODO: verify this(print in log).
+        m_parentID = null;
+        m_commitID = Utils.sha1((Object) Utils.serialize(this));
     }
 
+    /** Constructor for normal commits. */
+    Commit(String message, String parentID) {
+        m_message = message;
+        m_timestamp = new Date(0); //TODO: fix this.
+        m_parentID = parentID;
+        m_commitID = Utils.sha1((Object) Utils.serialize(this));
+    }
+
+    /** Creates commit file in .gitlet/objects/../ */
+    public void writeCommitFile() {
+        File indexDir = join(OBJECTS_DIR, MyUtils.preCut(m_commitID));
+        if (!indexDir.exists()) {
+            indexDir.mkdir();
+        }
+        File initCommitFile = join(indexDir, MyUtils.postCut(m_commitID));
+        writeObject(initCommitFile, this);
+    }
 }
