@@ -23,9 +23,13 @@ single method or data structure. --Try your best to find the **_small ineffectiv
     can be boiled down to a BST. 
     2. Boil the case down to an appropriate **algorithm**, like the process 
     of distinguishing the dogs are actually a sort and permutation process.
+
+
 2. If you need to optimize an algorithm or something elsa, don't think from
 a high level. Break it down, and **scrutinize** which part leads to high
 complexity, and what tweak can I make upon this snag?
+
+3. Write more _TODO_ command, since the work is often **non-linear**.
 ## Exercises
 [lab1](https://sp21.datastructur.es/materials/lab/lab1/lab1) Introduction and set up  
 [lab2](https://sp21.datastructur.es/materials/lab/lab2/lab2) JUnit Test and Debugging  
