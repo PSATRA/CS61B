@@ -10,7 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/serialization/GitletException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/serialization/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,8 +108,9 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="inheritance" />
+      <recent name="serialization" />
       <recent name="" />
+      <recent name="inheritance" />
       <recent name="Timer" />
     </key>
   </component>
@@ -222,6 +224,7 @@
       <workItem from="1701007367411" duration="471000" />
       <workItem from="1701009341891" duration="407000" />
       <workItem from="1701319702478" duration="97000" />
+      <workItem from="1701410410026" duration="139000" />
     </task>
     <task id="LOCAL-00001" summary="week2">
       <option name="closed" value="true" />
