@@ -47,6 +47,12 @@ public class Main {
                 Repository.removeFile(args[1]);
                 break;
 
+            case "log":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 1);
+                Repository.printLogMessage();
+                break;
+
             default:
                 // If a user inputs a command that doesn’t exist
                 exit("No command with that name exists.");

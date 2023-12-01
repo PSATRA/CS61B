@@ -10,7 +10,7 @@ import static gitlet.Utils.*;
 
 public class Tree implements Serializable {
     private final Map<String, String> treeMap = new TreeMap<>();
-    private final String treeID = sha1((Object) serialize(this));
+    private final String treeID = sha1(serialize(this));
 
 
     /** Return the treeMap. */
@@ -25,11 +25,11 @@ public class Tree implements Serializable {
 
     /** Creates tree file in .gitlet/objects/..  */
     public void writeTreeFile() {
-        File indexDir = join(OBJECTS_DIR, MyUtils.preCut(this.treeID));
-        if (!indexDir.exists()) {
-            indexDir.mkdir();
+        File dir = join(OBJECTS_DIR, MyUtils.preCut(this.treeID));
+        if (!dir.exists()) {
+            dir.mkdir();
         }
-        File initCommitFile = join(indexDir, MyUtils.postCut(this.treeID));
-        writeObject(initCommitFile, this);
+        File treeFile = join(dir, MyUtils.postCut(this.treeID));
+        writeObject(treeFile, this);
     }
 }

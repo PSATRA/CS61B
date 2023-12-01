@@ -10,13 +10,13 @@ public class Blob implements Serializable {
     private String fileName;
     private File file;
     private byte[] fileContent;
-    private String fileID;
+    private String contentID; // only differs in content!
 
     Blob(String fileName) {
         this.fileName = fileName;
         this.file = join(CWD, fileName);
         this.fileContent = readContents(file);
-        this.fileID = sha1((Object) serialize(this));
+        this.contentID = sha1(this.fileContent);
     }
 
     public String getName() {
@@ -28,7 +28,7 @@ public class Blob implements Serializable {
     public byte[] getContent() {
         return fileContent;
     }
-    public String getID() {
-        return fileID;
+    public String getContentID() {
+        return contentID;
     }
 }

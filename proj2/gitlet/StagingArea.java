@@ -30,7 +30,7 @@ public class StagingArea implements Serializable {
      */
     public void add(String fileName) {
         File fileToBeAdded = join(CWD, fileName); // target file in CWD
-        String contentID = Utils.sha1((Object) Utils.serialize(fileToBeAdded));
+        String contentID = Utils.sha1(Utils.serialize(fileToBeAdded));
 
         if (!added.containsKey(fileName)) {
             //Adds the file if it doesn't exist under .gitlet

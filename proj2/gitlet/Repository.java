@@ -1,8 +1,7 @@
 package gitlet;
 
 import java.io.File;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.Objects;
 
 import static gitlet.MyUtils.exit;
 import static gitlet.Utils.*;
@@ -25,8 +24,15 @@ public class Repository {
     public static final File GITLET_DIR = join(CWD, ".gitlet");
     /** The commit directory. */
     public static final File OBJECTS_DIR = join(GITLET_DIR, "objects");
+    /** The branch directory. */
+    public static final File REFS_DIR = join(GITLET_DIR, "refs");
+    /** The local branch directory. */
+    public static final File HEADS_DIR = join(REFS_DIR, "heads");
+
     /** The staging area file. */
     public static final File INDEX = join(GITLET_DIR, "index");
+    /** The head pointer. */
+    public static final File HEAD = join(GITLET_DIR, "HEAD");
 
 
     /* init */
@@ -37,11 +43,13 @@ public class Repository {
         } else {
             GITLET_DIR.mkdir();  // creates .gitlet dir
             OBJECTS_DIR.mkdir(); // creates objects dir
-            //TODO: create other dirs under /.gitlet
+            REFS_DIR.mkdir();    // creates branch dir
+            HEADS_DIR.mkdir();   // creates local branch dir
 
             Commit initCommit = new Commit();   // create initial Commit
             initCommit.writeCommitFile();
-
+            initCommit.getTree().writeTreeFile();
+            writeObject(HEAD, initCommit);
             //TODO: initialize the branch master
         }
     }
@@ -53,9 +61,18 @@ public class Repository {
             // If the file does not exist in the CWD.
             exit("File does not exist.");
         }
-        StagingArea index = new StagingArea();
+        StagingArea index;
+        if (INDEX.exists()){
+            index = readObject(INDEX, StagingArea.class);
+        } else {
+            index = new StagingArea();
+        }
         index.add(fileName);
-        writeObject(INDEX, index);
+        if (!index.getAdded().isEmpty() || !index.getRemoved().isEmpty()) {
+            writeObject(INDEX, index);
+        } else if (INDEX.exists()){
+            INDEX.delete();
+        }
     }
 
     /* commit */
@@ -63,8 +80,13 @@ public class Repository {
         if (!INDEX.exists()) {
             exit("No changes added to the commit.");
         }
+
+        // Derive the parent commit info and pass to the current one.
+        Commit parentCommit = readObject(HEAD, Commit.class);
+        Commit newCommit = new Commit(message, parentCommit.getCommitID(),
+                parentCommit.getTreeID());
+
         StagingArea currentStage = readObject(INDEX, StagingArea.class);
-        Commit newCommit = new Commit(message, null); //TODO: fix the parentID
         for (String tempFileName : currentStage.getAdded().keySet()) {
             Blob blob = new Blob(tempFileName);
             newCommit.updateTree(blob);
@@ -76,21 +98,62 @@ public class Repository {
         newCommit.getTree().writeTreeFile();
         newCommit.writeCommitFile();
         INDEX.delete();
-        //TODO: move the head and master pointer.(here or in the writeCommitFile())
+        writeObject(HEAD, newCommit); // move the head pointer
+        //TODO: move the master pointer.(here or in the writeCommitFile())
     }
 
     /* rm */
     public static void removeFile(String fileName) {
+        File file = join(CWD, fileName);
         StagingArea currentStage = readObject(INDEX, StagingArea.class);
         // Unstage the file if it is currently staged for addition.
         if (currentStage.getAdded().containsKey(fileName)) {
             currentStage.unstageFile(fileName);
+            return;
         }
-        //TODO: If the file is tracked in the current commit:
-        //      Stage it for removal by stageToRemoved(fileName).
-        //      Remove the file from the CWD if the user has not done so.
-        //TODO: If the file is neither staged nor tracked by the head commit,
-        //      print the error message "No reason to remove the file."
+        // Derive the current commit.
+        Commit currentCommit = readObject(HEAD, Commit.class);
+        String contentID = sha1(readContents(file));
+        boolean isCurrentlyTracked =
+                currentCommit.getTree().getMap().containsKey(fileName)
+                        && Objects.equals
+                (currentCommit.getTree().getMap().get(fileName), contentID);
+        // If the file is tracked in the current commit:
+        // 1. Stage it for removal by stageToRemoved(fileName).
+        // 2. Remove the file from the CWD if the user has not done so.
+        if (isCurrentlyTracked) {
+            currentStage.stageToRemoved(fileName);
+            if (file.exists()) {
+                file.delete();
+            }
+            return;
+        }
+        //If the file is neither staged nor tracked by the head commit,
+        // print the error message.
+        if (!currentStage.getAdded().containsKey(fileName)
+                && !currentStage.getRemoved().contains(fileName)) {
+            exit("No reason to remove the file.");
+        }
+    }
+
+    /* log */
+    public static void printLogMessage() {
+        // Derive the current commit.
+        Commit currentCommit = readObject(HEAD, Commit.class);
+        while (true) {
+            printHelper(currentCommit);
+            if (currentCommit.getParentID() != null) {
+                String parentID = currentCommit.getParentID();
+                currentCommit = currentCommit.getCommitFromID(parentID);
+            } else {
+                break; // having printed the initial commit
+            }
+        }
+        //TODO: handle the merge
+    }
+
+    public static void printHelper(Commit commit) {
+        System.out.println("===");
     }
 
 
