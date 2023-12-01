@@ -80,7 +80,7 @@ public class Repository {
         if (!index.getAdded().isEmpty() || !index.getRemoved().isEmpty()) {
             writeObject(INDEX, index);
         } else if (INDEX.exists()){
-            INDEX.delete();
+            restrictedDelete(INDEX);
         }
     }
 
@@ -106,7 +106,7 @@ public class Repository {
         }
         newCommit.getTree().writeTreeFile();
         newCommit.writeCommitFile();
-        INDEX.delete();
+        restrictedDelete(INDEX);
         writeObject(HEAD, newCommit); // move the head pointer
         //TODO: move the master pointer.(here or in the writeCommitFile())
     }
@@ -133,7 +133,7 @@ public class Repository {
         if (isCurrentlyTracked) {
             currentStage.stageToRemoved(fileName);
             if (file.exists()) {
-                file.delete();
+                restrictedDelete(file);
             }
             return;
         }
