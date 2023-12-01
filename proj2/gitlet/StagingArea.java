@@ -22,9 +22,8 @@ public class StagingArea implements Serializable {
         return removed;
     }
 
-    /* add */
     /**
-     * Adds    the file if it doesn't exist under .gitlet
+     * Adds    the file if it doesn't exist under .gitlet dir.
      * Updates the file if it changes.
      * Remove  the file if it's unchanged.
      */
@@ -44,11 +43,12 @@ public class StagingArea implements Serializable {
         }
     }
 
+    /** Unstage the file if it's currently staged for addition. */
     public void unstageFile(String fileName) {
-        // Unstage the file if it's currently staged for addition.
         added.remove(fileName);
     }
 
+    /** Stage the file to be removal. */
     public void stageToRemoved(String fileName) {
         removed.add(fileName);
     }

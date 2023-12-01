@@ -1,9 +1,12 @@
 package gitlet;
 
 import java.io.File;
+import java.util.Date;
+import java.util.Formatter;
+import java.util.List;
 import java.util.Objects;
 
-import static gitlet.MyUtils.exit;
+import static gitlet.MyUtils.*;
 import static gitlet.Utils.*;
 
 
@@ -24,6 +27,10 @@ public class Repository {
     public static final File GITLET_DIR = join(CWD, ".gitlet");
     /** The commit directory. */
     public static final File OBJECTS_DIR = join(GITLET_DIR, "objects");
+    /** The commit directory. */
+    public static final File COMMIT_DIR = join(OBJECTS_DIR, "commits");
+    /** The tree directory. */
+    public static final File TREE_DIR = join(OBJECTS_DIR, "trees");
     /** The branch directory. */
     public static final File REFS_DIR = join(GITLET_DIR, "refs");
     /** The local branch directory. */
@@ -35,16 +42,18 @@ public class Repository {
     public static final File HEAD = join(GITLET_DIR, "HEAD");
 
 
-    /* init */
+    /** init */
     public static void initRepo() {
         if (GITLET_DIR.exists()) {
             exit("A Gitlet version-control system " +
                     "already exists in the current directory.");
         } else {
-            GITLET_DIR.mkdir();  // creates .gitlet dir
-            OBJECTS_DIR.mkdir(); // creates objects dir
-            REFS_DIR.mkdir();    // creates branch dir
-            HEADS_DIR.mkdir();   // creates local branch dir
+            GITLET_DIR.mkdir();
+            OBJECTS_DIR.mkdir();
+            COMMIT_DIR.mkdir();
+            TREE_DIR.mkdir();
+            REFS_DIR.mkdir();  // creates branch dir
+            HEADS_DIR.mkdir(); // creates local branch dir
 
             Commit initCommit = new Commit();   // create initial Commit
             initCommit.writeCommitFile();
@@ -54,7 +63,7 @@ public class Repository {
         }
     }
 
-    /* add */
+    /** add */
     public static void addFile(String fileName) {
         File fileToBeAdded = join(CWD, fileName);
         if (!fileToBeAdded.exists()) {
@@ -75,7 +84,7 @@ public class Repository {
         }
     }
 
-    /* commit */
+    /** commit */
     public static void commitFile(String message) {
         if (!INDEX.exists()) {
             exit("No changes added to the commit.");
@@ -102,7 +111,7 @@ public class Repository {
         //TODO: move the master pointer.(here or in the writeCommitFile())
     }
 
-    /* rm */
+    /** rm */
     public static void removeFile(String fileName) {
         File file = join(CWD, fileName);
         StagingArea currentStage = readObject(INDEX, StagingArea.class);
@@ -131,12 +140,12 @@ public class Repository {
         //If the file is neither staged nor tracked by the head commit,
         // print the error message.
         if (!currentStage.getAdded().containsKey(fileName)
-                && !currentStage.getRemoved().contains(fileName)) {
+                && !currentStage.getRemoved().contains(fileName)) { //TODO: is this judge necessary?
             exit("No reason to remove the file.");
         }
     }
 
-    /* log */
+    /** log */
     public static void printLogMessage() {
         // Derive the current commit.
         Commit currentCommit = readObject(HEAD, Commit.class);
@@ -144,7 +153,7 @@ public class Repository {
             printHelper(currentCommit);
             if (currentCommit.getParentID() != null) {
                 String parentID = currentCommit.getParentID();
-                currentCommit = currentCommit.getCommitFromID(parentID);
+                currentCommit = getCommitFromID(parentID);
             } else {
                 break; // having printed the initial commit
             }
@@ -152,8 +161,84 @@ public class Repository {
         //TODO: handle the merge
     }
 
-    public static void printHelper(Commit commit) {
+    /** global-log */
+    public static void printGlobalLog() {
+        List<String> commitGross = plainFilenamesIn(COMMIT_DIR);
+        assert commitGross != null;
+        for (String commitID : commitGross) {
+            Commit currentCommit = getCommitFromID(commitID);
+            printHelper(currentCommit);
+        }
+    }
+
+    /** helper method for two log commands */
+    private static void printHelper(Commit commit) {
         System.out.println("===");
+        System.out.println("commit " + commit.getCommitID());
+
+        Date currentDate = commit.getDate();
+        Formatter formatter = new Formatter();
+        formatter.format("%ta %tB %td %tT %tY %tz", currentDate, currentDate,
+                currentDate, currentDate, currentDate, currentDate);
+        System.out.println("Date: " + formatter);
+        formatter.close();
+
+        System.out.println(commit.getMessage());
+        System.out.println();
+    }
+
+    /** find */
+    public static void findCorrCommits(String givenMessage) {
+        List<String> commitGross = plainFilenamesIn(COMMIT_DIR);
+        assert commitGross != null;
+        boolean existsSuchCommit = false;
+        for (String commitID : commitGross) {
+            Commit currentCommit = getCommitFromID(commitID);
+            if (Objects.equals(currentCommit.getMessage(), givenMessage)) {
+                existsSuchCommit = true;
+                System.out.println(currentCommit.getCommitID());
+            }
+        }
+        if (!existsSuchCommit) {
+            System.out.println("Found no commit with that message.");
+        }
+    }
+
+    /** status */
+    public static void printStatus() {
+        System.out.println("=== Branches ===");
+        //TODO: Displays what branches currently exist, and marks the current branch with a *.
+        System.out.println();
+
+        System.out.println("=== Staged Files ===");
+        if (INDEX.exists()) {
+            StagingArea currentStage = readObject(INDEX, StagingArea.class);
+            //TODO: Entries should be listed in lexicographic order,
+            // using the Java string-comparison order (the asterisk doesn’t count).
+            for (String fileName : currentStage.getAdded().keySet()) {
+                System.out.println(fileName);
+            }
+        }
+        System.out.println();
+
+        System.out.println("=== Removed Files ===");
+        if (INDEX.exists()) {
+            StagingArea currentStage = readObject(INDEX, StagingArea.class);
+            //TODO: Entries should be listed in lexicographic order,
+            // using the Java string-comparison order (the asterisk doesn’t count).
+            for (String fileName : currentStage.getRemoved()) {
+                System.out.println(fileName);
+            }
+        }
+        System.out.println();
+
+        System.out.println("=== Modifications Not Staged For Commit ===");
+        //TODO
+        System.out.println();
+
+        System.out.println("=== Untracked Files ===");
+        //TODO
+        System.out.println();
     }
 
 

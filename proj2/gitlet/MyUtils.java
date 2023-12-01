@@ -1,5 +1,11 @@
 package gitlet;
 
+import java.io.File;
+
+import static gitlet.Repository.COMMIT_DIR;
+import static gitlet.Utils.join;
+import static gitlet.Utils.readObject;
+
 public class MyUtils {
     /**
      * Prints the message and exit.
@@ -8,6 +14,12 @@ public class MyUtils {
     public static void exit(String error) {
         System.out.println(error);
         System.exit(0);
+    }
+
+    /** Derive a commit by the given ID. */
+    public static Commit getCommitFromID(String ID) {
+        File file = join(COMMIT_DIR, ID);
+        return readObject(file, Commit.class);
     }
 
     /**

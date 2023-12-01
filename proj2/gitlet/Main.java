@@ -53,6 +53,24 @@ public class Main {
                 Repository.printLogMessage();
                 break;
 
+            case "global-log":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 1);
+                Repository.printGlobalLog();
+                break;
+
+            case "find":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 2);
+                Repository.findCorrCommits(args[1]);
+                break;
+
+            case "status":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 1);
+                Repository.printStatus();
+                break;
+
             default:
                 // If a user inputs a command that doesn’t exist
                 exit("No command with that name exists.");

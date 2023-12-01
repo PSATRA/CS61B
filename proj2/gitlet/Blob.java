@@ -12,6 +12,7 @@ public class Blob implements Serializable {
     private byte[] fileContent;
     private String contentID; // only differs in content!
 
+    /** Construct a Blob by given file name. */
     Blob(String fileName) {
         this.fileName = fileName;
         this.file = join(CWD, fileName);

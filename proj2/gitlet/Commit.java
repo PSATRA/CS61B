@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
-import static gitlet.Repository.OBJECTS_DIR;
+import static gitlet.Repository.*;
 import static gitlet.Utils.*;
 
 /** Represents a gitlet commit object.
@@ -28,7 +28,7 @@ public class Commit implements Serializable {
     /** Constructor exclusively init command. */
     Commit() {
         this.message = "initial commit";
-        this.timestamp = new Date(0); //TODO: verify this(print in log).
+        this.timestamp = new Date(0);
         this.parentID = null;
         this.tree = new Tree();
     }
@@ -36,23 +36,17 @@ public class Commit implements Serializable {
     /** Constructor for normal commits. */
     Commit(String message, String parentID, String parentTreeID) {
         this.message = message;
-        this.timestamp = new Date(0); //TODO: fix this.
+        this.timestamp = new Date();
         this.parentID = parentID;
-        File parentTreeFile = join(OBJECTS_DIR,
-                MyUtils.preCut(parentTreeID),
-                MyUtils.postCut(parentTreeID));
+        File parentTreeFile = join(TREE_DIR, parentTreeID);
         this.tree = readObject(parentTreeFile, Tree.class);
     }
 
-    /** Derive a commit by the given ID. */
-    public Commit getCommitFromID(String ID) {
-        String dirName = MyUtils.preCut(ID);
-        String fileName = MyUtils.postCut(ID);
-        File file = join(OBJECTS_DIR, dirName, fileName);
-        return readObject(file, Commit.class);
-    }
     public String getMessage() {
         return message;
+    }
+    public Date getDate() {
+        return timestamp;
     }
     public Tree getTree() {
         return tree;
@@ -79,11 +73,7 @@ public class Commit implements Serializable {
 
     /** Creates commit file in .gitlet/objects/..  */
     public void writeCommitFile() {
-        File dir = join(OBJECTS_DIR, MyUtils.preCut(getCommitID()));
-        if (!dir.exists()) {
-            dir.mkdir();
-        }
-        File commitFile = join(dir, MyUtils.postCut(getCommitID()));
+        File commitFile = join(COMMIT_DIR, getCommitID());
         writeObject(commitFile, this);
     }
 }

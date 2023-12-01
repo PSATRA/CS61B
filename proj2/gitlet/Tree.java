@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static gitlet.Repository.OBJECTS_DIR;
+import static gitlet.Repository.TREE_DIR;
 import static gitlet.Utils.*;
 
 public class Tree implements Serializable {
@@ -25,11 +25,7 @@ public class Tree implements Serializable {
 
     /** Creates tree file in .gitlet/objects/..  */
     public void writeTreeFile() {
-        File dir = join(OBJECTS_DIR, MyUtils.preCut(this.treeID));
-        if (!dir.exists()) {
-            dir.mkdir();
-        }
-        File treeFile = join(dir, MyUtils.postCut(this.treeID));
+        File treeFile = join(TREE_DIR, this.treeID);
         writeObject(treeFile, this);
     }
 }
