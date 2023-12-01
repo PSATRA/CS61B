@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static gitlet.Repository.OBJECTS_DIR;
 import static gitlet.Utils.join;
@@ -16,40 +18,63 @@ import static gitlet.Utils.writeObject;
  */
 public class Commit implements Serializable {
     /** The message of this Commit. */
-    private final String m_message;
+    private final String message;
 
     /** The timestamp for this Commit. */
-    private final Date m_timestamp;
+    private final Date timestamp;
 
     /** The SHA-1 hash of the parent commit. */
-    private final String m_parentID;
+    private final String parentID;
+
+    /** The file tree of the current commit. */
+    private final Tree tree;
 
     /** The SHA-1 hash of the commit. */
-    private final String m_commitID;
+    private String commitID = null;
 
     /** Constructor exclusively init command. */
     Commit() {
-        m_message = "initial commit";
-        m_timestamp = new Date(0); //TODO: verify this(print in log).
-        m_parentID = null;
-        m_commitID = Utils.sha1((Object) Utils.serialize(this));
+        this.message = "initial commit";
+        this.timestamp = new Date(0); //TODO: verify this(print in log).
+        this.parentID = null;
+        this.tree = null;
     }
 
     /** Constructor for normal commits. */
     Commit(String message, String parentID) {
-        m_message = message;
-        m_timestamp = new Date(0); //TODO: fix this.
-        m_parentID = parentID;
-        m_commitID = Utils.sha1((Object) Utils.serialize(this));
+        this.message = message;
+        this.timestamp = new Date(0); //TODO: fix this.
+        this.parentID = parentID;
+        this.tree = new Tree(); // still the parent tree so far
+        //TODO: inherit from the parent
     }
 
-    /** Creates commit file in .gitlet/objects/../ */
+    /** Derive a commit by the given ID.
+     * Can be used in checkout command. */
+    Commit getCommitFromID(String ID) {
+        String dirName = MyUtils.preCut(ID);
+        String fileName = MyUtils.postCut(ID);
+        File file = join(OBJECTS_DIR, dirName, fileName);
+        return Utils.readObject(file, Commit.class);
+    }
+
+    public Tree getTree() {
+        return tree;
+    }
+
+    /** Update the tree from the parent. */
+    public void updateTree(Blob blob) {
+        tree.getMap().put(blob.getName(), blob.getID());
+    }
+
+    /** Creates commit file in .gitlet/objects/..  */
     public void writeCommitFile() {
-        File indexDir = join(OBJECTS_DIR, MyUtils.preCut(m_commitID));
+        this.commitID = Utils.sha1((Object) Utils.serialize(this));
+        File indexDir = join(OBJECTS_DIR, MyUtils.preCut(this.commitID));
         if (!indexDir.exists()) {
             indexDir.mkdir();
         }
-        File initCommitFile = join(indexDir, MyUtils.postCut(m_commitID));
+        File initCommitFile = join(indexDir, MyUtils.postCut(this.commitID));
         writeObject(initCommitFile, this);
     }
 }

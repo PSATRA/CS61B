@@ -1,5 +1,7 @@
 package gitlet;
 
+import java.util.Objects;
+
 import static gitlet.MyUtils.exit;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
@@ -33,6 +35,9 @@ public class Main {
             case "commit":
                 Repository.checkWorkingDir();
                 validateNumArgs(args, 2);
+                if (Objects.equals(args[1], "")) {
+                    exit("Please enter a commit message.");
+                }
                 Repository.commitFile(args[1]);
                 break;
 

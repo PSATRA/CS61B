@@ -4,13 +4,23 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.*;
 
+import static gitlet.Repository.CWD;
+import static gitlet.Utils.join;
+
 public class StagingArea implements Serializable {
     /* The added files with path as key and SHA1 hash as value. */
-    private final Map<String, String> added = new HashMap<>();
+    private final Map<String, String> added = new TreeMap<>();
 
     /* The removed files with path as key. */
-    private final Set<String> removed = new HashSet<>();
+    private final Set<String> removed = new TreeSet<>();
 
+    public Map<String, String> getAdded() {
+        return added;
+    }
+
+    public Set<String> getRemoved() {
+        return removed;
+    }
 
     /* add */
     /**
@@ -18,19 +28,19 @@ public class StagingArea implements Serializable {
      * Updates the file if it changes.
      * Remove  the file if it's unchanged.
      */
-    public void add(File file) {
-        String filePath = file.getAbsolutePath();
-        String contentID = Utils.sha1((Object) Utils.serialize(file));
+    public void add(String fileName) {
+        File fileToBeAdded = join(CWD, fileName); // target file in CWD
+        String contentID = Utils.sha1((Object) Utils.serialize(fileToBeAdded));
 
-        if (!added.containsKey(filePath)) {
+        if (!added.containsKey(fileName)) {
             //Adds the file if it doesn't exist under .gitlet
-            added.put(filePath, contentID);
-        } else if (!Objects.equals(added.get(filePath), contentID)) {
+            added.put(fileName, contentID);
+        } else if (!Objects.equals(added.get(fileName), contentID)) {
             //Updates the file if it changes.
-            added.put(filePath, contentID);
+            added.put(fileName, contentID);
         } else {
             //Remove the file if it's unchanged.
-            added.remove(filePath);
+            added.remove(fileName);
         }
     }
 }

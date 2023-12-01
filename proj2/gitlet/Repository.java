@@ -1,6 +1,8 @@
 package gitlet;
 
 import java.io.File;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static gitlet.MyUtils.exit;
 import static gitlet.Utils.*;
@@ -46,24 +48,31 @@ public class Repository {
 
     /* add */
     public static void addFile(String fileName) {
-        File fileToBeAdded = join(CWD, fileName); // target file in CWD
+        File fileToBeAdded = join(CWD, fileName);
         if (!fileToBeAdded.exists()) {
             // If the file does not exist in the CWD.
             exit("File does not exist.");
         }
         StagingArea index = new StagingArea();
-        index.add(fileToBeAdded);
+        index.add(fileName);
         writeObject(INDEX, index);
     }
 
     /* commit */
-    public static void commitFile(String fileName) {
-        //TODO: derive the parent commit ID.
-        //TODO: read from the staging area by calling
-        //      readObject(Repository.INDEX, StagingArea.class).
-        //TODO: create new commit according to the staging area.
-        //TODO: save the new commit using writeCommitFile().
-        //TODO: delete/clear the staging area.
+    public static void commitFile(String message) {
+        if (!INDEX.exists()) {
+            exit("No changes added to the commit.");
+        }
+        StagingArea currentStage = readObject(INDEX, StagingArea.class);
+        Commit newCommit = new Commit(message, null); //TODO: fix the parentID
+        for (String tempFileName : currentStage.getAdded().keySet()) {
+            Blob blob = new Blob(tempFileName);
+            newCommit.updateTree(blob);
+        }
+        newCommit.getTree().writeTreeFile();
+        newCommit.writeCommitFile();
+        INDEX.delete();
+        //TODO: move the head and master pointer.(here or in the writeCommitFile())
     }
 
 
