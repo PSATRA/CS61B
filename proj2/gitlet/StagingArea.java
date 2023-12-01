@@ -43,4 +43,13 @@ public class StagingArea implements Serializable {
             added.remove(fileName);
         }
     }
+
+    public void unstageFile(String fileName) {
+        // Unstage the file if it's currently staged for addition.
+        added.remove(fileName);
+    }
+
+    public void stageToRemoved(String fileName) {
+        removed.add(fileName);
+    }
 }

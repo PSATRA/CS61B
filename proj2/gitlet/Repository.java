@@ -69,10 +69,28 @@ public class Repository {
             Blob blob = new Blob(tempFileName);
             newCommit.updateTree(blob);
         }
+        for (String tempFileName : currentStage.getRemoved()) {
+            Blob blob = new Blob(tempFileName);
+            newCommit.untrackFile(blob);
+        }
         newCommit.getTree().writeTreeFile();
         newCommit.writeCommitFile();
         INDEX.delete();
         //TODO: move the head and master pointer.(here or in the writeCommitFile())
+    }
+
+    /* rm */
+    public static void removeFile(String fileName) {
+        StagingArea currentStage = readObject(INDEX, StagingArea.class);
+        // Unstage the file if it is currently staged for addition.
+        if (currentStage.getAdded().containsKey(fileName)) {
+            currentStage.unstageFile(fileName);
+        }
+        //TODO: If the file is tracked in the current commit:
+        //      Stage it for removal by stageToRemoved(fileName).
+        //      Remove the file from the CWD if the user has not done so.
+        //TODO: If the file is neither staged nor tracked by the head commit,
+        //      print the error message "No reason to remove the file."
     }
 
 

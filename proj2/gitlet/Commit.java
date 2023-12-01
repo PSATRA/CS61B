@@ -37,7 +37,7 @@ public class Commit implements Serializable {
         this.message = "initial commit";
         this.timestamp = new Date(0); //TODO: verify this(print in log).
         this.parentID = null;
-        this.tree = null;
+        this.tree = new Tree();
     }
 
     /** Constructor for normal commits. */
@@ -62,9 +62,14 @@ public class Commit implements Serializable {
         return tree;
     }
 
-    /** Update the tree from the parent. */
+    /** Update or add to the tree from the parent. */
     public void updateTree(Blob blob) {
         tree.getMap().put(blob.getName(), blob.getID());
+    }
+
+    /** Remove(untrack) files from removed. */
+    public void untrackFile(Blob blob) {
+        tree.getMap().remove(blob.getName());
     }
 
     /** Creates commit file in .gitlet/objects/..  */

@@ -41,6 +41,12 @@ public class Main {
                 Repository.commitFile(args[1]);
                 break;
 
+            case "rm":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 2);
+                Repository.removeFile(args[1]);
+                break;
+
             default:
                 // If a user inputs a command that doesn’t exist
                 exit("No command with that name exists.");
