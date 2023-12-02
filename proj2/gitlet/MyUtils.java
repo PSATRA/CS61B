@@ -16,10 +16,26 @@ public class MyUtils {
         System.exit(0);
     }
 
-    /** Derive a commit by the given ID. */
+    /** Derive a commit by the given ID.
+     * @return null if there is no commit with such ID
+     */
     public static Commit getCommitFromID(String ID) {
         File file = join(COMMIT_DIR, ID);
+        if (!file.exists()) {
+            return null;
+        }
         return readObject(file, Commit.class);
+    }
+
+    /** Check if a file exists in a given commit.
+     * Only consider the file name here.
+     * @param commit The searching spectrum
+     * @param fileName Name of the target file
+     * @return true if the  file exists in the given commit
+     */
+    public static boolean commitConsistsFile(
+            Commit commit, String fileName) {
+        return commit.getTree().getMap().containsKey(fileName);
     }
 
     /**

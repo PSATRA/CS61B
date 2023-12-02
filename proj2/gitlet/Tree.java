@@ -9,12 +9,12 @@ import static gitlet.Repository.TREE_DIR;
 import static gitlet.Utils.*;
 
 public class Tree implements Serializable {
-    private final Map<String, String> treeMap = new TreeMap<>();
+    private final Map<String, byte[]> treeMap = new TreeMap<>();
     private final String treeID = sha1(serialize(this));
 
 
     /** Return the treeMap. */
-    public Map<String, String> getMap() {
+    public Map<String, byte[]> getMap() {
         return treeMap;
     }
 

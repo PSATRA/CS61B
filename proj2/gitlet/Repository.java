@@ -66,6 +66,7 @@ public class Repository {
         if (!fileToBeAdded.exists()) {
             // If the file does not exist in the CWD.
             exit("File does not exist.");
+            return;
         }
         StagingArea index;
         if (INDEX.exists()){
@@ -85,6 +86,7 @@ public class Repository {
     public static void commitFile(String message) {
         if (!INDEX.exists()) {
             exit("No changes added to the commit.");
+            return;
         }
 
         // Derive the parent commit info and pass to the current one.
@@ -111,22 +113,28 @@ public class Repository {
     /** rm */
     public static void removeFile(String fileName) {
         File file = join(CWD, fileName);
-        StagingArea currentStage = readObject(INDEX, StagingArea.class);
+        StagingArea currentStage;
+        if (!INDEX.exists()) {
+            currentStage = new StagingArea();
+            writeObject(INDEX, currentStage);
+        } else {
+            currentStage = readObject(INDEX, StagingArea.class);
+        }
         // Unstage the file if it is currently staged for addition.
         if (currentStage.getAdded().containsKey(fileName)) {
             currentStage.unstageFile(fileName);
+            if (currentStage.getAdded().isEmpty()
+                    && currentStage.getRemoved().isEmpty()) {
+                INDEX.delete();
+            }
             return;
         }
-        // Derive the current commit.
-        Commit currentCommit = readObject(HEAD, Commit.class);
-        String contentID = sha1(readContents(file));
-        boolean isCurrentlyTracked =
-                currentCommit.getTree().getMap().containsKey(fileName)
-                        && Objects.equals
-                (currentCommit.getTree().getMap().get(fileName), contentID);
         // If the file is tracked in the current commit:
         // 1. Stage it for removal by stageToRemoved(fileName).
         // 2. Remove the file from the CWD if the user has not done so.
+        Commit currentCommit = readObject(HEAD, Commit.class);
+        boolean isCurrentlyTracked =
+                currentCommit.getTree().getMap().containsKey(fileName);
         if (isCurrentlyTracked) {
             currentStage.stageToRemoved(fileName);
             if (file.exists()) {
@@ -134,10 +142,15 @@ public class Repository {
             }
             return;
         }
-        //If the file is neither staged nor tracked by the head commit,
+        //If the file is neither staged nor tracked by the current commit,
         // print the error message.
-        if (!currentStage.getAdded().containsKey(fileName)
-                && !currentStage.getRemoved().contains(fileName)) { //TODO: is this judge necessary?
+        if (!currentStage.getRemoved().contains(fileName)) {
+            //This is the only restriction left, since it's obviously
+            // not tracked or staged for addition.
+            if (currentStage.getAdded().isEmpty()
+                    && currentStage.getRemoved().isEmpty()) {
+                INDEX.delete();
+            }
             exit("No reason to remove the file.");
         }
     }
@@ -147,6 +160,7 @@ public class Repository {
         // Derive the current commit.
         Commit currentCommit = readObject(HEAD, Commit.class);
         while (true) {
+            assert currentCommit != null;
             printHelper(currentCommit);
             if (currentCommit.getParentID() != null) {
                 String parentID = currentCommit.getParentID();
@@ -164,6 +178,7 @@ public class Repository {
         assert commitGross != null;
         for (String commitID : commitGross) {
             Commit currentCommit = getCommitFromID(commitID);
+            assert currentCommit != null;
             printHelper(currentCommit);
         }
     }
@@ -191,6 +206,7 @@ public class Repository {
         boolean existsSuchCommit = false;
         for (String commitID : commitGross) {
             Commit currentCommit = getCommitFromID(commitID);
+            assert currentCommit != null;
             if (Objects.equals(currentCommit.getMessage(), givenMessage)) {
                 existsSuchCommit = true;
                 System.out.println(currentCommit.getCommitID());
@@ -242,6 +258,44 @@ public class Repository {
         System.out.println();
     }
 
+    /** checkout -- [file name] */
+    public static void checkoutFile(String fileName) {
+        // derive the target version in the head commit
+        Commit headCommit = readObject(HEAD, Commit.class);
+        if (!commitConsistsFile(headCommit, fileName)) {
+            exit("File does not exist in that commit.");
+            return;
+        }
+        byte[] headContent = headCommit.getTree().getMap().get(fileName);
+        // derive the current version
+        Blob currentBlob = new Blob(fileName);
+        // create or overwrite
+        writeContents(currentBlob.getFile(), (Object) headContent);
+    }
+
+    /** checkout [commit id] -- [file name] */
+    public static void checkoutFile(String commitID, String fileName) {
+        // derive the target version in given commit
+        Commit targetCommit = getCommitFromID(commitID);
+        if (targetCommit == null) {
+            exit("No commit with that id exists.");
+            return;
+        }
+        if (!commitConsistsFile(targetCommit, fileName)) {
+            exit("File does not exist in that commit.");
+            return;
+        }
+        byte[] targetContent = targetCommit.getTree().getMap().get(fileName);
+        // derive the current version
+        Blob currentBlob = new Blob(fileName);
+        // create or overwrite
+        writeContents(currentBlob.getFile(), (Object) targetContent);
+    }
+
+    /** checkout [branch name] */
+    public static void checkoutBranch(String branchName) {
+        //TODO
+    }
 
     /* Exit if no working directory exists. */
     public static void checkWorkingDir() {

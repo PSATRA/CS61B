@@ -71,6 +71,31 @@ public class Main {
                 Repository.printStatus();
                 break;
 
+            case "checkout":
+                Repository.checkWorkingDir();
+                int argNumber = args.length;
+                switch (argNumber) {
+                    case 3:
+                        if (!args[1].equals("--")) {
+                            exit("Incorrect operands.");
+                        }
+                        Repository.checkoutFile(args[2]);
+                        break;
+                    case 4:
+                        if (!args[2].equals("--")) {
+                            exit("Incorrect operands.");
+                        }
+                        Repository.checkoutFile(args[1], args[3]);
+                        break;
+                    case 2:
+                        Repository.checkoutBranch(args[1]);
+                        break;
+                    default:
+                        exit("Incorrect operands.");
+                }
+                break;
+
+
             default:
                 // If a user inputs a command that doesn’t exist
                 exit("No command with that name exists.");

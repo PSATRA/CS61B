@@ -16,7 +16,11 @@ public class Blob implements Serializable {
     Blob(String fileName) {
         this.fileName = fileName;
         this.file = join(CWD, fileName);
-        this.fileContent = readContents(file);
+        if (!file.exists()) {
+            this.fileContent = null;
+        } else {
+            this.fileContent = readContents(file);
+        }
         this.contentID = sha1(this.fileContent);
     }
 

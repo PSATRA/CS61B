@@ -63,7 +63,7 @@ public class Commit implements Serializable {
 
     /** Update or add to the tree from the parent. */
     public void updateTree(Blob blob) {
-        tree.getMap().put(blob.getName(), blob.getContentID());
+        tree.getMap().put(blob.getName(), blob.getContent());
     }
 
     /** Remove(untrack) files from removed. */
