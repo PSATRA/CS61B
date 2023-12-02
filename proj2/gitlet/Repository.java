@@ -1,10 +1,7 @@
 package gitlet;
 
 import java.io.File;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static gitlet.MyUtils.*;
 import static gitlet.Utils.*;
@@ -80,7 +77,7 @@ public class Repository {
         if (!index.getAdded().isEmpty() || !index.getRemoved().isEmpty()) {
             writeObject(INDEX, index);
         } else if (INDEX.exists()){
-            restrictedDelete(INDEX);
+            INDEX.delete();
         }
     }
 
@@ -106,7 +103,7 @@ public class Repository {
         }
         newCommit.getTree().writeTreeFile();
         newCommit.writeCommitFile();
-        restrictedDelete(INDEX);
+        INDEX.delete();
         writeObject(HEAD, newCommit); // move the head pointer
         //TODO: move the master pointer.(here or in the writeCommitFile())
     }
@@ -208,14 +205,17 @@ public class Repository {
     public static void printStatus() {
         System.out.println("=== Branches ===");
         //TODO: Displays what branches currently exist, and marks the current branch with a *.
+        //TODO: Entries should be listed in lexicographic order,
+        // using the Java string-comparison order (the asterisk doesn’t count).
         System.out.println();
 
         System.out.println("=== Staged Files ===");
         if (INDEX.exists()) {
             StagingArea currentStage = readObject(INDEX, StagingArea.class);
-            //TODO: Entries should be listed in lexicographic order,
-            // using the Java string-comparison order (the asterisk doesn’t count).
-            for (String fileName : currentStage.getAdded().keySet()) {
+            Set<String> fileNameSet = currentStage.getAdded().keySet();
+            List<String> fileNameList = new ArrayList<>(fileNameSet);
+            Collections.sort(fileNameList);
+            for (String fileName : fileNameList) {
                 System.out.println(fileName);
             }
         }
@@ -224,9 +224,10 @@ public class Repository {
         System.out.println("=== Removed Files ===");
         if (INDEX.exists()) {
             StagingArea currentStage = readObject(INDEX, StagingArea.class);
-            //TODO: Entries should be listed in lexicographic order,
-            // using the Java string-comparison order (the asterisk doesn’t count).
-            for (String fileName : currentStage.getRemoved()) {
+            Set<String> fileNameSet = currentStage.getRemoved();
+            List<String> fileNameList = new ArrayList<>(fileNameSet);
+            Collections.sort(fileNameList);
+            for (String fileName : fileNameList) {
                 System.out.println(fileName);
             }
         }
