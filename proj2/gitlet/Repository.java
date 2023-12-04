@@ -37,6 +37,8 @@ public class Repository {
     public static final File INDEX = join(GITLET_DIR, "index");
     /** The head pointer. */
     public static final File HEAD = join(GITLET_DIR, "HEAD");
+    /** The current branch. */
+    public static final File CURRENT_BRANCH = join(REFS_DIR, "current-branch");
 
 
     /** init */
@@ -56,7 +58,9 @@ public class Repository {
             initCommit.writeCommitFile();
             initCommit.getTree().writeTreeFile();
             writeObject(HEAD, initCommit);
-            //TODO: initialize the branch master
+
+            Branch masterBranch = new Branch("master", initCommit);
+            writeObject(CURRENT_BRANCH, masterBranch);
         }
     }
 
@@ -107,7 +111,11 @@ public class Repository {
         newCommit.writeCommitFile();
         INDEX.delete();
         writeObject(HEAD, newCommit); // move the head pointer
-        //TODO: move the master pointer.(here or in the writeCommitFile())
+
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        String currentBranchName = currentBranch.getName();
+        Branch branch = new Branch(currentBranchName, newCommit);
+        writeObject(CURRENT_BRANCH, branch);
     }
 
     /** rm */
@@ -156,7 +164,7 @@ public class Repository {
     }
 
     /** log */
-    public static void printLogMessage() {
+    public static void printLog() {
         // Derive the current commit.
         Commit currentCommit = readObject(HEAD, Commit.class);
         while (true) {
@@ -220,9 +228,21 @@ public class Repository {
     /** status */
     public static void printStatus() {
         System.out.println("=== Branches ===");
-        //TODO: Displays what branches currently exist, and marks the current branch with a *.
-        //TODO: Entries should be listed in lexicographic order,
-        // using the Java string-comparison order (the asterisk doesn’t count).
+        List<String> branchNames = plainFilenamesIn(HEADS_DIR);
+        if (branchNames == null) {
+            branchNames = new ArrayList<>();
+        }
+        // Convert the type of branchNames from AbstractList to ArrayList.
+        branchNames = new ArrayList<>(branchNames);
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        branchNames.add(currentBranch.getName());
+        Collections.sort(branchNames);
+        for (String branchName : branchNames) {
+            if (Objects.equals(branchName, currentBranch.getName())) {
+                System.out.print("*");
+            }
+            System.out.println(branchName);
+        }
         System.out.println();
 
         System.out.println("=== Staged Files ===");
@@ -267,9 +287,9 @@ public class Repository {
             return;
         }
         byte[] headContent = headCommit.getTree().getMap().get(fileName);
-        // derive the current version
+        // Derive the current version.
         Blob currentBlob = new Blob(fileName);
-        // create or overwrite
+        // Create or overwrite, casting for type confusion.
         writeContents(currentBlob.getFile(), (Object) headContent);
     }
 
@@ -286,16 +306,179 @@ public class Repository {
             return;
         }
         byte[] targetContent = targetCommit.getTree().getMap().get(fileName);
-        // derive the current version
+        // Derive the current version.
         Blob currentBlob = new Blob(fileName);
-        // create or overwrite
+        // Create or overwrite, casting for type confusion.
         writeContents(currentBlob.getFile(), (Object) targetContent);
     }
 
     /** checkout [branch name] */
     public static void checkoutBranch(String branchName) {
-        //TODO
+        Branch checkedBranch = getBranchFromName(branchName);
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        if (Objects.equals(branchName, currentBranch.getName())) {
+            exit("No need to checkout the current branch.");
+            return;
+        }
+        if (checkedBranch == null) {
+            exit("No such branch exists.");
+            return;
+        }
+
+        /**
+         * Change the file version. If a working file is untracked in the
+         * current branch and would be overwritten by the checkout, print
+         * the error.
+         *
+         * This check is performed before doing anything else, and does
+         * not change the CWD!
+         */
+        Commit checkedCommit = checkedBranch.getCommit();
+        Commit currentCommit = currentBranch.getCommit();
+        Map<String, byte[]> checkedFiles = checkedCommit.getTree().getMap();
+        Map<String, byte[]> currentFiles = currentCommit.getTree().getMap();
+        for (String fileName : checkedFiles.keySet()) {
+            if (!currentFiles.containsKey(fileName)) {
+                exit("There is an untracked file in the way; delete " +
+                        "it, or add and commit it first.");
+                return;
+            }
+        }
+        for (String fileName : checkedFiles.keySet()) {
+            // Derive the current version.
+            Blob blob = new Blob(fileName);
+            // Derive the target version in the checked-out branch.
+            byte[] content = checkedFiles.get(fileName);
+            // Create or overwrite, casting for type confusion.
+            writeContents(blob.getFile(), (Object) content);
+        }
+
+        // Any files that are tracked in the current branch but are
+        //  not present in the checked-out branch are deleted.
+        for (String fileName : currentFiles.keySet()) {
+            if (!checkedFiles.containsKey(fileName)) {
+                restrictedDelete(fileName);
+            }
+        }
+
+        // Set this branch to the current branch and update HEAD.
+        currentBranch.writeBranchFile();
+        writeObject(CURRENT_BRANCH, checkedBranch);
+        writeObject(HEAD, checkedCommit);
+
+        // Check the staging area, delete it, unless it's the
+        //  current branch to be checked-out(failure cases).
+        if (INDEX.exists()){
+            INDEX.delete();
+        }
     }
+
+    /** branch */
+    public static void createNewBranch(String branchName) {
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        Commit currentCommit = readObject(HEAD, Commit.class);
+
+        List<String> branchNames = plainFilenamesIn(HEADS_DIR);
+        if (branchNames == null) {
+            branchNames = new ArrayList<>();
+        }
+        // Convert the type of branchNames from AbstractList to ArrayList.
+        branchNames = new ArrayList<>(branchNames);
+        branchNames.add(currentBranch.getName());
+        for (String names : branchNames) {
+            if (Objects.equals(names, branchName)) {
+                exit("A branch with that name already exists.");
+                return;
+            }
+        }
+
+        Branch newBranch = new Branch(branchName, currentCommit);
+        newBranch.writeBranchFile();
+    }
+
+    /** rm-branch */
+    public static void deleteBranch(String branchName) {
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        if (Objects.equals(branchName, currentBranch.getName())) {
+            exit("Cannot remove the current branch.");
+            return;
+        }
+        List<String> branchNames = plainFilenamesIn(HEADS_DIR);
+        if (branchNames == null || !branchNames.contains(branchName)) {
+            exit("A branch with that name does not exist.");
+            return;
+        }
+        for (String names : branchNames) {
+            if (Objects.equals(names, branchName)) {
+                File branch = join(HEADS_DIR, branchName);
+                branch.delete();
+                return;
+            }
+        }
+    }
+
+    /** reset [commit id] */
+    public static void reset(String commitID) {
+        Commit targetCommit = getCommitFromID(commitID);
+        Commit currentCommit = readObject(HEAD, Commit.class);
+        if (targetCommit == null) {
+            exit("No commit with that id exists.");
+            return;
+        }
+
+        Map<String, byte[]> targetFiles = targetCommit.getTree().getMap();
+        Map<String, byte[]> currentFiles = currentCommit.getTree().getMap();
+        /**
+         * Checks out all the files tracked by the given commit.
+         *
+         * If a working file is untracked in the current branch and would
+         * be overwritten by the reset, print the error.
+         *
+         * This check is performed before doing anything else, and does
+         * not change the CWD!
+         */
+        for (String fileName : targetFiles.keySet()) {
+            if (!currentFiles.containsKey(fileName)) {
+                exit("There is an untracked file in the way; " +
+                        "delete it, or add and commit it first.");
+                return;
+            }
+        }
+        // checkout with no errors
+        for (String fileName : targetFiles.keySet()) {
+            byte[] targetContent = targetFiles.get(fileName);
+            // Derive the current version.
+            Blob currentBlob = new Blob(fileName);
+            // Create or overwrite, casting for type confusion.
+            writeContents(currentBlob.getFile(), (Object) targetContent);
+        }
+
+        /** Any files that are tracked in the current commit but are not
+         * present in the target commit are deleted.
+         */
+        for (String fileName : currentFiles.keySet()) {
+            if (!targetFiles.containsKey(fileName)) {
+                restrictedDelete(fileName);
+            }
+        }
+
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        Branch movedBranch = new
+                Branch(currentBranch.getName(), targetCommit);
+        writeObject(CURRENT_BRANCH, movedBranch);
+        writeObject(HEAD, targetCommit);
+        if (INDEX.exists()){
+            INDEX.delete();
+        }
+    }
+
+    /** merge [branch name] */
+    public static void merge(String branchName) {
+        Branch mergeBranch = getBranchFromName(branchName);
+        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
+        //TODO!!!
+    }
+
 
     /* Exit if no working directory exists. */
     public static void checkWorkingDir() {

@@ -71,7 +71,7 @@ public class Commit implements Serializable {
         tree.getMap().remove(blob.getName());
     }
 
-    /** Creates commit file in .gitlet/objects/..  */
+    /** Creates commit file in .gitlet/objects/  */
     public void writeCommitFile() {
         File commitFile = join(COMMIT_DIR, getCommitID());
         writeObject(commitFile, this);

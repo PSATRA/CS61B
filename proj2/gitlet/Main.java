@@ -50,7 +50,7 @@ public class Main {
             case "log":
                 Repository.checkWorkingDir();
                 validateNumArgs(args, 1);
-                Repository.printLogMessage();
+                Repository.printLog();
                 break;
 
             case "global-log":
@@ -95,9 +95,32 @@ public class Main {
                 }
                 break;
 
+            case "branch":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 2);
+                Repository.createNewBranch(args[1]);
+                break;
+
+            case "rm-branch":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 2);
+                Repository.deleteBranch(args[1]);
+                break;
+
+            case "reset":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 2);
+                Repository.reset(args[1]);
+                break;
+
+            case "merge":
+                Repository.checkWorkingDir();
+                validateNumArgs(args, 2);
+                Repository.merge(args[1]);
+                break;
 
             default:
-                // If a user inputs a command that doesn’t exist
+                // if a user inputs a command that doesn’t exist
                 exit("No command with that name exists.");
         }
     }
