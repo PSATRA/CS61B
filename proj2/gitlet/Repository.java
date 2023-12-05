@@ -198,7 +198,7 @@ public class Repository {
 
         Date currentDate = commit.getDate();
         Formatter formatter = new Formatter();
-        formatter.format("%ta %tB %td %tT %tY %tz", currentDate, currentDate,
+        formatter.format("%ta %tb %td %tT %tY %tz", currentDate, currentDate,
                 currentDate, currentDate, currentDate, currentDate);
         System.out.println("Date: " + formatter);
         formatter.close();
