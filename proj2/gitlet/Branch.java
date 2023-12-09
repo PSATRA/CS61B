@@ -3,7 +3,6 @@ package gitlet;
 import java.io.File;
 import java.io.Serializable;
 
-import static gitlet.Repository.COMMIT_DIR;
 import static gitlet.Repository.HEADS_DIR;
 import static gitlet.Utils.join;
 import static gitlet.Utils.writeObject;

@@ -46,22 +46,21 @@ public class Repository {
         if (GITLET_DIR.exists()) {
             exit("A Gitlet version-control system " +
                     "already exists in the current directory.");
-        } else {
-            GITLET_DIR.mkdir();
-            OBJECTS_DIR.mkdir();
-            COMMIT_DIR.mkdir();
-            TREE_DIR.mkdir();
-            REFS_DIR.mkdir();  // creates branch dir
-            HEADS_DIR.mkdir(); // creates local branch dir
-
-            Commit initCommit = new Commit();   // create initial Commit
-            initCommit.writeCommitFile();
-            initCommit.getTree().writeTreeFile();
-            writeObject(HEAD, initCommit);
-
-            Branch masterBranch = new Branch("master", initCommit);
-            writeObject(CURRENT_BRANCH, masterBranch);
         }
+        GITLET_DIR.mkdir();
+        OBJECTS_DIR.mkdir();
+        COMMIT_DIR.mkdir();
+        TREE_DIR.mkdir();
+        REFS_DIR.mkdir();  // creates branch dir
+        HEADS_DIR.mkdir(); // creates local branch dir
+
+        Commit initCommit = new Commit();   // create initial Commit
+        initCommit.writeCommitFile();
+        initCommit.getTree().writeTreeFile();
+        writeObject(HEAD, initCommit);
+
+        Branch masterBranch = new Branch("master", initCommit);
+        writeObject(CURRENT_BRANCH, masterBranch);
     }
 
     /** add */
@@ -70,7 +69,6 @@ public class Repository {
         if (!fileToBeAdded.exists()) {
             // If the file does not exist in the CWD.
             exit("File does not exist.");
-            return;
         }
         StagingArea index;
         if (INDEX.exists()){
@@ -90,7 +88,6 @@ public class Repository {
     public static void commitFile(String message) {
         if (!INDEX.exists()) {
             exit("No changes added to the commit.");
-            return;
         }
 
         // Derive the parent commit info and pass to the current one.
@@ -221,7 +218,7 @@ public class Repository {
             }
         }
         if (!existsSuchCommit) {
-            System.out.println("Found no commit with that message.");
+            exit("Found no commit with that message.");
         }
     }
 
@@ -284,7 +281,6 @@ public class Repository {
         Commit headCommit = readObject(HEAD, Commit.class);
         if (!commitConsistsFile(headCommit, fileName)) {
             exit("File does not exist in that commit.");
-            return;
         }
         byte[] headContent = headCommit.getTree().getMap().get(fileName);
         // Derive the current version.
@@ -299,11 +295,10 @@ public class Repository {
         Commit targetCommit = getCommitFromID(commitID);
         if (targetCommit == null) {
             exit("No commit with that id exists.");
-            return;
         }
+        assert targetCommit != null;
         if (!commitConsistsFile(targetCommit, fileName)) {
             exit("File does not exist in that commit.");
-            return;
         }
         byte[] targetContent = targetCommit.getTree().getMap().get(fileName);
         // Derive the current version.
@@ -318,11 +313,9 @@ public class Repository {
         Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
         if (Objects.equals(branchName, currentBranch.getName())) {
             exit("No need to checkout the current branch.");
-            return;
         }
         if (checkedBranch == null) {
             exit("No such branch exists.");
-            return;
         }
 
         /**
@@ -333,6 +326,7 @@ public class Repository {
          * This check is performed before doing anything else, and does
          * not change the CWD!
          */
+        assert checkedBranch != null;
         Commit checkedCommit = checkedBranch.getCommit();
         Commit currentCommit = currentBranch.getCommit();
         Map<String, byte[]> checkedFiles = checkedCommit.getTree().getMap();
@@ -341,7 +335,6 @@ public class Repository {
             if (!currentFiles.containsKey(fileName)) {
                 exit("There is an untracked file in the way; delete " +
                         "it, or add and commit it first.");
-                return;
             }
         }
         for (String fileName : checkedFiles.keySet()) {
@@ -388,7 +381,6 @@ public class Repository {
         for (String names : branchNames) {
             if (Objects.equals(names, branchName)) {
                 exit("A branch with that name already exists.");
-                return;
             }
         }
 
@@ -401,13 +393,12 @@ public class Repository {
         Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
         if (Objects.equals(branchName, currentBranch.getName())) {
             exit("Cannot remove the current branch.");
-            return;
         }
         List<String> branchNames = plainFilenamesIn(HEADS_DIR);
         if (branchNames == null || !branchNames.contains(branchName)) {
             exit("A branch with that name does not exist.");
-            return;
         }
+        assert branchNames != null;
         for (String names : branchNames) {
             if (Objects.equals(names, branchName)) {
                 File branch = join(HEADS_DIR, branchName);
@@ -423,9 +414,8 @@ public class Repository {
         Commit currentCommit = readObject(HEAD, Commit.class);
         if (targetCommit == null) {
             exit("No commit with that id exists.");
-            return;
         }
-
+        assert targetCommit != null;
         Map<String, byte[]> targetFiles = targetCommit.getTree().getMap();
         Map<String, byte[]> currentFiles = currentCommit.getTree().getMap();
         /**
@@ -441,7 +431,6 @@ public class Repository {
             if (!currentFiles.containsKey(fileName)) {
                 exit("There is an untracked file in the way; " +
                         "delete it, or add and commit it first.");
-                return;
             }
         }
         // checkout with no errors
@@ -474,9 +463,31 @@ public class Repository {
 
     /** merge [branch name] */
     public static void merge(String branchName) {
-        Branch mergeBranch = getBranchFromName(branchName);
-        Branch currentBranch = readObject(CURRENT_BRANCH, Branch.class);
-        //TODO!!!
+        Branch firstBranch = readObject(CURRENT_BRANCH, Branch.class);
+        Branch secBranch = getBranchFromName(branchName);
+        Commit firstCommit = firstBranch.getCommit();
+        mergeFailures(branchName, firstBranch, secBranch);
+        assert secBranch != null;
+        Commit secCommit = secBranch.getCommit();
+    }
+
+    /** Handle the possible failure cases for merge. */
+    private static void mergeFailures(String branchName,
+                                      Branch firstBranch,
+                                      Branch secBranch) {
+        if (INDEX.exists()) {
+            exit("You have uncommitted changes.");
+        }
+        if (secBranch == null) {
+            exit("A branch with that name does not exist.");
+        }
+        if (Objects.equals(branchName, firstBranch.getName())) {
+            exit("Cannot merge a branch with itself.");
+        }
+        //TODO: If an untracked file in the current commit would be
+        // overwritten or deleted by the merge, print "There is an
+        // untracked file in the way; delete it, or add and commit
+        // it first." and exit; perform this check before doing anything else.
     }
 
 

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
+import static gitlet.MyUtils.*;
 import static gitlet.Repository.*;
 import static gitlet.Utils.*;
 
@@ -22,6 +23,9 @@ public class Commit implements Serializable {
     /** The SHA-1 hash of the parent commit. */
     private final String parentID;
 
+    /** The SHA-1 hash of the given branch for merged commit. */
+    private final String secParentID;
+
     /** The file tree of the current commit. */
     private final Tree tree;
 
@@ -30,6 +34,7 @@ public class Commit implements Serializable {
         this.message = "initial commit";
         this.timestamp = new Date(0);
         this.parentID = null;
+        this.secParentID = null;
         this.tree = new Tree();
     }
 
@@ -38,8 +43,20 @@ public class Commit implements Serializable {
         this.message = message;
         this.timestamp = new Date();
         this.parentID = parentID;
+        this.secParentID = null;
         File parentTreeFile = join(TREE_DIR, parentTreeID);
         this.tree = readObject(parentTreeFile, Tree.class);
+    }
+
+    /** Constructor for merged commit. */
+    Commit(String currentBranchName, String givenBranchName,
+           String parentID, String secParentID) {
+        this.message = "Merged " + givenBranchName + " into " +
+                currentBranchName + ".";
+        this.timestamp = new Date();
+        this.parentID = parentID;
+        this.secParentID = secParentID;
+        this.tree = new Tree();
     }
 
     public String getMessage() {
@@ -59,6 +76,9 @@ public class Commit implements Serializable {
     }
     public String getParentID() {
         return parentID;
+    }
+    public String getSecParentID() {
+        return secParentID;
     }
 
     /** Update or add to the tree from the parent. */
