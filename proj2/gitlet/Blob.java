@@ -33,7 +33,4 @@ public class Blob implements Serializable {
     public byte[] getContent() {
         return fileContent;
     }
-    public String getContentID() {
-        return contentID;
-    }
 }

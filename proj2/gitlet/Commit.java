@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
-import static gitlet.MyUtils.*;
 import static gitlet.Repository.*;
 import static gitlet.Utils.*;
 

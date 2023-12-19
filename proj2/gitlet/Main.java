@@ -38,7 +38,7 @@ public class Main {
                 if (Objects.equals(args[1], "")) {
                     exit("Please enter a commit message.");
                 }
-                Repository.commitFile(args[1]);
+                Repository.commit(args[1]);
                 break;
 
             case "rm":

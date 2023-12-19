@@ -1,10 +1,12 @@
 package gitlet;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import static gitlet.MyUtils.*;
 import static gitlet.Utils.*;
+import static gitlet.MergeUtils.*;
 
 
 /** Represents a gitlet repository.
@@ -84,17 +86,8 @@ public class Repository {
         }
     }
 
-    /** commit */
-    public static void commitFile(String message) {
-        if (!INDEX.exists()) {
-            exit("No changes added to the commit.");
-        }
-
-        // Derive the parent commit info and pass to the current one.
-        Commit parentCommit = readObject(HEAD, Commit.class);
-        Commit newCommit = new Commit(message, parentCommit.getCommitID(),
-                parentCommit.getTreeID());
-
+    /** Handles a given commit, applying to both normal and merge commits. */
+    public static void commitHelper(Commit newCommit) {
         StagingArea currentStage = readObject(INDEX, StagingArea.class);
         for (String tempFileName : currentStage.getAdded().keySet()) {
             Blob blob = new Blob(tempFileName);
@@ -113,6 +106,19 @@ public class Repository {
         String currentBranchName = currentBranch.getName();
         Branch branch = new Branch(currentBranchName, newCommit);
         writeObject(CURRENT_BRANCH, branch);
+    }
+
+    /** commit */
+    public static void commit(String message) {
+        if (!INDEX.exists()) {
+            exit("No changes added to the commit.");
+        }
+
+        // Derive the parent commit info and pass to the current one.
+        Commit parentCommit = readObject(HEAD, Commit.class);
+        Commit newCommit = new Commit(message, parentCommit.getCommitID(),
+                parentCommit.getTreeID());
+        commitHelper(newCommit);
     }
 
     /** rm */
@@ -135,13 +141,13 @@ public class Repository {
             return;
         }
         // If the file is tracked in the current commit:
-        // 1. Stage it for removal by stageToRemoved(fileName).
+        // 1. Stage it for removal by stageForRemoved(fileName).
         // 2. Remove the file from the CWD if the user has not done so.
         Commit currentCommit = readObject(HEAD, Commit.class);
         boolean isCurrentlyTracked =
                 currentCommit.getTree().getMap().containsKey(fileName);
         if (isCurrentlyTracked) {
-            currentStage.stageToRemoved(fileName);
+            currentStage.stageForRemoval(fileName);
             if (file.exists()) {
                 restrictedDelete(file);
             }
@@ -174,7 +180,6 @@ public class Repository {
                 break; // having printed the initial commit
             }
         }
-        //TODO: handle the merge
     }
 
     /** global-log */
@@ -192,6 +197,12 @@ public class Repository {
     private static void printHelper(Commit commit) {
         System.out.println("===");
         System.out.println("commit " + commit.getCommitID());
+
+        if (commit.getSecParentID() != null) {
+            String firstSevenDigits = commit.getParentID().substring(0, 7);
+            String secSevenDigits = commit.getSecParentID().substring(0, 7);
+            System.out.printf("Merge: %s %s\n", firstSevenDigits, secSevenDigits);
+        }
 
         Date currentDate = commit.getDate();
         Formatter formatter = new Formatter();
@@ -267,11 +278,9 @@ public class Repository {
         System.out.println();
 
         System.out.println("=== Modifications Not Staged For Commit ===");
-        //TODO
         System.out.println();
 
         System.out.println("=== Untracked Files ===");
-        //TODO
         System.out.println();
     }
 
@@ -469,6 +478,122 @@ public class Repository {
         mergeFailures(branchName, firstBranch, secBranch);
         assert secBranch != null;
         Commit secCommit = secBranch.getCommit();
+        Commit newCommit = new Commit(firstBranch.getName(),
+                                      secBranch.getName(),
+                                      firstCommit.getCommitID(),
+                                      secCommit.getCommitID());
+        Commit splitCommit = findSplit(newCommit);
+        //Handle the first two cases:
+        if (Objects.equals(splitCommit.getCommitID(), secCommit.getCommitID())) {
+            exit("Given branch is an ancestor of the current branch.");
+        }
+        if (Objects.equals(splitCommit.getCommitID(), firstCommit.getCommitID())) {
+            checkoutBranch(secBranch.getName());
+            exit("Current branch fast-forwarded.");
+        }
+        //Create a set of all filenames in the three commits:
+        Set<String> fileNameSet = new TreeSet<>();
+        Map<String, byte[]> splitFiles = splitCommit.getTree().getMap();
+        Map<String, byte[]> firstFiles = firstCommit.getTree().getMap();
+        Map<String, byte[]> secFiles = secCommit.getTree().getMap();
+        fileNameSet.addAll(splitFiles.keySet());
+        fileNameSet.addAll(firstFiles.keySet());
+        fileNameSet.addAll(secFiles.keySet());
+        /* If an untracked file in the current commit would be overwritten or
+        deleted by the merge, print "There is an untracked file in the way;
+        delete it, or add and commit it first." and exit; perform this check
+        before doing anything else.*/
+        
+        //For each file, determine which case it applies to and add it to the newCommit:
+        for (String fileName : fileNameSet) {
+            File file = join(CWD, fileName);
+
+            /* Only when the version in the HEAD(now) is different from
+             * the result should we stage is for addition or removal! E.g.,
+             * the file is staged in rule 1 and 6 but not in rule 2. */
+
+            /*1. Any files that have been modified in the given branch, but
+            not modified in the current branch should be changed to their
+            versions in the given branch (checked out from the commit at
+            the front of the given branch). These files should then all
+            be automatically staged.*/
+            if (splitFiles.containsKey(fileName)
+                    && firstFiles.containsKey(fileName)
+                    && secFiles.containsKey(fileName)
+                    && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
+                    && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))) {
+                checkoutFile(secCommit.getCommitID(), fileName);
+                addFile(fileName);
+                continue;
+            }
+
+            /*2. Any files that have been modified in the current branch, but
+            not in the given branch since the split point should stay as
+            they are. (opposite of rule 1)*/
+
+            /*3. Any files that have been modified in both the current and
+            given branch in the same way (i.e., both files now have the same
+            content or were BOTH REMOVED) are left unchanged by the merge.
+            If a file was removed from both the current and given branch,
+            but a file of the same name is present in the working directory,
+            it is left alone and continues to be absent (not tracked nor
+            staged) in the merge.*/
+
+            /*4. Any files that were not present at the split point and are
+            present only in the current branch should remain as they are.*/
+
+            /*5. Any files that were not present at the split point and are
+            present only in the given branch should be checked out in the
+            given branch and staged.*/
+            if (!splitFiles.containsKey(fileName) && !firstFiles.containsKey(fileName)
+                    && secFiles.containsKey(fileName)) {
+                checkoutFile(secCommit.getCommitID(), fileName);
+                addFile(fileName);
+                continue;
+            }
+
+            /*6. Any files present at the split point, unmodified in the current branch,
+            and absent in the given branch should be removed (and untracked). Since the
+            file tree of the new commit is empty and no INDEX exists, there is no need
+            to explicitly stage it for removal.*/
+            if (splitFiles.containsKey(fileName) && !secFiles.containsKey(fileName)
+                    && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))) {
+                removeFile(fileName);
+                continue;
+            }
+
+            /*7. Any files present at the split point, unmodified in the given branch,
+            and absent in the current branch should remain absent. */
+
+            /*8. Any files modified in different ways in the current and given branches
+            are in conflict. “Modified in different ways” can mean that:
+            1. The contents of both are changed and different from other;
+            2. The contents of one are changed and the other file is deleted;
+            3. The file was absent at the split point and has different contents in
+            the given and current branches.
+            Replace the contents of the conflicted file with... and stage the result.*/
+            if ((splitFiles.containsKey(fileName)
+                    && !Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
+                    && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))
+                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))
+                 || (!splitFiles.containsKey(fileName)
+                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName))))
+            {
+                String currentContent = readContentsAsString(file);
+                String givenContent = new String(secFiles.get(fileName),
+                        StandardCharsets.UTF_8);
+                StringBuilder newContent = new StringBuilder();
+                newContent.append("<<<<<<< HEAD")
+                        .append(currentContent)
+                        .append("=======")
+                        .append(givenContent)
+                        .append(">>>>>>>");
+                writeContents(file, newContent);
+            }
+        }
+        /* Automatically commits with the log message..., and update the
+        HEAD and the current branch (not necessarily master)*/
+        commitHelper(newCommit);
     }
 
     /** Handle the possible failure cases for merge. */
@@ -478,16 +603,12 @@ public class Repository {
         if (INDEX.exists()) {
             exit("You have uncommitted changes.");
         }
-        if (secBranch == null) {
-            exit("A branch with that name does not exist.");
-        }
         if (Objects.equals(branchName, firstBranch.getName())) {
             exit("Cannot merge a branch with itself.");
         }
-        //TODO: If an untracked file in the current commit would be
-        // overwritten or deleted by the merge, print "There is an
-        // untracked file in the way; delete it, or add and commit
-        // it first." and exit; perform this check before doing anything else.
+        if (secBranch == null) {
+            exit("A branch with that name does not exist.");
+        }
     }
 
 

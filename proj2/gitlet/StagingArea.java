@@ -49,7 +49,7 @@ public class StagingArea implements Serializable {
     }
 
     /** Stage the file to be removal. */
-    public void stageToRemoved(String fileName) {
+    public void stageForRemoval(String fileName) {
         removed.add(fileName);
     }
 }
