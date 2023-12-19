@@ -503,7 +503,28 @@ public class Repository {
         deleted by the merge, print "There is an untracked file in the way;
         delete it, or add and commit it first." and exit; perform this check
         before doing anything else.*/
-        
+        for (String fileName : fileNameSet) {
+            if (firstFiles.containsKey(fileName)) {
+                continue;
+            }
+            boolean isOverwritten_1 = splitFiles.containsKey(fileName)
+                    && secFiles.containsKey(fileName)
+                    && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
+                    && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName));
+            boolean isOverwritten_6 = splitFiles.containsKey(fileName)
+                    && !secFiles.containsKey(fileName)
+                    && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName));
+            boolean isOverwritten_8 = (splitFiles.containsKey(fileName)
+                    && !Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
+                    && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))
+                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))
+                    || (!splitFiles.containsKey(fileName)
+                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)));
+            if (isOverwritten_1 || isOverwritten_6 || isOverwritten_8) {
+                exit("There is an untracked file in the way; " +
+                        "delete it, or add and commit it first.");
+            }
+        }
         //For each file, determine which case it applies to and add it to the newCommit:
         for (String fileName : fileNameSet) {
             File file = join(CWD, fileName);
