@@ -87,7 +87,7 @@ public class Repository {
     }
 
     /** Handles a given commit, applying to both normal and merge commits. */
-    public static void commitHelper(Commit newCommit) {
+    private static void commitHelper(Commit newCommit) {
         StagingArea currentStage = readObject(INDEX, StagingArea.class);
         for (String tempFileName : currentStage.getAdded().keySet()) {
             Blob blob = new Blob(tempFileName);
@@ -478,10 +478,8 @@ public class Repository {
         mergeFailures(branchName, firstBranch, secBranch);
         assert secBranch != null;
         Commit secCommit = secBranch.getCommit();
-        Commit newCommit = new Commit(firstBranch.getName(),
-                                      secBranch.getName(),
-                                      firstCommit.getCommitID(),
-                                      secCommit.getCommitID());
+        Commit newCommit = new Commit(firstBranch.getName(), secBranch.getName(),
+                firstCommit.getCommitID(), secCommit.getCommitID());
         Commit splitCommit = findSplit(newCommit);
         //Handle the first two cases:
         if (Objects.equals(splitCommit.getCommitID(), secCommit.getCommitID())) {
@@ -528,25 +526,34 @@ public class Repository {
         //For each file, determine which case it applies to and add it to the newCommit:
         for (String fileName : fileNameSet) {
             File file = join(CWD, fileName);
+            mergeHelper(fileName, file, secCommit, splitFiles, firstFiles, secFiles);
+        }
+        /* Automatically commits with the log message..., and update the
+        HEAD and the current branch (not necessarily master)*/
+        commitHelper(newCommit);
+    }
 
-            /* Only when the version in the HEAD(now) is different from
-             * the result should we stage is for addition or removal! E.g.,
-             * the file is staged in rule 1 and 6 but not in rule 2. */
+    /** Helps conducting the eight cases for merge. */
+    private static void mergeHelper(String fileName, File file, Commit secCommit,
+                                    Map<String, byte[]> splitFiles,
+                                    Map<String, byte[]> firstFiles,
+                                    Map<String, byte[]> secFiles) {
+        /* Only when the version in the HEAD(now) is different from
+         * the result should we stage is for addition or removal! E.g.,
+         * the file is staged in rule 1 and 6 but not in rule 2. */
 
             /*1. Any files that have been modified in the given branch, but
             not modified in the current branch should be changed to their
             versions in the given branch (checked out from the commit at
             the front of the given branch). These files should then all
             be automatically staged.*/
-            if (splitFiles.containsKey(fileName)
-                    && firstFiles.containsKey(fileName)
-                    && secFiles.containsKey(fileName)
-                    && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
-                    && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))) {
-                checkoutFile(secCommit.getCommitID(), fileName);
-                addFile(fileName);
-                continue;
-            }
+        if (splitFiles.containsKey(fileName)
+                && firstFiles.containsKey(fileName) && secFiles.containsKey(fileName)
+                && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
+                && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))) {
+            checkoutFile(secCommit.getCommitID(), fileName);
+            addFile(fileName);
+        }
 
             /*2. Any files that have been modified in the current branch, but
             not in the given branch since the split point should stay as
@@ -566,22 +573,20 @@ public class Repository {
             /*5. Any files that were not present at the split point and are
             present only in the given branch should be checked out in the
             given branch and staged.*/
-            if (!splitFiles.containsKey(fileName) && !firstFiles.containsKey(fileName)
-                    && secFiles.containsKey(fileName)) {
-                checkoutFile(secCommit.getCommitID(), fileName);
-                addFile(fileName);
-                continue;
-            }
+        if (!splitFiles.containsKey(fileName) && !firstFiles.containsKey(fileName)
+                && secFiles.containsKey(fileName)) {
+            checkoutFile(secCommit.getCommitID(), fileName);
+            addFile(fileName);
+        }
 
             /*6. Any files present at the split point, unmodified in the current branch,
             and absent in the given branch should be removed (and untracked). Since the
             file tree of the new commit is empty and no INDEX exists, there is no need
             to explicitly stage it for removal.*/
-            if (splitFiles.containsKey(fileName) && !secFiles.containsKey(fileName)
-                    && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))) {
-                removeFile(fileName);
-                continue;
-            }
+        if (splitFiles.containsKey(fileName) && !secFiles.containsKey(fileName)
+                && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))) {
+            removeFile(fileName);
+        }
 
             /*7. Any files present at the split point, unmodified in the given branch,
             and absent in the current branch should remain absent. */
@@ -593,27 +598,20 @@ public class Repository {
             3. The file was absent at the split point and has different contents in
             the given and current branches.
             Replace the contents of the conflicted file with... and stage the result.*/
-            if ((splitFiles.containsKey(fileName)
-                    && !Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
-                    && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))
-                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))
-                 || (!splitFiles.containsKey(fileName)
-                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))) {
-                String currentContent = readContentsAsString(file);
-                String givenContent = new String(secFiles.get(fileName),
-                        StandardCharsets.UTF_8);
-                StringBuilder newContent = new StringBuilder();
-                newContent.append("<<<<<<< HEAD")
-                        .append(currentContent)
-                        .append("=======")
-                        .append(givenContent)
-                        .append(">>>>>>>");
-                writeContents(file, newContent);
-            }
+        if ((splitFiles.containsKey(fileName)
+                && !Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
+                && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))
+                && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))
+                || (!splitFiles.containsKey(fileName)
+                && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))) {
+            String currentContent = readContentsAsString(file);
+            String givenContent = new String(secFiles.get(fileName),
+                    StandardCharsets.UTF_8);
+            StringBuilder newContent = new StringBuilder();
+            newContent.append("<<<<<<< HEAD").append(currentContent).append("=======")
+                    .append(givenContent).append(">>>>>>>");
+            writeContents(file, newContent);
         }
-        /* Automatically commits with the log message..., and update the
-        HEAD and the current branch (not necessarily master)*/
-        commitHelper(newCommit);
     }
 
     /** Handle the possible failure cases for merge. */
@@ -622,11 +620,12 @@ public class Repository {
                                       Branch secBranch) {
         if (INDEX.exists()) {
             exit("You have uncommitted changes.");
-        }
-        if (Objects.equals(branchName, firstBranch.getName())) {
+        } else if (Objects.equals(branchName, firstBranch.getName())) {
             exit("Cannot merge a branch with itself.");
-        }
-        if (secBranch == null) {
+        } else if (secBranch == null) {
+            /* This is performed after self-checking, since the secBranch is
+            searched in the /heads folder and will be null if it's the current
+            branch.*/
             exit("A branch with that name does not exist.");
         }
     }
