@@ -21,8 +21,8 @@ public class MyUtils {
     /** Derive a commit by the given ID.
      * @return null if there is no commit with such ID
      */
-    public static Commit getCommitFromID(String ID) {
-        File file = join(COMMIT_DIR, ID);
+    public static Commit getCommitFromID(String id) {
+        File file = join(COMMIT_DIR, id);
         if (!file.exists()) {
             return null;
         }
@@ -35,7 +35,7 @@ public class MyUtils {
      */
     public static Branch getBranchFromName(String branchName) {
         File branch = join(HEADS_DIR, branchName);
-        if (!branch.exists()){
+        if (!branch.exists()) {
             return null;
         }
         return readObject(branch, Branch.class);

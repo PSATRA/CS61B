@@ -50,8 +50,8 @@ public class Commit implements Serializable {
     /** Constructor for merged commit. */
     Commit(String currentBranchName, String givenBranchName,
            String parentID, String secParentID) {
-        this.message = "Merged " + givenBranchName + " into " +
-                currentBranchName + ".";
+        this.message = "Merged " + givenBranchName + " into "
+                + currentBranchName + ".";
         this.timestamp = new Date();
         this.parentID = parentID;
         this.secParentID = secParentID;

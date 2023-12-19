@@ -46,8 +46,8 @@ public class Repository {
     /** init */
     public static void initRepo() {
         if (GITLET_DIR.exists()) {
-            exit("A Gitlet version-control system " +
-                    "already exists in the current directory.");
+            exit("A Gitlet version-control system "
+                    + "already exists in the current directory.");
         }
         GITLET_DIR.mkdir();
         OBJECTS_DIR.mkdir();
@@ -73,7 +73,7 @@ public class Repository {
             exit("File does not exist.");
         }
         StagingArea index;
-        if (INDEX.exists()){
+        if (INDEX.exists()) {
             index = readObject(INDEX, StagingArea.class);
         } else {
             index = new StagingArea();
@@ -81,7 +81,7 @@ public class Repository {
         index.add(fileName);
         if (!index.getAdded().isEmpty() || !index.getRemoved().isEmpty()) {
             writeObject(INDEX, index);
-        } else if (INDEX.exists()){
+        } else if (INDEX.exists()) {
             INDEX.delete();
         }
     }
@@ -342,8 +342,8 @@ public class Repository {
         Map<String, byte[]> currentFiles = currentCommit.getTree().getMap();
         for (String fileName : checkedFiles.keySet()) {
             if (!currentFiles.containsKey(fileName)) {
-                exit("There is an untracked file in the way; delete " +
-                        "it, or add and commit it first.");
+                exit("There is an untracked file in the way; delete "
+                        + "it, or add and commit it first.");
             }
         }
         for (String fileName : checkedFiles.keySet()) {
@@ -370,7 +370,7 @@ public class Repository {
 
         // Check the staging area, delete it, unless it's the
         //  current branch to be checked-out(failure cases).
-        if (INDEX.exists()){
+        if (INDEX.exists()) {
             INDEX.delete();
         }
     }
@@ -438,8 +438,8 @@ public class Repository {
          */
         for (String fileName : targetFiles.keySet()) {
             if (!currentFiles.containsKey(fileName)) {
-                exit("There is an untracked file in the way; " +
-                        "delete it, or add and commit it first.");
+                exit("There is an untracked file in the way; "
+                        + "delete it, or add and commit it first.");
             }
         }
         // checkout with no errors
@@ -465,7 +465,7 @@ public class Repository {
                 Branch(currentBranch.getName(), targetCommit);
         writeObject(CURRENT_BRANCH, movedBranch);
         writeObject(HEAD, targetCommit);
-        if (INDEX.exists()){
+        if (INDEX.exists()) {
             INDEX.delete();
         }
     }
@@ -507,22 +507,22 @@ public class Repository {
             if (firstFiles.containsKey(fileName)) {
                 continue;
             }
-            boolean isOverwritten_1 = splitFiles.containsKey(fileName)
+            boolean isOverwritten1 = splitFiles.containsKey(fileName)
                     && secFiles.containsKey(fileName)
                     && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
                     && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName));
-            boolean isOverwritten_6 = splitFiles.containsKey(fileName)
+            boolean isOverwritten6 = splitFiles.containsKey(fileName)
                     && !secFiles.containsKey(fileName)
                     && Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName));
-            boolean isOverwritten_8 = (splitFiles.containsKey(fileName)
+            boolean isOverwritten8 = (splitFiles.containsKey(fileName)
                     && !Arrays.equals(firstFiles.get(fileName), splitFiles.get(fileName))
                     && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))
                     && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))
                     || (!splitFiles.containsKey(fileName)
                     && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)));
-            if (isOverwritten_1 || isOverwritten_6 || isOverwritten_8) {
-                exit("There is an untracked file in the way; " +
-                        "delete it, or add and commit it first.");
+            if (isOverwritten1 || isOverwritten6 || isOverwritten8) {
+                exit("There is an untracked file in the way; "
+                        + "delete it, or add and commit it first.");
             }
         }
         //For each file, determine which case it applies to and add it to the newCommit:
@@ -598,8 +598,7 @@ public class Repository {
                     && !Arrays.equals(secFiles.get(fileName), splitFiles.get(fileName))
                     && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))
                  || (!splitFiles.containsKey(fileName)
-                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName))))
-            {
+                    && !Arrays.equals(firstFiles.get(fileName), secFiles.get(fileName)))) {
                 String currentContent = readContentsAsString(file);
                 String givenContent = new String(secFiles.get(fileName),
                         StandardCharsets.UTF_8);
