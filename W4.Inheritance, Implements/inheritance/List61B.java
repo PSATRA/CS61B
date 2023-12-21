@@ -39,7 +39,7 @@ public interface List61B<Item> {
     /**
      * @Terminology: Dynamic method selection:
      * If the run-time type overrides the method, the run-time type's own method is used instead.
-     * This explains why the `list` variable use its own print().
+     * This explains why the `list` variable uses its own print().
      *
      * @NOTICE: Two preconditions:
      * 1. Has a dynamic type(has instantiation).

@@ -10,8 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
-      <change afterPath="$PROJECT_DIR$/tools/serialization/GitletException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/serialization/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;practice&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/CS61B/CS61B&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -113,6 +113,13 @@
       <recent name="inheritance" />
       <recent name="Timer" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-20.0.2-corretto-20.0.2.1-3183f394aec4-907a2361" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -225,6 +232,10 @@
       <workItem from="1701009341891" duration="407000" />
       <workItem from="1701319702478" duration="97000" />
       <workItem from="1701410410026" duration="139000" />
+      <workItem from="1702982461131" duration="26000" />
+      <workItem from="1703077295574" duration="71000" />
+      <workItem from="1703147871359" duration="1370000" />
+      <workItem from="1703150933020" duration="36000" />
     </task>
     <task id="LOCAL-00001" summary="week2">
       <option name="closed" value="true" />
