@@ -11,6 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="79506eaf-c811-4daf-b5b5-61226b79a076" name="Changes" comment="week2,3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/lab6_2019/WeightedQuickUnionDS.java" beforeDir="false" afterPath="$PROJECT_DIR$/W9.Disjoint Sets, lab6-19/lab6_2019/WeightedQuickUnionDS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-20.0.2-corretto-20.0.2.1-3183f394aec4-907a2361" />
+        <option value="jdk-20.0.2-corretto-20.0.2.1-f644763e9732-27d99999" />
       </set>
     </attachedChunks>
   </component>
@@ -236,6 +237,17 @@
       <workItem from="1703077295574" duration="71000" />
       <workItem from="1703147871359" duration="1370000" />
       <workItem from="1703150933020" duration="36000" />
+      <workItem from="1703157338037" duration="191000" />
+      <workItem from="1703157605497" duration="314000" />
+      <workItem from="1703158295229" duration="101000" />
+      <workItem from="1703244625981" duration="15000" />
+      <workItem from="1703325779183" duration="601000" />
+      <workItem from="1703511676779" duration="125000" />
+      <workItem from="1703673420025" duration="23000" />
+      <workItem from="1703673457755" duration="705000" />
+      <workItem from="1704005029045" duration="10000" />
+      <workItem from="1704379237707" duration="127000" />
+      <workItem from="1704379372076" duration="15000" />
     </task>
     <task id="LOCAL-00001" summary="week2">
       <option name="closed" value="true" />

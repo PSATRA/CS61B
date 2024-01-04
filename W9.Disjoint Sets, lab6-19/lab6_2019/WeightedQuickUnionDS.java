@@ -61,12 +61,12 @@ public class WeightedQuickUnionDS {
         int j = find(q);
         if (_parent[i] > _parent[j]) {
             // j has bigger wight or the same
+            _parent[j] += _parent[i]; // this must come before parent[i] = j;!!! or it's meaningless!!!
             _parent[i] = j;
-            _parent[j] += _parent[i];
         } else {
             // i has bigger wight
-            _parent[j] = i;
             _parent[i] += _parent[j];
+            _parent[j] = i;
         }
     }
 
