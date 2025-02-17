@@ -11,4 +11,4 @@ Specific solutions:
 2. Change the type from `String` to `StringBuilder`, and create the String with 
 the constructor `StringBuilder s = new StringBuilder("{");`. Then use `.append(String)` instead of `+=`.
 The runtime of this method is **linear**, since StringBuilder is mutable.
-3. Use`String.jion`. See this in W6, `ArraySet`.
+3. Use`String.join`. See this in W6, `ArraySet`.

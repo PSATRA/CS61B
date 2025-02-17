@@ -25,7 +25,7 @@ single method or data structure. --Try your best to find the **_small ineffectiv
     of distinguishing the dogs are actually a sort and permutation process.
 
 
-2. If you need to optimize an algorithm or something elsa, don't think from
+2. If you need to optimize an algorithm or something else, don't think from
 a high level. Break it down, and **scrutinize** which part leads to high
 complexity, and what tweak can I make upon this snag?
 
